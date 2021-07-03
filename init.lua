@@ -31,6 +31,8 @@ require('packer').startup(function()
   use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'} }
   use 'neovim/nvim-lspconfig'        -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-compe'           -- Autocompletion plugin
+
+  require('alice.plugins')
 end)
 
 --Incremental live completion
@@ -45,6 +47,7 @@ vim.wo.number = true
 
 --Do not save when switching buffers
 vim.o.hidden = true
+--QUESTION: where does this get reset to nohidden
 
 --Enable mouse mode
 vim.o.mouse = "a"
@@ -67,6 +70,8 @@ vim.wo.signcolumn="yes"
 vim.o.termguicolors = true
 vim.g.onedark_terminal_italics = 2
 vim.cmd[[colorscheme onedark]]
+
+require('alice.settings')
 
 --Set statusbar
 vim.g.lightline = { colorscheme = 'onedark';
@@ -273,3 +278,26 @@ vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+------------------------------------
+-- Shhhhhhhssssssss...  Settings are
+-- Napping  down  here  till  theyre
+-- called    upon   to    adjudicate
+-- important differences of opinions
+-- on  the  colors of  bikesheds  of
+-- Victorian   England,  and   their
+-- recentlly uncovered effect on the
+-- disappearance of Edgar Rothschild
+-- "who  was  actually just  hiding"
+-- Beaumont III,  painfully stung by
+-- a  bee, then  and there  chose to
+-- pursue  a career  as a  jurist in
+-- York,  though  he  had  a  career
+-- that was largely unremarked upon,
+-- the  legal  ramifications of  his
+-- inadvertant  role  as zero  point
+-- for  a run  on  textiles in  S.E.
+   require('alice.overdriver')--Asia
+-- that   eventually   led  to   the
+-- development  of the  t-shirt, and
+-- why I never wear one.
