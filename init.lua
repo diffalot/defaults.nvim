@@ -1,3 +1,7 @@
+vim.cmd('\<Esc>[38:2:%lu:%lu:%lum')
+vim.cmd('\<Esc>[48:2:%lu:%lu:%lum')
+vim.cmd('set termguicolors')
+
 -- Install packer
 local execute = vim.api.nvim_command
 
@@ -8,56 +12,156 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 vim.api.nvim_exec([[
-  augroup Packer
-    autocmd!
-    autocmd BufWritePost init.lua PackerCompile
-  augroup end
+augroup Packer
+autocmd!
+autocmd BufWritePost init.lua PackerCompile
+augroup end
 ]], false)
 
 local use = require('packer').use
 require('packer').startup(function()
-  use 'wbthomason/packer.nvim'       -- Package manager
-  use 'tpope/vim-fugitive'           -- Git commands in nvim
-  use 'tpope/vim-rhubarb'            -- Fugitive-companion to interact with github
-  use 'tpope/vim-commentary'         -- "gc" to comment visual regions/lines
-  use 'ludovicchabant/vim-gutentags' -- Automatic tags management
-  -- UI to select things (files, grep results, open buffers...)
-  use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
-  use 'joshdick/onedark.vim'         -- Theme inspired by Atom
-  use 'itchyny/lightline.vim'        -- Fancier statusline
-  -- Add indentation guides even on blank lines
-  use { 'lukas-reineke/indent-blankline.nvim', branch="lua" }
+  use 'wbthomason/packer.nvim'        -- Package manager
+
+  use 'neovim/nvim-lspconfig'         -- Collection of configurations for built-in LSP client
+  use 'nvim-lua/lsp-status.nvim'      -- Statusline info from LSP ready to customize and already using nerdfonts
+  use 'hrsh7th/nvim-compe'            -- Autocompletion plugin
+
   -- Add git related info in the signs columns and popups
   use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'} }
-  use 'neovim/nvim-lspconfig'        -- Collection of configurations for built-in LSP client
-  use 'hrsh7th/nvim-compe'           -- Autocompletion plugin
-end)
+  use 'lambdalisue/gina.vim'          -- Run Git commands asyncronously from the command prompt
+
+  -- Treesitter playground - visualizer and explorer for TS parses
+  use {'nvim-treesitter/playground', opt = true, event = "BufRead"}
+
+  -- UI to select things (files, grep results, open buffers...)
+  use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
+  -- use 'ludovicchabant/vim-gutentags'  -- Automatic tags management
+
+  -- Treesitter -  something in between CTags and LSP that analyses parses code
+  -- trees very quickly from known grammars for fast and adaptable
+  -- highlighting
+  use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+  -- nvim .5 LSP Highlight Groups for most themes, can adapt to CoC themes too 
+  use {"folke/lsp-colors.nvim", event = "BufRead",}
+  -- A revisit of vim's `default` 16 color scheme, less garish and more useful
+  use 'romainl/vim-colors'            
+
+  -- -- "gc" to comment visual regions/lines
+  -- use 'tpope/vim-commentary'          
+  -- -- Add indentation guides even on blank lines
+  use {'lukas-reineke/indent-blankline.nvim', branch="lua" }
+  use {"folke/todo-comments.nvim",event = "BufRead"}
+  -- -- diagnostics
+  use {"folke/trouble.nvim",cmd = 'TroubleToggle'}
+
+  -- Debugging
+  use {"mfussenegger/nvim-dap",event = "BufRead"}
+  -- Debugger management
+  use {'Pocco81/DAPInstall.nvim',event = "BufRead"}   
+
+
+  -- Write mappings for prefixes that will popup as menus to help you learn
+  -- your way around the keyboard interface.  Default motions, spelling, and
+  -- window control are also included. 
+  use {"folke/which-key.nvim"}
+ 
+  -- INFO: Learning Lua central collections of resources
+  -- https://github.com/nanotee/nvim-lua-guide
+  -- https://github.com/norcalli/neovim-plugin
+
+  -- a repl with access to neovim's internal runtime, great for playing with 
+  -- your codehttps://github.com/rafcamlet/nvim-luapad
+  use { 'rafcamlet/nvim-luapad', opt = false }
+
+  -- Interactive scratchpad and general purpose REPL for many languages
+  -- use {'metakirby5/codi.vim', cmd = 'Codi'}
+
+  -- Learn Vim Motions
+  -- https://github.com/ThePrimeagen/vim-be-good
+  use 'ThePrimeagen/vim-be-good'
+
+  -- Create and manage parametric highlight groups in lua
+  use 'tjdevries/colorbuddy.vim'      
+  
+  -- A fast colorpreviewer written in lua to see your cor codes in your editor
+  use {
+    "norcalli/nvim-colorizer.lua",
+    event = "BufRead",
+    config = function()
+      require("colorizer").setup()
+      vim.cmd("ColorizerReloadAllBuffers")
+    end,
+  }
+
+
+--------------
+-- Preferences
+
+vim.o.pumheight = 15 -- Makes popup menu smaller
+vim.cmd('set foldlevel=3')
+
+-- treat dash separated words as a single text object"
+vim.cmd('set iskeyword+=-')
+
+-- Don't flood completion with messages.
+vim.cmd('set shortmess+=c')
+
+-- Copy paste between vim and system clipboard
+vim.o.clipboard = "unnamedplus" 
 
 --Incremental live completion
 vim.o.inccommand = "nosplit"
+
+-- directional keys move to next visual line even when soft wrapped
+vim.cmd('set whichwrap+=<,>,[,],h,l') 
+
+--Make line numbers default
+vim.wo.number = true
+                      
+--Do not save when switching buffers
+vim.o.hidden = true
+
+vim.o.mouse = "a" --Enable mouse mode
+
+-- Use the filetype folder to manage setting for specific languagaes 
+-- and turn on syntax highlighting
+vim.cmd('filetype plugin on')
+vim.cmd('syntax on')
+
+-- The encoding written to file
+vim.o.fileencoding = "utf-8"
+                  
+--Expand tabs to 4 spaces
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.cmd('set expandtab')
+
+--Use 80 colums with smart soft breaks by default
+vim.cmd('set colorcolumn=79')
+vim.cmd('set textwidth=0')
+vim.cmd('set autoindent breakindent linebreak')
+vim.cmd('set formatoptions+=jtcropqblnJ')
+
+--I would turn on special character display if tabs were hiding out around here
+vim.cmd('set list listchars="tab:➤ ,eol:¶,nbsp:⇆,trail:✧"')
+--vim.cmd('set list listchars=tab:»\ ,eol:↲,nbsp:⇋,trail:‹')
+
+--Save undo history
+vim.cmd[[set undofile]]
+
+--Do not resize windows to equal sizes when one is closed
+vim.cmd('set noequalalways')
+
+--Allow windows to be closed completely without a line of tex between the statuslines
+vim.cmd('set winminheight=0')
 
 --Set highlight on search
 vim.o.hlsearch = false
 vim.o.incsearch = true
 
---Make line numbers default
-vim.wo.number = true
-
---Do not save when switching buffers
-vim.o.hidden = true
-
---Enable mouse mode
-vim.o.mouse = "a"
-
---Enable break indent
-vim.o.breakindent = true
-
---Save undo history
-vim.cmd[[set undofile]]
-
---Case insensitive searching UNLESS /C or capital in search
+--Case insensitive searching at all times
 vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.o.smartcase = false
 
 --Decrease update time
 vim.o.updatetime = 250
@@ -65,22 +169,16 @@ vim.wo.signcolumn="yes"
 
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
-vim.g.onedark_terminal_italics = 2
-vim.cmd[[colorscheme onedark]]
-
---Set statusbar
-vim.g.lightline = { colorscheme = 'onedark';
-      active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } };
-      component_function = { gitbranch = 'fugitive#head', };
-}
+vim.cmd[[colorscheme default]]
 
 --Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent=true})
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+
 --Remap for dealing with word wrap
-vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap=true, expr = true, silent = true})
+vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", {noremap= true, expr = true, silent = true})
 vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", {noremap= true, expr = true, silent = true})
 
 --Remap escape to leave terminal mode
@@ -142,7 +240,7 @@ vim.api.nvim_set_keymap('n', '<leader>gs', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>gp', [[<cmd>lua require('telescope.builtin').git_bcommits()<cr>]], { noremap = true, silent = true})
 
 -- Change preview window location
-vim.g.splitbelow = true
+vim.g.splitbelow = false
 
 -- Highlight on yank
 vim.api.nvim_exec([[
@@ -154,6 +252,44 @@ vim.api.nvim_exec([[
 
 -- Y yank until the end of line
 vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true})
+--
+-- Treesitter Configs
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = {}, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,                   -- false will disable the whole extension
+    disable = {},                    -- list of language that will be disabled
+  },
+  indent = {enable = {"javascriptreact"}},
+  autotag = {enable = true},
+
+  playground = {
+    enable = O.plugin.ts_playground.active,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?'
+    }
+  },
+  rainbow = {
+    enable = true,
+    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+    max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+  }
+}
+
+
 --
 -- LSP settings
 local nvim_lsp = require('lspconfig')
@@ -273,3 +409,46 @@ vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+
+
+
+
+
+
+
+  -- Personal Favorites
+  use 'editorconfig/editorconfig-vim' -- Have indentation and tabs set by the repository
+  use 'iberianpig/tig-explorer.vim'   -- Run Tig in Neovim
+  -- https://github.com/junegunn/vim-easy-align
+  use 'junegunn/vim-easy-align'
+  -- prose tools ------------------------------------------------------------
+  -- until I decide on one, I'll be enabenabling one markdown plugin at a time
+  -- use { 'vimwiki/vimwiki', opt = true }
+  -- require_plugin('vim-wiki')
+  use 'preservim/vim-lexical'
+  use 'plasticboy/vim-markdown'
+  use 'reedes/vim-pencil'
+  use 'preservim/vim-wordy'
+  use 'vim-ctrlspace/vim-ctrlspace'
+  use 'Shougo/tabpagebuffer.vim'
+  -- https://github.com/junegunn/limelight.vim
+  use { 'junegunn/limelight.vim', opt = true }
+    -- Floating terminal
+    use {
+        'numToStr/FTerm.nvim',
+        event = "BufRead",
+        config = function()
+            require'FTerm'.setup({
+                     cmd = "cd ~;  tmux new-session -A -s floating",
+                     dimensions  = {
+                     height = 0.4,
+                     width = 0.56,
+                     x = 1.3,
+                     y = -0.00
+                 },
+                 border = 'single' -- or 'double'
+            })
+        end,
+    }
+end)
