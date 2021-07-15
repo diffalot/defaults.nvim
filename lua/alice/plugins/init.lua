@@ -1,0 +1,444 @@
+require('alice.settings')
+
+-- Install packer
+local execute = vim.api.nvim_command
+
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  execute('!git clone https://github.com/wbthomason/packer.nvim '.. install_path)
+end
+
+vim.api.nvim_exec([[
+  augroup Packer
+    autocmd!
+    autocmd BufWritePost init.lua PackerCompile
+  augroup end
+]], false)
+
+local use = require('packer').use
+require('packer').startup(function()
+  use 'wbthomason/packer.nvim'       -- Package manager
+  -- UI to select things (files, grep results, open buffers...)
+  use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
+  -- Add indentation guides even on blank lines
+  use { 'lukas-reineke/indent-blankline.nvim' }
+  -- Add git related info in the signs columns and popups
+  use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'} }
+  use 'neovim/nvim-lspconfig'        -- Collection of configurations for built-in LSP client
+  use 'hrsh7th/nvim-compe'           -- Autocompletion plugin
+
+end)
+
+
+----    -- InterACT With Computer Friend!
+----    use {
+----        "kyazdani42/nvim-tree.lua",
+----        cmd = "NvimTreeToggle",
+----        config = function()
+----            require("nvimtree-config").config()
+----        end
+----    }
+----    -- use {
+----    --    'numToStr/FTerm.nvim',
+----    --    event = "BufRead",
+----    --    config = function()
+----    --        require'FTerm'.setup({
+----    --            cmd = "cd ~;  tmux new-session -A -s floating",
+----    --            dimensions  = {
+----    --                height = 0.4,
+----    --                width = 0.56,
+----    --                x = 1.3,
+----    --                y = -0.00
+----    --            },
+----    --            border = 'single' -- or 'double'
+----    --        })
+----    --    end
+----    --}
+----
+----
+----    -- Further LSP Refinements
+----    --------------------------------------------------------------------------
+----
+----    -- Install servers with :LspInstall <server>
+----    --use {"kabouzeid/nvim-lspinstall"}
+----    
+----    --UI Components for LSP messages
+----    --use {"glepnir/lspsaga.nvim", event = "BufRead"}
+----    
+----    
+----    -- Add in Treesitter for Code Association Parsing and Highlighting
+----    --------------------------------------------------------------------------
+----
+----    -- Treesitter Itself
+----    --use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+----    
+----    -- Treesitter parse as part of the text objects interface,
+----    --use {"nvim-treesitter/nvim-treesitter-textobjects", opt=true}
+----    
+----    -- And seeing comments in context
+----    --use {
+----    --    'JoosepAlviste/nvim-ts-context-commentstring',
+----    --    event = "BufRead",
+----    --}
+----    
+----
+----    -- Syntax, Indentation, and Highlighting
+----    --------------------------------------------------------------------------
+----
+----    -- EditorConfig
+----    {
+----	    'editorconfig/editorconfig-vim',
+----	    event = "BufRead",
+----    }
+----
+----    -- Fish
+----    -- I'm not as pleased with vim-fish as I want to be
+----    -- maybe this is better
+----    -- https://github.com/khaveesh/vim-fish-syntax
+----    -- use 'khaveesh/vim-fish-syntax'
+----    use { 
+----        'dag/vim-fish',
+----        ft = "fish"
+----    }
+----
+----    -- Lua
+----    use {
+----        'euclidianAce/BetterLua.vim',
+----        ft = "lua"
+----    }
+----
+----    -- Additional Highlight Groups for Themes that don't Support TS or LSP
+----    use {
+----        "folke/lsp-colors.nvim",
+----        event = "BufRead",
+----    }
+----
+----
+----    -- Code Analysis
+----    --------------------------------------------------------------------------
+----
+----    -- Gutentags - https://github.com/ludovicchabant/vim-gutentags
+----    --use 'ludovicchabant/vim-gutentags'
+----    --use 'skywind3000/gutentags_plus'
+----
+----    ---- LSP and Ctags Viewer - https://github.com/liuchengxu/vista.vim
+----    --use 'liuchengxu/vista.vim'
+----
+----    -- A classic tag browser
+----    --use 'preservim/tagbar'
+----
+----    -- Symbol Outline
+----    --use {
+----    --    'simrat39/symbols-outline.nvim',
+----    --    cmd = 'SymbolsOutline',
+----    --}
+----    
+----    
+----    -- Debugging
+----    --------------------------------------------------------------------------
+----
+----    -- Set breakpoints and use the console in many languages
+----    --use {
+----    --    "mfussenegger/nvim-dap",
+----    --    event = "BufRead",
+----    --    disable = not O.plugin.debug.active
+----    --}
+----
+----    -- Install many debuggers
+----    --use {
+----    --    'Pocco81/DAPInstall.nvim',
+----    --    event = "BufRead",
+----    --    disable = not O.plugin.dap_install.active
+----    --}
+----    
+----
+----    --  Git Tools
+----    --------------------------------------------------------------------------
+----
+----    -- https://github.com/kdheepak/lazygit.nvim
+----    use {
+----        "kdheepak/lazygit.nvim",
+----        cmd = "LazyGit",
+----    }
+----
+----    ---- Tig Explorer
+----    ---- https://github.com/iberianpig/tig-explorer.vim
+----    ---- bind tig's keys to git actions with https://github.com/Nattfarinn/tig-rebase
+----    use { 'iberianpig/tig-explorer.vim',
+----        cmd = "TigExplorer" 
+----    }
+----
+----
+----    -- Code TO\DOs
+----    --------------------------------------------------------------------------
+----
+----    -- See Diagnostic Errors from the Entire Project in a Quick Access List and
+----    -- Telescope
+----    use {
+----        "folke/trouble.nvim",
+----        cmd = 'TroubleToggle',
+----    }
+----
+----    -- All inline TO\DO comments collected in a Quick Access List and Telescope
+----    use {
+----        "folke/todo-comments.nvim",
+----        event = "BufRead",
+----    }
+----    
+----
+----    -- Search Enhancements
+----    --------------------------------------------------------------------------
+----
+----    -- Search & Replace
+----    --use {
+----    --    'windwp/nvim-spectre',
+----    --    event = "BufRead",
+----    --    config = function()
+----    --        require('spectre').setup()
+----    --    end,
+----    --    disable = not O.plugin.spectre.active
+----    --}
+----
+----    -- Use fzy for telescope
+----    --use {
+----    --    "nvim-telescope/telescope-fzy-native.nvim",
+----    --    event = "BufRead",
+----    --    disable = not O.plugin.telescope_fzy.active
+----    --}
+----
+----    -- Key Mappings Under Prefixes
+----    --------------------------------------------------------------------------
+----    use {
+----        "folke/which-key.nvim",
+----        event = "BufRead"
+----    }
+----
+----
+----    -- prose tools
+----    --------------------------------------------------------------------------
+----    -- until I decide on one, I'll be enabenabling one markdown plugin at a time
+----
+----    -- use { 
+----    -- 'vimwiki/vimwiki', 
+----    --     event = "BufRead",
+----    --  }
+----
+----    -- use {
+----    --     'preservim/vim-lexical'
+----    --     event = "BufRead",
+----    -- }
+----
+----    -- use {
+----    --     'plasticboy/vim-markdown'
+----    --     event = "BufRead",
+----    -- }
+----
+----    -- use {
+----    --     'reedes/vim-pencil'
+----    --     event = "BufRead",
+----    -- }
+----
+----    -- use {
+----    --     'preservim/vim-wordy'
+----    --     event = "BufRead",
+----    -- }
+----
+----
+----    -- Table Editors and Alignment Helpers ------------------------------------
+----    --------------------------------------------------------------------------
+----
+----    -- https://github.com/godlygeek/tabular
+----    -- use { 'godlygeek/tabular', opt = true }
+----
+----    -- https://github.com/junegunn/vim-easy-align
+----    -- use 'junegunn/vim-easy-align'
+----
+----    -- Vim Table Mode
+----    -- https://github.com/dhruvasagar/vim-table-mode
+----    -- use { 'dhruvasagar/vim-table-mode', opt = true }
+----    -- configured in alice-viml/options.vim
+----    -- There are so many options, OMG, it does formula too
+----    -- :TableModeToggle
+----    -- <Leader>ttm starts table mode
+----    -- <Leader>ttt Tableize!
+----
+----    -- List Buffers per Tab
+----    -- use 'Shougo/tabpagebuffer.vim'
+----
+----
+----    -- Project Management
+----    --------------------------------------------------------------------------
+----
+----    -- CtrlSpace
+----    -- let's see if I can config it in lua, and maybe move vimwiki over
+----    -- configured in alice-ctrlspace/init.lua
+----    { use 'vim-ctrlspace/vim-ctrlspace', opt = false }
+----    
+----    -- Projects can also be managed and discovered in Telescope
+----    use {
+----        "nvim-telescope/telescope-project.nvim",
+----        event = "BufRead",
+----        after = "telescope.nvim",
+----    }
+----
+----
+----
+----    -- User Experience and Interface Upgrades ---------------------------------
+----    -- I'll want this when I'm working on a team
+----    -- use {'f-person/git-blame.nvim', opt = true}
+----
+----    -- tmux navigation uses:
+----    -- tmux binds: https://github.com/jabirali/tmux-tilish#keybindings
+----    -- nvim binds:
+----    --use { 'numToStr/Navigator.nvim', opt = false,
+----    --    config = function()
+----    --        require('Navigator').setup({
+----    --            auto_save = false,
+----    --            disable_on_zoom = true,
+----    --        })
+----    --    end
+----    --}
+----
+----    -- Reload
+----    use {
+----        'famiu/nvim-reload',
+----        event = "BufRead"
+----    }
+----
+----    -- Trigger with <leader>u or :OpenURL
+----    use {
+----        'henrik/vim-open-url',
+----        event = "BufRead"
+----    }
+----
+----
+----    -- Learning and Reference -------------------------------------------------
+----
+----    -- INFO: Learning Lua central collections of resources
+----    -- https://github.com/nanotee/nvim-lua-guide
+----    -- https://github.com/norcalli/neovim-plugin
+----
+----    -- https://github.com/rafcamlet/nvim-luapad
+----    use {
+----        'rafcamlet/nvim-luapad',
+----        event = "BufRead",
+----    }
+----
+----    ---- Interactive scratchpad
+----    --use {
+----    --    'metakirby5/codi.vim',
+----    --    cmd = 'Codi',
+----    --    disable = not O.plugin.codi.active
+----    --}
+----    -- Learn Vim Motions
+----    -- https://github.com/ThePrimeagen/vim-be-good
+----    --use 'ThePrimeagen/vim-be-good'
+----
+----    -- Luarocks
+----    -- https://github.com/lunarmodules/Penlight
+----    --use_rocks 'penlight'
+----    --use_rocks 'luaformatter'
+----
+----
+----    -- Theme Development`
+----    --------------------------------------------------------------------------
+----    
+----    -- Theme Development Virtual Environment
+----    use {
+----        "rktjmp/lush.nvim",
+----        cmd = {"LushRunQuickstart", "LushRunTutorial", "Lushify"},
+----    }
+----
+----    -- Define Highlight Groups in Lua
+----    use {
+----        'tjdevries/colorbuddy.vim',
+----        event = "BufRead",
+----    }
+----    use {
+----        "norcalli/nvim-colorizer.lua",
+----        event = "BufRead",
+----        config = function()
+----            require("colorizer").setup()
+----            vim.cmd("ColorizerReloadAllBuffers")
+----        end,
+----    }
+----
+----    -- The Pretty Things ------------------------------------------------------
+----
+----    -- Treesitter/LSP Ready`
+----    use { 'KeitaNakamura/neodark.vim', opt = false }
+----    use { 'srcery-colors/srcery-vim', opt = true }
+----    use { 'ishan9299/modus-theme-vim', opt = true }
+----    use { 'romgrk/doom-one.vim', opt = true }
+----    use { 'Th3Whit3Wolf/spacebuddy', opt = true }
+----
+----    -- 4bit Themes
+----    use { 'jeffkreeftmeijer/vim-dim', opt = false }
+----    use { 'romainl/vim-colors', opt = true }
+----    use { 'romainl/vim-sweet16', opt = true }
+----
+----    -- Light and Dark combos
+----    use { 'preservim/vim-colors-pencil', opt = false }
+----    use { 'arzg/vim-colors-xcode', opt = true }           
+----    use { 'swalladge/paper.vim', opt = true }
+----    use { 'NLKNguyen/papercolor-theme', opt = true }
+----
+----    -- Great Colors
+----    use { 'folke/tokyonight.nvim', opt = false }
+----    use { 'jayhowie/crystal-cove', opt = true }
+----    use { 'tssm/fairyfloss.vim', opt = true }
+----    use { 'TroyFletcher/vim-colors-synthwave', opt = true }
+----    use { 'Rigellute/rigel', opt = true }
+----    use { 'sliminality/wild-cherry-vim', opt = true }
+----    
+----    -- Unknown 
+----    use { 'jaredgorski/SpaceCamp', opt = true }
+----    use { 'aswathkk/DarkScene.vim', opt = true }
+----    use { 'challenger-deep-theme/vim', opt = true }
+----
+----end
+----    -- Oh, How did This Wind Up Here
+----    -- use 'diffalot/goog-'
+----
+----   -- -- For adding lazy loading quickly
+----   -- use {
+----   --     ft = "fish",
+----   --     event = "BufRead",
+----   --     config = function()
+----   --         require'FTerm'.setup({
+----   --         })
+----   --     end,
+----   -- }
+------ """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+------ "automatically `tcd` to project directories when opening a file
+------ Plug 'airblade/vim-rooter'
+------ " The public function FindRootDirectory() returns the absolute path to the root directory as a string, if a root directory is found, or an empty string otherwise.
+------
+------ " change directory for the whole tab
+------ let g:rooter_cd_cmd = 'tcd'
+------
+------ " what triggers a scan
+------ let g:rooter_targets = '/,*'
+------ " let g:rooter_targets = '*'
+------ " let g:rooter_targets = '/,*.yml,*.yaml'
+------
+------ " how to identify a root directory
+------ let g:rooter_patterns = [
+------       \ '.git',
+------       \ '>~/work',
+------       \ '>.config',
+------       \ '>~/.homesick/repos/',
+------       \ '=/home/alice',
+------       \ ]
+------
+------ " follow file and directory links
+------ let g:rooter_resolve_links = 1
+------
+------ " if blank, will not change directory (can be home or current
+------ let g:rooter_change_directory_for_non_project_files = ''
+------
+------ " manual mode
+------ let g:rooter_manual_only = 1
+------
+------ """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

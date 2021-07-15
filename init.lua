@@ -32,7 +32,7 @@ require('packer').startup(function()
   use 'neovim/nvim-lspconfig'        -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-compe'           -- Autocompletion plugin
 
-  require('alice.plugins')
+  require('alice.plugins')(use)
 end)
 
 --Incremental live completion

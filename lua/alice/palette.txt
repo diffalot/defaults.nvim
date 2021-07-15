@@ -1,0 +1,326 @@
+"'ffffff'"""""""""""""""""""""""""""""""""""""""""""""""""""""
+"'ffff'  "" Global Colors
+"'ffff'  """"""""""""""""""""""""""""""""""""""""""""""""""""
+
+"
+"
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ★ ☆ ✪ ✵ ✯ ٭ ✭ ✰ ⚝ ⚹ ❉ ❋ ✺ ✹ ✸ ✶ ✷ ✵ ✲ ✱ ✧ ✦ ⍟ ⊛ ⁕ ﹡ ❃ ❂ ✼ ✻ ⍣ ≛ * ✫ • ° ★ « » ❝ ❞ × ⦂ ⁃ ‐ ‑ ‒ – ⎯ — ― ~ ⁓ % ‰ ‱ & ⅋ § ÷ ± ¡ ¿ ⸮ ⁇ ⁈ ‽ ⸘ ¼ ½ ¾ ² ³ ⅕ ⅙ ⅛ ℠ ℻ ℅ ℁ ⅍ ¶ ⁋ ≠ √ ∛ ∜ ∞ β Φ Σ € ₤ ＄ ⚢ ⚣ ⌘ ♲ ↑ ↓ → ➔ ➜ ➝ ➞ 🠖 🠒 ☞ ☛ ➟ ➠ ➢ ➣ ➥ ➦ ↛ ↝ ➤ ↠ ↣ ↦ ↬ ⇀ ⇁ ⇒ ⇏ ⇛ ⇝ ⇢ ⇥ ⇨ ⇰ ⇴ ⇉ ⇶ ⇸ ⇻ ⇾ ⟴ ⟶ ⟹ ⟾ ⟼ ⟿ ⤀ ⤁ ⤅ ⤃ ⤇ ⤍ ⤏ ⤐ ⤑ ⤔ ⤕ ⤖ ⤗ ⤘ ⤚ ⤜ ⤞ ⤠ ⤳ ⥇ ⥓ ⥗ ⥟ ⥛ ⥬ ⥭ ⥤ ⥰ ⥅ ⥱ ⥲ ⥴ ⥵ ⥸ ⥹ ➧ ➨ ➩ ➪ ➫ ➬ ➭ ➮ ➯ ➱ ➲ ➳ ➵ ➸ ➺ ➻ ➼ ➽ ➾ ⍄ ⍈ ⍆ ➙ ➛ > ˃ ᐅ ᐉ ᐳ ᗒ ⃕ ⃗ » › ❯ ❱ › ˲ ← 🠔 ↚ 🠐 ☚ ↜ ↞ ↢ ↤ ↫ ↼ ↽ ⇐ ⇍ ⇚ ⇇ ⇜ ⇠ ⇤ ⇦ ⇷ ⇺ ⇽ ⟵ ⟸ ⟽ ⟻ ⤂ ⤆ ⤌ ⤎ ⤙
+" ⤛ ⤝ ⤟ ⥆ ⥒ ⥖ ⥚ ⥞ ⥪ ⥫ ⥢ ⥳ ⥶ ⥷ ⥺ ⍃ ⍇ ⍅ < ˂ ᐊ ᐸ ᑉ ᗕ ⃖ « ‹ ❮ ❰ ˱ ↑ ▲ 🠕 🠑 ↟ ↥ ↾ ↿ ⇑ ⇞ ⇡ ⇪ ⇧ ⇫ ⇬ ⇭ ⇮ ⇯ ⇈ ⟰ ⤊ ⤉ ⤒ ⥉ ⥔ ⥘ ⥜ ⥠ ⥣ ⍐ ⍓ ⍍ ⍏ ˄ ˆ ˰ ̑ ̭ ᐃ ᐞ ᐱ ᗑ ᛣ ↓ ▼ 🠗 🠓 ☟ ↡ ↧ ⇂ ⇃ ⇓ ⇟ ⇣ ⇩ ⇊ ⟱ ⤋ ⤈ ⤓ ⥕ ⥙ ⥝ ⥡ ⥥ ⍗ ⍌ ⍔ ⍖ ˅ ˇ ˬ ̬ ᐁ ᐯ ᗐ ↭ ↮ ↹ ⇄ ⇆ ⇿ ⬌ ⇔ ⇌ ⇹ ⟷ ⤄ ⥂ ⥃ ⥄ ⥈ ⥊ ⥋ ⥎ ⥐ ⇋ ⥦ ⥧ ⥨ ⥩ ⬄ ⇼ ↨ ⇅ ⇕ ⇳ ⬍ ⇵ ⥮ ⥯ ⥌ ⥍ ⥏ ⥑ ⇖ ⇗ ⇘ ⇙ ⇱ ⇲ ⤡ ⤢ ⤣ ⤤ ⤥ ⤦ ⤧ ⤨ ⤩ ⤪ ⤭ ⤮ ⤯ ⤰ ⤱ ⤲ ➶ ➴ ➷ ➹ ➘ ➚ ⬈ ⬉ ⬊ ⬋ ⬀ ⬁ ⬂ ⬃  ➨ ➜ ➽ ❰ ❱ ➥ ➦ ⮬ ⮭ ⮮ ⮯ 🢠 🢡 🢢 🢣 🢤 🢥 🢦 🢧 🢨 🢩 🢪 🢫 ➩ ➪ ➫ ➬ ➭ ➮ ➯ ➱ ⭰ ⭲ ⭱ ⭳ ⭶ ⭷ ⭸ ⭹ ⇤ ⇥ ⤒ ⤓ ↨ ⤝ ⤞ ⤟ ⤠ ↤ ↦ ↥ ↧ ⬶ ⤅ ⟻ ⟼ ↸ ⇱ ⇲ + − ± ∓ ÷ ∗ ∙ × ∑
+" ⨊ ⅀ ∏ ∐ ∔ ∸ ≂ ⊕ ⊖ ⊗ ⊘ ⊙ ⊚ ⊛ ⊝ ⊞ ⊟ ⊠ ⊡ ⋄ ⋇ ⋆ ⋋ ⋌ ~ ⩱ ⩲ Δ ∀ ∞ ∃ ∄ | ∤ ‱ ∇ ∘ ∻ ∽ ∾ ∿ ≀ ≁ ≬ ⊏ ⊐ ⊑ ⊒ ⋢ ⋣ ⊓ ⊔ ⊶ ⊷ ⊸ ⊹ ⊺ ⋈ ⋉ ⋊ ⋮ ⋯ ⋰ ⋱ ⌈ ⌉ ⌊ ⌋ 〈 〉 ⊲ ⊳ ⊴ ⊵ ⋪ ⋫ ⋬ ⋭ ≠ ≈ ≂ ≃ ≄ ⋍ ≅ ≆ ≇ ≉ ≊ ≋ ≌ ≍ ≎ ≏ ≐ ≑ ≒ ≓ ≔ ≕ ≖ ≗ ≙ ≚ ≜ ≟ ≡ ≢ ≭ ⋕ ⁰ ¹ ² ³ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ ⁺ ⁻ ⁼ ⁽ ⁾ √ ∛ ∜ < > ≤ ≥ ≦ ≧ ≨ ≩ ≪ ≫ ≮ ≯ ≰ ≱ ≲ ≳ ≴ ≵ ≶ ≷ ≸ ≹ ≺ ≻ ≼ ≽ ≾ ≿ ⊀ ⊁ ⊰ ⋖ ⋗ ⋘ ⋙ ⋚ ⋛ ⋞ ⋟ ⋠ ⋡ ⋦ ⋧ ⋨ ⋩ ∫ ∬ ∭ ∮ ∯ ∰ ∱ ∲ ∳ ⨌ ⨍ ⨎ ⨏ ⨐ ⨑ ⨒ ⨓ ⨔ ⨕ ⨖ ⨗ ⨘ ⨙ ⨚ 60⨛ ⨜ ⌀ ∠ ∡ ∢ ⦛ ⦜ ⦝ ⦞ ⦟ ⦠ ⦡ ⦢ ⦣ ° ⟂ ⏊ ⊥ ∥ ∦ ∝ ∟ ∺ ≅ ⊾ ⋕ ⌒ ◠ ◡ ⊿ △ ▷ ▽ ◁ □ ▭ ▱ ○ ◊ ⋄ → ← ↛ ↚ ↓ ⇒ ⇐ ⇔ ⇋ ↯
+" ⇏ ∧ ∨ ⋀ ⋁ ⋂ ⋃ ¬ ≡ ∴ ∵ ∶ ∷ ∼ ⊧ ⊢ ⊣ ⊤ ⊥ ⊨ ⊩ ⊪ ⊫ ⊬ ⊭ ⊮ ⊯ ⊻ ⊽ ⋎ ⋏ ƒ ∂ 𝛛 𝜕 𝝏 𝞉 𝟃 ℵ ℶ ℕ ℝ ℚ ℙ ℤ ℍ ℂ ∅ ∁ ∈ ∉ ∋ ∌ ∖ ∩ ∪ ⊂ ⊃ ⊄ ⊅ ⊆ ⊇ ⊈ ⊉ ⊊ ⊋ ⊍ ⊎ ⋐ ⋑ ⋒ ⋓ ⋔ ⋲ ⋳ ⋴ ⋵ ⋶ ⋷ ⋹ ⋺ ⋻ ⋼ ⋽ ⋾ 🡠 🡢 🡡 🡣 🡤 🡥 🡦 🡧 🡨 🡪 🡩 🡫 🡬 🡭 🡮 🡯 🡰 🡲 🡱 🡳 🡴 🡵 🡶 🡷 🡸 🡺 🡹 🡻 🡼 🡽 🡾 🡿 🢀 🢂 🢁 🢃 🢄 🢅 🢆 🢇 ☚ ☞ ☟ ☛ 90 ↳ ↲ ↰ ↱ ↵ ↴ ☇ ↺ ↻ ⟲ ⟳ ⭯ ⭮ ↺ ↻ ⥀ ⥁ ↶ ↷ ⮌ ⮍ ⮎ ⮏ ⤻ ⤸ ⤾ ⤿ ⤺ ⤼ ⤽ ⤹ 🗘 ⮔ ⤶ ⤷ ⃕ ⮈ ⮊ ⮉ ⮋ ➲ ⮰ ⮱ ⮲ ⮳ ⮴ ⮵ ⮶ ⮷ ⮄ ⮆ ⮅ ⮇ ⇈ ⇊ ⇇ ⇉ ⇆ ⇄ ⇅ ⇵ ⮀ ⮂ ⮁ ⮃ ⇶ ⇚ ⇛ ⤊ ⟱ ← → ↑ ↓ ⭾ ⭿ ➶ ➴ ➷ ➹ ⬿ ⤳ ↜ ↝ ⇜ ⇝ ⬳ ⟿ ↼ ⇀ ↽ ⇁ ↿ ↾ ⇃ ⇂ ⥊ ⥋ ⥌ ⥍ ⥎ ⥐ ⥑ ⥏ ⥒ ⥓ ⥖ ⥗ ⥔ ⥕ ⥘ ⥙ ⥚ ⥛ ⥞ ⥟ ⥜ ⥝ ⥠
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"'ff'
+"'ffff'
+"'ff'        :'<,'>s:\/\zs0{,6
+"'ff'        :'<,'>s:\/\zs.*\\\/
+"'888'
+"'ccc'
+"'88'    " On the left is a numerical representation of the the ansi
+"'88'    " pallet in hexed pairs of red green and blue values that
+"'8'     " combine and become the colors we are faniliar with.  On
+"'88'    " right is a visualization of the values off the colors, as
+"'8'     " the numerical values increase from 0 to F (16 in hex).
+"'8'     " to the far right are the light and dark PaperColor base16
+"''      " schemes, ans on the left are a couple of my ripoffs of the
+         " lighter themes that are easier on my eyes and let me work
+         " for longer (wow, that got real dystopic real fast.)
+
+
+ This is the 'final' copy     17 #a16946  ┃  a1 69 46  ┃  a16946  ┃   #5f8787  ┃  #005f87  ┃  #c720ca  ┃  #c720ca
+ that has been revised        18 #282828  ┃  28 28 28  ┃  .▽.▽.▽  ┃   #af005f  ┃  #af0000  ┃  #4a464d  ┃  #4a464d
+ many times over and found    19 #383838  ┃  38 38 38  ┃  .▽.▽.▽  ┃   #5faf00  ┃  #008700  ┃  #666369  ┃  #666369
+ its way into a lot of        20 #b8b8b8  ┃  b8 b8 b8  ┃  ✖▽✖▽✖▽  ┃   #5fafd7  ┃  #0087af  ┃  #9f9da2  ┃  #9f9da2
+ themes and any time I        21 #e8e8e8  ┃  e8 e8 e8  ┃  ⨳▽⨳▽⨳▽  ┃   #d7875f  ┃  #005f87  ┃  #d8d7da  ┃  #d8d7da
+ need a color or two to
+ finish something up with a final update      Here's a reference base16 and next to it is a
+ And right next door is a base16 version      visual representation of the values of the RGB
+'' that I'd been working on at the time as    (is it an octet, triple, touple), double digits
+'8' one of ny first text editor and terminal  that max out in base10 at 256
+'8' themes.  Too tired to type.
+
+"
+"╏  00  ╎   00 00 00              00   ╎   #1c1c1c   #eeeeee   ╎   #1a1632   #2e2a31
+"╏  01  ╎   80 00 00    ▽         01   ╎   #585858 1 #bcbcbc   ╎   #d8137f 1 #d8137f
+"╏  02  ╎   00 80 00      ▽       02   ╎   #af87d7 2 #8700af   ╎   #17ad98 2 #17ad98
+"╏  03  ╎   80 80 00    ▽ ▽       03   ╎   #afd700 3 #d70087   ╎   #dc8a0e 3 #dc8a0e
+"╏  04  ╎   00 00 80        ▽     04   ╎   #ff5faf 4 #d75f00   ╎   #796af5 4 #796af5
+"╏  05  ╎   80 00 80    ▽   ▽     05   ╎   #00afaf 5 #005faf   ╎   #bb60ea 5 #bb60ea
+"╏  06  ╎   00 80 80      ▽ ▽     06   ╎   #ffaf00 6 #d75f00   ╎   #149bda 6 #149bda
+"╏  07  ╎   c0 c0 c0    ⊚ ⊚ ⊚     07   ╎   #808080   #878787   ╎   #bcbabe   #bcbabe
+"╏  08  ╎   80 80 80    ▽ ▽ ▽     08   ╎   #d7af5f   #5f8700   ╎   #838085   #838085
+"╏  09  ╎   ff 00 00    ⊛⊛        09   ╎   #585858 1 #bcbcbc   ╎   #d8137f 1 #d8137f
+"╏  10  ╎   00 ff 00      ⊛⊛      10   ╎   #af87d7 2 #8700af   ╎   #17ad98 2 #17ad98
+"╏  11  ╎   ff ff 00    ⊛⊛⊛⊛      11   ╎   #afd700 3 #d70087   ╎   #dc8a0e 3 #dc8a0e
+"╏  12  ╎   00 00 ff        ⊛⊛    12   ╎   #ff5faf 4 #d75f00   ╎   #796af5 4 #796af5
+"╏  13  ╎   ff 00 ff    ⊛⊛  ⊛⊛    13   ╎   #00afaf 5 #005faf   ╎   #bb60ea 5 #bb60ea
+"╏  14  ╎   00 ff ff      ⊛⊛⊛⊛    14   ╎   #ffaf00 6 #d75f00   ╎   #149bda 6 #149bda
+"╏  15  ╎   ff ff ff    ⊛⊛⊛⊛⊛⊛    15   ╎   #d0d0d0   #444444   ╎   #f5f4f7   #f5f4f7
+"╏  16  ╎   00 00 00              16   ╎   #5faf5f   #d70000   ╎   #d65407   #d65407
+"╏  17  ╎   a1 69 46    a16946    17   ╎   #5f8787   #005f87   ╎   #c720ca   #c720ca
+"╏  18  ╎   28 28 28    .▽.▽.▽    18   ╎   #af005f   #af0000   ╎   #4a464d   #4a464d
+"╏  19  ╎   38 38 38    .▽.▽.▽    19   ╎   #5faf00   #008700   ╎   #666369   #666369
+"╏  20  ╎   b8 b8 b8    ✖▽✖▽✖▽    20   ╎   #5fafd7   #0087af   ╎   #9f9da2   #9f9da2
+"╏  21  ╎   e8 e8 e8    ⨳▽⨳▽⨳▽    21   ╎   #d7875f   #005f87   ╎   #d8d7da   #d8d7da
+"
+"
+"
+"   TODO: replace the arty one based on the value of two digits
+"Value of two digits since they
+"represent RGB values up to 256
+"   △        △
+"   ▽        ▽
+"▽      "        #110e20   #12083e 0
+"  ▽    " "      #cf1330   #ff0883 1
+"▽ ▽    "'8'     #77e55f   #67b645 2
+"    ▽  "'88'    #e4b37c   #dd8308 3  "
+"▽   ▽  "'88'    #323e71   #83ff08 4 '8'
+"  ▽ ▽  "'ccc'   #5c1c80   #8308ff 5 '88'
+"⊚ ⊚ ⊚  "'888'   #33c3c3   #069a93 6 '88'
+"▽ ▽ ▽  "'ff'    #6f78a8   #63746e 7 'ccc'
+"⊛⊛     "'ff'    #405878   #363242 8 '888'
+"  ⊛⊛   "'ffff'  #eff5ea   #ff6ece 1 'ff':
+"⊛⊛⊛⊛   "'ff'    #8b2992   #8eff8e 2 'ff'
+"    ⊛⊛ "'ffff'  #10ff84   #eeee5e 3 'ffff'
+"⊛⊛  ⊛⊛ "'ffff'  #efefaa   #acddff 4 'ff'
+"  ⊛⊛⊛⊛ "'ffffff'#64f7cf   #de3ef8 5 'ffff'
+"⊛⊛⊛⊛⊛⊛ "''      #ef73ee   #1efffe 6 'ffff'
+"       "'a16946'#64f7cf   #e7f9f8 f 'ffffff'
+"a16946 "'282828'#000000             ''
+".▽.▽.▽ "'383838'#a16946             'a16946'
+".▽.▽.▽ "'b8b8b8'#282828             '282828'
+"✖▽✖▽✖▽ "'e8e8e8'#383838             '383838'
+"⨳▽⨳▽⨳▽ "        #b8b8b8             'b8b8b8'
+"                 #e8e8e8             'e8e8e8'
+"
+"
+"
+" set -l ansi16 = black   red       green   yellow
+"                 blue    magenta   cyan    white
+"                 brblack brred     brgreen bryellow
+"                 brblue  brmagenta brcyan  brwhite
+"
+"
+"
+"
+"
+"
+" #eff5ea
+" #1f2128 #1f2128 #221935 #110e20 #1a1632
+" #cf1330 #ff0883
+" #6f78a8 #4f78a8 #6f78a8 #323e71 #221935 #405878
+" #77e55f #75e55f #10ff84 #77e55f #10ff84 #23512c #8fbc8f
+" #33c3c3 #33c3c3 #64f7cf #31c3c3 #64f7cf #66cdaa
+" #321e71 #3c1c80 #5c1c80 #8b2992
+" #ef73ee #ef73ee #ef73ee
+" #efefaa #efefaa #e4b37c #e2b37c #efefaa
+" #f3c3cf #ffcdd9
+" #eff5ea
+
+"
+"
+"
+"
+"
+"Fish Scheme Options                               hi StatusLine                                 gui=italic      guibg=#0f080e guifg=#a3bfb0
+"(Nightly Neon, heavily customized)                hi StatusLineNC                               gui=none        guibg=#0f080e guifg=#686868
+"-------------------------------------             hi User1                                      gui=italic      guibg=#30343b guifg=#889893
+"fish_color_autosuggestion      "#afafff  autosuggehi User2                                      gui=bold        guibg=#0f080e guifg=#686868        stion': '555 brblack',
+"fish_color_cancel              "#dd8308                                                                                                             
+"fish_color_command             "#afffd7           hi TabLineSel   cterm=bold,italic             gui=bold,italic guibg=#30343b guifg=#686868
+"fish_color_comment             "#00ffff           hi TabLine      cterm=underline               gui=underline   guibg=#171a29 guifg=#30343b
+"fish_color_cwd                 "#33c3c3           hi TabLineFill  cterm=none                    gui=none        guibg=#0f080e guifg=#171a29
+"fish_color_cwd_root            "#ff0883                                                                                                             
+"fish_color_end                 "#50FA7B           hi SignColumn                                                 guifg=#0f080e guibg=#0f080e
+"fish_color_error               "#ff00af           hi VertSplit    cterm=none                    gui=none        guifg=#30343b
+"fish_color_escape              "#00a6b2           "hi ColorColumn                                                              guibg=#30343b
+"fish_color_history_current     "#dd8308           hi ColorColumn                                          ctermfg=6 ctermbg=5 guibg=#171a29
+"fish_color_host                "#normal                                                                                                             
+"fish_color_host_remote         "#A37ACC           hi Visual            guibg=#afafff guifg=#00a6b2
+"fish_color_keyword             "#9854f1           hi PmenuSel          ctermfg=0B ctermbg=DarkCyan guifg=#e7f9f8 guibg=#33c3c3 gui=bold cterm=bold
+"fish_color_match               "#1eff8e           hi Pmenu             ctermbg=DarkGrey ctermfg=7 guibg=#afafff guifg=#323e71 gui=none cterm=none
+"fish_color_normal              "#normal                                                                                                             
+"fish_color_operator            "#00a6b2           hi PmenuSbar         ctermbg=0D guibg=#33c3c3 guifg=mintcream gui=italic cterm=italic
+"fish_color_param               "#FF79C6           hi PmenuThumb        guibg=#e7f9f8  ctermbg=0E   guifg=#1eff8e ctermfg=0D gui=bold cterm=bold
+"fish_color_quote               "#F1FA8C           hi ErrorMsg          ctermfg=0f ctermbg=1 guifg=#e7f9f8 guibg=#ff0883 gui=bold cterm=bold
+"fish_color_redirection         "#00ffaf           hi Search            ctermfg=black ctermbg=0c guifg=#323e71 guibg=#dd8308 gui=italic cterm=italic
+"fish_color_search_match        "#F1FA8C                                                                                                             
+"fish_color_selection           "#afafff           hi WildMenu          ctermfg=0e ctermbg=1 guifg=#e7f9f8   guibg=#33c3c3 gui=bold cterm=bold
+"fish_color_status              "#ff0883
+"fish_color_user                "#1eff8e
+"fish_color_valid_path          "#normal
+"fish_pager_color_completion    "#afafff ''--reverse'
+"fish_pager_color_description   "#00a6b2 '--background=#afffd7'
+"fish_pager_color_prefix        "#normal '--bold' '--underline'
+"fish_pager_color_progress      "#brwhite '--background=#323e71'
+"
+"cancel' : '-r',
+"command': '005fd7',
+"comment': '990000',
+"cwd' : 'green',
+"cwd_root' : 'red',
+"end': '009900',
+"error': 'ff0000',
+"escape': '00a6b2',
+"history_current' : '--bold'
+"host' : 'normal',
+"
+"
+"match' : '--background=brblue',
+"normal' : 'normal',
+"operator': '00a6b2',
+"param': '00afff',
+"quote': '999900',
+"redirection': '00afff',
+"search_match' : 'bryellow --background=brblack',
+"selection' : 'white --bold --background=brblack',
+"
+"user' : 'brgreen',
+"valid_path' : '--underline',
+"fish_pager_color_completion' : '',
+"fish_pager_color_description' : 'B3A06D yellow',
+"fish_pager_color_prefix' : 'normal --bold --underline',
+"fish_pager_color_progress' : 'brwhite --background=cyan',
+"
+"from fish-shell repo: share/tools/web_config/js/colorutils.js
+"starting at line 226 │
+" var color_scheme_fish_default = {
+"     'name': 'fish default',
+"     'colors': [],
+"     'preferred_background': 'black',
+"
+"     'autosuggestion': '555 brblack',
+"     'command': '005fd7',
+"     'param': '00afff',
+"     'redirection': '00afff',
+"     'comment': '990000',
+"     'error': 'ff0000',
+"     'escape': '00a6b2',
+"     'operator': '00a6b2',
+"     'quote': '999900',
+"     'end': '009900',
+"     'search_match' : 'bryellow --background=brblack',
+"     'fish_pager_color_completion' : '',
+"     'fish_pager_color_description' : 'B3A06D yellow',
+"     'fish_pager_color_prefix' : 'normal --bold --underline',
+"     'fish_pager_color_progress' : 'brwhite --background=cyan',
+"     'normal' : 'normal',
+"     'user' : 'brgreen',
+"     'host' : 'normal',
+"     'valid_path' : '--underline',
+"     'cwd' : 'green',
+"     'cwd_root' : 'red',
+"     'match' : '--background=brblue',
+"     'selection' : 'white --bold --background=brblack',
+"     'cancel' : '-r',
+"     'history_current' : '--bold'
+" };
+"
+"-------
+"#afafff
+"normal
+"#afffd7
+"#00ffff
+"#008000
+"#800000
+"#50FA7B
+"#ff00af
+"#00a6b2
+"normal
+"normal
+"#A37ACC
+"#9854f1
+"normal
+"normal
+"#00a6b2
+"#FF79C6
+"#F1FA8C
+"#00ffaf
+"#ffff00
+"#c0c0c0
+"#ff0883
+"#00ff00
+"normal
+"-------
+"Nightly
+"Neon
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ⥡ ⥢ ⥤ ⥣ ⥥ ⇋ ⇌ ⥦ ⥨ ⥧ ⥩ ⥪ ⥬ ⥫ ⥭ ⥮ ⥯ ⇷ ⇸ ⤉ ⤈ ⇹ ⇺ ⇻ ⇞ ⇟ ⇼ ⭺ ⭼ ⭻ ⭽ ⬴ ⤀ ⬵ ⤁ ⬹ ⤔ ⬺ ⤕ ⬻ ⤖ ⬼ ⤗ ⬽ ⤘ ↞ ↠ ↟ ↡ ⯬ ⯭ ⯮ ⯯ ↯ ☈ ⥼ ⥽ ⥾ ⥿ ➣ ➤ ▲ ⌃ ⌄ ■ □ ▦ ▤ ⧈ ▨ ▧
+" " mediumaquamarine
+" " darkseagreen                                                                                                                                       ┊┆╎│║┃╏┇┋
+"                                                                                                                                                      ┊┆╎│║┃╏┇┋
+"                      "                                                         " vim.g.ab16 = {       --|      |                                     ┊┆╎│║┃╏┇┋            " let b06 = g.ab16.x06                 " hi Search            ctermbg=none    guibg=none    ctermfg=none    guifg=none    cterm               |
+"                      "     #221935                                 "     x00 = '#12083e', --| 00   | Black       | background                        ┊┆╎│║┃╏┇┋            " let b07 = g.ab16.x07                 " hi WildMenu          ctermbg=none    guibg=none    ctermfg=none    guifg=none    ctermi=none
+"                      "     #cf1330                                 "     x01 = '#ff0883', --| 01   | DarkRed     |                                   ┊┆╎│║┃╏┇┋            " let b08 = g.ab16.x08                 " hi Todo              ctermbg=none    guibg=none    ctermfg=none    guifg=none    ctermi=bold,italic
+"                      "     #77e55f                                 "     x02 = '#67b645', --| 02   | DarkGreen   |                                   ┊┆╎│║┃╏┇┋            " let b09 = g.ab16.x09                 " hi NvimInternalError ctermbg=none    guibg=none    ctermfg=none    guifg=none    cterm                                                                                 rrrrrrrrrrrmm =r Gg
+"                      "     #e4b37c                                 "     x03 = '#dd8308', --| 03   | DarkYellow  | (needs mor                        ┊┆╎│║┃╏┇┋            " let b10 = g.ab16.x0A                 " hi ColorColumn       ctermbg=none    guibg=none    ctermfg=none    guifg=none    cterm               e luminance)                    fuuuuuuuuuugg ti  g               mmmmmmmmmmmff bm rh
+"                      "     #323e71            x04 = '#83ff08', --| 04   | DarkBlue    | (should be replaced)                                         ┊┆╎│║┃╏┇┋            " let b11 = g.ab16.x0B                 " hi User1 cterm=bold ctermfg=0e ctermbg=8 gui=bold guifg=#1efffe guibg=#363242         8/10377319                                     giiiiiiiiii== ab gu               bbbbbbbbbbbgg o= et
+"                                      "     #5c1c80    New     x05 = '#8308ff', --| 05   | DarkMagenta | Cursor                                       ┊┆╎│║┃╏┇┋                                                                                                                                                                                                          =ffffffffff## lg ui               ggggggggggg== li yG
+"                                      "     #33c3c3   New      x06 = '#069a93', --| 06   | DarkCyan    |                                              ┊┆╎│║┃╏┇┋            " let b12 = g.ab16.x0C                 " hi User2 cterm=bold ctermfg=8 ctermbg=0e gui=bold guibg=#1efffe guifg=#363242                                                                        ngggggggggg33 i= ib               ===========08 dt  r
+"                                      "     #6f78a8   theme    x07 = '#63746e', --| 07   | LightGrey?  |                                              ┊┆╎│║┃╏┇┋            " let b13 = g.ab16.x0D                                                                                                                                                                        o==========66 c# fg               1nnnnnnnnnne  ,a ca
+"     "     #405878   Town     x08 = '#363242', --| 08   | Grey?       |                                                                               ┊┆╎│║┃╏┇┋            " let b14 = g.ab16.x0E                 " hi CtrlSpaceStatus cterm=bold,italic ctermfg=0e ctermbg=8 gui=bold,italic guifg=#1efff                              nnnnnnnnnnn33  1 g=               4oooooooooo c il ty
+"     "     #8b2992    called  x09 = '#ff6ece', --| 09   | Red         |                                                                   " let b15 = ┊┆╎│║┃╏┇┋g.ab16.x0F                                                                                   " hi CtrlSpaceSelectede                                                     eoooooooooo22 ge =W                nnnnnnnnnnct ti e
+"     "     #10ff84   Stride   x0A = '#8eff8e', --| 0A   | Green       |                                                                               ┊┆╎│║┃╏┇┋                                                                                                               s                                                          nnnnnnnnnn44 uf Gh                eeeeeeeeeete ac rc
+"     "     #efefaa            x0B = '#eeee5e', --| 0B   | Yellow      | CursorText                                                                    ┊┆╎│║┃╏┇┋                                                                                         " hi StatusLineNC cterth                                                         eeeeeeeeee22 if ri                          er l  mt
+"     "     #64f7cf                                             "     x0C = '#acddff', --| 0C   | Blue        |                                        ┊┆╎│║┃╏┇┋                                                                                         " hi StatusLine ctermb                                                                        ff at                          rm ic fe
+"                                                                                                                                                      ┊┆╎│║┃╏┇┋
+"     "     #ef73ee                                             "     x0D = '#de3ef8', --| 0D   | Magenta     | (should be repl                        ┊┆╎│║┃╏┇┋                                            " let black16       = 00    Black         # b00                                                               aced)                        ge ye                          mb ct gr
+"     "     #64f7cf                                             "     x0E = '#1efffe', --| 0E   | Cyan        |                                        ┊┆╎│║┃╏┇┋                                            " let darkred16     = 01    DarkRed       # b01                    )                                                         c             =                              bg  e =m
+"     "     #eff5ea               " galaxy should be clear      "     x0F = '#e7f9f8', --| 0F   | White       | foreground                             ┊┆╎│║┃╏┇┋                                            " let darkgreen16   = 02    DarkGreen     # b02                                                                              t             #g gg               gggggggggggg= cr Lf
+"     "                           " Made Up Scheme              " }                                                                                    ┊┆╎│║┃╏┇┋                                            " let darkyellow16  = 03    DarkYellow    # b03                                                                              ecccccccccc   1u uu               uuuuuuuuuuu=0 tm ig
+"                                                   function! AliceHighlights()                                                                        ┊┆╎│║┃╏┇┋                                                                                                                   " let darkblue16    = 04    DarkBlue      # b04                    nd                                   "tttttttttt   ei ii               iiiiiiiiiii8e ef g=
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"
+"  0  1  2  3  4  5  7  8  9 10 11 12 13 14 15 16 17
+" ==================================================
+" o. o@ o. o@ o. o@ o. o@ o. o@ o. o@ o. o@ o. o@ o.
+" i. i. i@ i@ i. i. i@ i@ i. i. i@ i@ i. i. i@ i@ i.
+" u. u. u. u. u@ u@ u@ u@ u. u. u. u. u@ u@ u@ u@ u.
+" r. r. r. r. r. r. r. r. r@ r@ r@ r@ r@ r@ r@ r@ r.
+" d. d. d. d. d. d. d. d. d. d. d. d. d. d. d. d. d@
+" ==================================================
+" new new town new new stride
+"
