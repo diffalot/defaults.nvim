@@ -86,6 +86,7 @@ require('packer').startup(function()
     use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
     use 'williamboman/nvim-lsp-installer' -- add LspInstall <server> command
     use 'kosayoda/nvim-lightbulb' -- display lightbulb in gutter when lsp code actions are available
+    use 'nvim-lua/lsp-status.nvim' -- statusline info for lsp client
     use 'hrsh7th/nvim-compe' -- Autocompletion plugin
     use 'L3MON4D3/LuaSnip' -- Snippets plugin
     -- Lua Development
@@ -388,6 +389,13 @@ require("which-key").register({
 }, { prefix = "<leader>" })
 require('material').set()
 
+-- lsp-status setup
+_G.lsp_statusline = require("lsp-status.statusline")
+_G.lsp_statusline._init({}, { status_symbol = '𝔏' })
+
+vim.cmd [[
+let g:Lsp_status = luaeval('_G.lsp_statusline.status')
+]]
 --Set statusbar
 vim.g.lightline = {
     colorscheme = 'one',
@@ -406,7 +414,7 @@ vim.g.lightline = {
         right = { 
             { 'charvaluehex', 'lineinfo' },
             { 'percent' },
-            { 'fileformat', 'fileencoding', 'filetype' }
+            { 'fileformat', 'fileencoding', 'filetype', 'lspstatus' }
         }
     },
     component = {
@@ -415,6 +423,7 @@ vim.g.lightline = {
     component_function = {
         gitbranch = 'fugitive#head',
         pencilmode = 'PencilMode',
+        lspstatus = 'Lsp_status',
     },
 }
 
