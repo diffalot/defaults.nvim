@@ -63,6 +63,7 @@ require('packer').startup(function()
     use 'plasticboy/vim-markdown'
     use 'godlygeek/tabular'
     use 'junegunn/vim-easy-align'
+    use 'preservim/vim-lexical'
 end)
 
 -- prose options
@@ -75,6 +76,21 @@ vim.g.vim_markdown_strikethrough = true
 vim.g.vim_markdown_new_list_item_indent = 2
 vim.g.vim_markdown_no_extensions_in_markdown = true
 vim.g.vim_markdown_autowrite = true
+-- lexical
+
+vim.cmd [[
+let g:lexical#spell = 1
+let g:lexical#spelllang = ['en_us', 'en_ca', 'en_gb']
+let g:lexical#thesaurus = ['~/.config/nvim/language/MobyThesaurus.txt']
+let g:lexical#dictionary = ['/usr/share/dict/words']
+
+augroup lexical
+    autocmd!
+    autocmd FileType markdown,mkd call lexical#init()
+    autocmd FileType textile call lexical#init()
+    autocmd FileType text call lexical#init({ 'spell': 0 })
+augroup END
+]]
 
 --mapped keybinding sequence timeout
 vim.o.timeoutlen = 0
