@@ -80,6 +80,8 @@ vim.cmd('set noequalalways')
 vim.cmd('set showtabline=2')
 vim.cmd('set laststatus=2')
 
+-- use primary system clipboard for yanks
+vim.o.clipboard = "unnamedplus"
 
 -- TODO: remove before release
 vim.cmd('source ~/.config/nvim/lua/alice/overdriver/viml/schemes.vim')
