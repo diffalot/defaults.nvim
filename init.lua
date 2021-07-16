@@ -62,6 +62,7 @@ require('packer').startup(function()
     -- prose plugins
     use 'plasticboy/vim-markdown'
     use 'godlygeek/tabular'
+    use 'junegunn/vim-easy-align'
 end)
 
 -- prose options
