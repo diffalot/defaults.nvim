@@ -53,6 +53,8 @@ require('packer').startup(function()
       }
     end
   }
+  -- personal plugins
+  use 'inkch/vim-fish'
 end)
 
 --mapped keybinding sequence timeout
