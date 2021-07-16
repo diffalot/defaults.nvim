@@ -87,6 +87,9 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
+-- import prefs
+require('alice.preferences')
+
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
 vim.cmd [[colorscheme tokyonight]]
