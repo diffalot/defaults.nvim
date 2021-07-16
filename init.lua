@@ -59,7 +59,21 @@ require('packer').startup(function()
     }
     -- personal plugins
     use 'inkch/vim-fish'
+    -- prose plugins
+    use 'plasticboy/vim-markdown'
+    use 'godlygeek/tabular'
 end)
+
+-- prose options
+-- plasticboy/vim-markdown
+vim.g.vim_markdown_folding_disabled = true
+vim.g.vim_markdown_no_default_key_mappings = false
+vim.g.vim_markdown_follow_anchor = true
+vim.g.vim_markdown_frontmatter = true
+vim.g.vim_markdown_strikethrough = true
+vim.g.vim_markdown_new_list_item_indent = 2
+vim.g.vim_markdown_no_extensions_in_markdown = true
+vim.g.vim_markdown_autowrite = true
 
 --mapped keybinding sequence timeout
 vim.o.timeoutlen = 0
