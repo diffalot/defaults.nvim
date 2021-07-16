@@ -42,6 +42,9 @@ require('packer').startup(function()
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-compe' -- Autocompletion plugin
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  -- Lua Development
+  use 'euclidianAce/BetterLua.vim' -- lua highlighting
+  use 'rafcamlet/nvim-luapad' -- lua REPL
   -- SpaceEmacs Style Keybindings Help
   use {
     "folke/which-key.nvim",
