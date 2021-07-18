@@ -29,7 +29,8 @@ require('packer').startup(function()
     use 'ludovicchabant/vim-gutentags' -- Automatic tags management
     -- UI to select things (files, grep results, open buffers...)
     use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
-    use 'folke/tokyonight.nvim' -- Theme with Treesitter Highlighting for neovim >= 0.5
+    use 'folke/tokyonight.nvim' -- Ocean/Blue Theme with Treesitter Highlighting for neovim >= 0.5
+    use 'Shatur/neovim-ayu' -- Black/White LSP and TS colorscheme in lua
     use 'itchyny/lightline.vim' -- Fancier statusline
     -- Add indentation guides even on blank lines
     use 'lukas-reineke/indent-blankline.nvim'
@@ -167,7 +168,7 @@ require('alice.preferences')
 
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme ayu]]
 
 --Set statusbar
 vim.g.lightline = {
