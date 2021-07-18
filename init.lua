@@ -57,16 +57,7 @@ vim.api.nvim_exec(
 --   - list tabpage buffers in telescope
 --   - rename tabs
 --   - https://github.com/vim-jp/vital.vim
--- - install prose plugins
---   - wordy https://github.com/preservim/vim-wordy
---   - https://github.com/dbmrq/vim-ditto
---   - https://github.com/preservim/vim-pencil
---   - https://github.com/preservim/vim-litecorrect
---   - https://github.com/kana/vim-textobj-user
---     - https://github.com/preservim/vim-textobj-quote
---     - https://github.com/preservim/vim-textobj-sentence
---   - https://github.com/tpope/vim-abolish
---   - vim-wheel (find the setting for horizontal scroll) https://github.com/preservim/vim-wheel
+-- - https://github.com/tpope/vim-abolish
 -- - switch to lualine?
 -- - switch to Gina from Fugitive? 
 -- - use themis for testing?
@@ -128,6 +119,18 @@ require('packer').startup(function()
     use 'godlygeek/tabular'
     use 'junegunn/vim-easy-align'
     use 'preservim/vim-lexical'
+    use { 'preservim/vim-pencil',
+        requires = {
+            'preservim/vim-wordy',
+            'preservim/vim-litecorrect',
+            'kana/vim-textobj-user',
+            'preservim/vim-textobj-quote',
+            'preservim/vim-textobj-sentence',
+            'dbmrq/vim-ditto',
+        }
+    }
+    use 'junegunn/goyo.vim'
+    use 'junegunn/limelight.vim'
     -- theme development
     use 'norcalli/nvim-colorizer.lua'
 end)
@@ -194,6 +197,9 @@ vim.g.dashboard_custom_footer =  {
 
 -- prose options
 
+-- ditto
+vim.g.ditto_mode = 'paragraph'
+
 -- plasticboy/vim-markdown
 vim.g.vim_markdown_folding_disabled = true
 vim.g.vim_markdown_no_default_key_mappings = false
@@ -217,6 +223,97 @@ augroup lexical
     autocmd FileType textile call lexical#init()
     autocmd FileType text call lexical#init({ 'spell': 0 })
 augroup END
+]]
+
+-- Prose Mode
+vim.cmd [[
+function! Prose(...)
+    if a:0 > 0
+        let pencil_opts = a:1
+    else
+        let pencil_opts = {}
+    end
+    call pencil#init(pencil_opts)
+    call lexical#init()
+    call litecorrect#init()
+    call textobj#quote#init({'educate': 1})
+    call textobj#sentence#init()
+
+    " Ditto Setup
+    DittoOn
+    DittoUpdate
+    nnoremap <buffer> <silent> ]o  <Plug>DittoNext    " Jump to the next word
+    nnoremap <buffer> <silent> [o  <Plug>DittoPrev    " Jump to the previous word
+    nnoremap <buffer> <silent> zdg <Plug>DittoGood    " Ignore the word under the cursor
+    nnoremap <buffer> <silent> zdw <Plug>DittoBad     " Stop ignoring the word under the cursor
+
+    " manual reformatting shortcuts
+    nnoremap <buffer> <silent> Q gqap
+    xnoremap <buffer> <silent> Q gq
+    nnoremap <buffer> <silent> <leader>qq vapJgqap
+
+    " toggle pencil autoformat
+    noremap <silent> <F7> :<C-u>PFormatToggle<cr>
+    inoremap <silent> <F7> <C-o>:PFormatToggle<cr>
+
+    " force top correction on most recent misspelling
+    nnoremap <buffer> <C-s> [s1z=<c-o>
+    inoremap <buffer> <C-s> <c-g>u<Esc>[s1z=`]A<c-g>u
+
+    " replace common punctuation
+    iabbrev <buffer> -- –
+    iabbrev <buffer> --- —
+    iabbrev <buffer> << «
+    iabbrev <buffer> >> »
+
+    " replace typographical quotes (reedes/vim-textobj-quote)
+    nnoremap <buffer> <leader>qe <Plug>ToggleEducate
+    nnoremap <silent> <buffer> <leader>qc <Plug>ReplaceWithCurly
+    nnoremap <silent> <buffer> <leader>qs <Plug>ReplaceWithStraight
+
+    " highlight words (reedes/vim-wordy)
+    noremap <silent> <buffer> <F6> :<C-u>NextWordy<cr>
+    xnoremap <silent> <buffer> <F6> :<C-u>NextWordy<cr>
+    inoremap <silent> <buffer> <F6> <C-o>:NextWordy<cr>
+
+endfunction
+
+" automatically initialize buffer by file type
+augroup pencil
+    autocmd!
+    autocmd FileType markdown,mkd,text call Prose({'wrap': 'soft'})
+    autocmd Filetype git,gitsendemail,*commit*,*COMMIT* call Prose({'wrap': 'hard', 'textwidth': 72, 'autoformat': 1})
+augroup END
+
+" invoke manually by command for other file types
+command! -nargs=0 Prose call Prose()
+]]
+
+-- Goyo Zen Mode
+vim.cmd [[
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 250
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = '#adadad'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.8
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 1
+
+" autocommands to dim surrounding paragraphs with limelight, when Goyo active
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+function! ZenMode ()
+    DittoOff
+    Wordy off
+    Goyo 80%x80%
+endfunction
+
+command! Zen :call ZenMode()
 ]]
 
 --mapped keybinding sequence timeout
@@ -284,11 +381,22 @@ vim.g.lightline = {
     },
     active = { 
         left = { 
-            { 'mode', 'paste' }, 
+            { 'mode', 'pencilmode', 'paste' }, 
             { 'gitbranch', 'readonly', 'filename', 'modified' } 
-        } 
+        },
+        right = { 
+            { 'charvaluehex', 'lineinfo' },
+            { 'percent' },
+            { 'fileformat', 'fileencoding', 'filetype' }
+        }
     },
-    component_function = { gitbranch = 'fugitive#head' },
+    component = {
+        charvaluehex = '0x%B'
+    },
+    component_function = {
+        gitbranch = 'fugitive#head',
+        pencilmode = 'PencilMode',
+    },
 }
 
 --Remap space as leader key
@@ -369,6 +477,8 @@ require("which-key").register({
                     "Search Help Tags" },
     j           = { "<cmd>tabnew ~/cronofiles/journal/index.md<CR>",
                     "Journal" },
+    q           = { name = "Prose" },
+    g           = { name = "Git" },
     s = {
         name = "Search",
         f = { "<cmd>lua require('telescope.builtin').fd( tele_ivy({ winblend = 10}) )<CR>",
@@ -389,16 +499,12 @@ require("which-key").register({
     -- TODO: add descriptions for mappings defined elsewhere
     -- TODO: figure out how to do treesitter selections and motions
     -- TODO: add more prefixes
-    --   - p = { name = "Prose" }
-    --   - g = { name = "Git" }
     --   - r = { name = "REPLs/Calculators" }
-    --   - c = { name = "Schemes" }
     --   - w = { name = "Workspace Management"
     --              -- move/resize windows
     --              -- open files newtab/vsplit/hsplit
     --              -- add/rm tabs
     --              -- mv/cp/rm buffers b/w tabs
-    --   -  = { name = "" }
 }, { prefix = "<leader>" })
 
 -- Highlight on yank
