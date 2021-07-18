@@ -305,13 +305,37 @@ let g:limelight_default_coefficient = 0.8
 let g:limelight_paragraph_span = 1
 
 " autocommands to dim surrounding paragraphs with limelight, when Goyo active
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+function! Goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+  " ...
+endfunction
+
+function! Goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+  " ...
+endfunction
+
+autocmd! User GoyoEnter call Goyo_enter()
+autocmd! User GoyoLeave call Goyo_leave()
 
 function! ZenMode ()
     DittoOff
     Wordy off
-    Goyo 80%x80%
+    Goyo 120x70%
 endfunction
 
 command! Zen :call ZenMode()
