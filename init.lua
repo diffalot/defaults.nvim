@@ -58,6 +58,13 @@ require('packer').startup(function()
             }
         end
     }
+    -- Fern File Tree
+    use { 'lambdalisue/fern.vim',
+        requires = { 'antoinemadec/FixCursorHold.nvim' } }
+    use 'lambdalisue/fern-hijack.vim'
+    use { 'lambdalisue/fern-renderer-nerdfont.vim',
+        requires = { 'lambdalisue/nerdfont.vim' } }
+    use 'lambdalisue/fern-git-status.vim'
     -- personal plugins
     use 'inkch/vim-fish'
     use 'glepnir/dashboard-nvim'
@@ -70,6 +77,12 @@ require('packer').startup(function()
     use 'junegunn/vim-easy-align'
     use 'preservim/vim-lexical'
 end)
+
+-- fern config
+vim.g['fern#renderer'] = "nerdfont"
+require("which-key").register({
+    e = { "<cmd>Fern . -reveal=%<CR>", "Explore Directory Tree" }
+}, { prefix = "<leader>" })
 
 -- tab management
 vim.g.rooter_cd_cmd = 'tcd'
