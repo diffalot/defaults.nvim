@@ -249,7 +249,7 @@ vim.g.material_italic_functions = true
 vim.g.material_italic_variables = true
 vim.g.material_borders = true
 vim.g.material_hide_eob = true
-vim.g.material_disable_background = false
+vim.g.material_disable_background = true
 require("which-key").register({
     c = { "<cmd>lua require('material.functions').toggle_style()<CR>", "Cycle Material Style" }
 }, { prefix = "<leader>" })
