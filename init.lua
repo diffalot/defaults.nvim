@@ -117,6 +117,8 @@ require('packer').startup(function()
     use 'godlygeek/tabular'
     use 'junegunn/vim-easy-align'
     use 'preservim/vim-lexical'
+    -- theme development
+    use 'norcalli/nvim-colorizer.lua'
 end)
 
 -- fern config
