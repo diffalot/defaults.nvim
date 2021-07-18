@@ -244,7 +244,7 @@ require('alice.preferences')
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
 -- 'darker', 'lighter', 'palenight', 'oceanic' and 'deep ocean'
-vim.g.material_style = "deep ocean"
+vim.g.material_style = "oceanic"
 vim.g.material_contrast = true
 vim.g.material_lighter_contrast = true
 vim.g.material_italic_comments = true
@@ -345,10 +345,6 @@ require('telescope').setup {
 -- TODO: use a list of buffers associated with a tab rather than CWD buffers
 -- TODO: when selecting from "all buffers" switch to containing tab then open buffer
 tele_ivy = require('telescope.themes').get_ivy
-vim.cmd [[
-highlight TelescopeNormal guibg=#000000
-highlight TelescopePreviewNormal guibg=#0e0e0e
-]]
 require("which-key").register({
     ["<space>"] = { "<cmd>lua require('telescope.builtin').buffers( tele_ivy({ winblend = 10, only_cwd = true }) )<CR>",
 					"Tabpage Buffers" },
