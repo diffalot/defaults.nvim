@@ -61,12 +61,29 @@ require('packer').startup(function()
     -- personal plugins
     use 'inkch/vim-fish'
     use 'glepnir/dashboard-nvim'
+    -- tab management
+    use 'gcmt/taboo.vim'
+    use 'airblade/vim-rooter'
     -- prose plugins
     use 'plasticboy/vim-markdown'
     use 'godlygeek/tabular'
     use 'junegunn/vim-easy-align'
     use 'preservim/vim-lexical'
 end)
+
+-- tab management
+vim.g.rooter_cd_cmd = 'tcd'
+vim.g.rooter_targets = '/,*'
+vim.g.rooter_resolve_links = true
+vim.g.taboo_tab_format = " %m%P%I⎠"
+vim.g.taboo_renamed_tab_format = " %l%I%m⎠"
+
+require("which-key").register({
+    ["<C-A-Right>"] = { "<cmd>tabnext<CR>", "Next Tab" },
+    ["<C-A-Left>"] = { "<cmd>tabprevious<CR>", "Previous Tab" },
+    ["<C-A-Up>"] = { "<cmd>bnext<CR>", "Next Buffer" },
+    ["<C-A-Down>"] = { "<cmd>bprevious<CR>", "Previous Buffer" },
+})
 
 -- dashboard options
 vim.g.dashboard_default_executive = 'telescope'
@@ -173,6 +190,7 @@ vim.cmd [[colorscheme ayu]]
 --Set statusbar
 vim.g.lightline = {
     colorscheme = 'one',
+    -- FIXME: Can this work with taboo.vim
     tabline = { 
         left = { 
             { 'tabs' }
