@@ -21,10 +21,6 @@ vim.api.nvim_exec(
 )
 
 -- TODO: 
--- - theme development
---   - add lush plugin
---   - add color preview thing
---   - add goog=
 -- - checkout vmux for single nvim per tmux session https://github.com/jceb/vmux
 --   - this is probably way better: https://github.com/carlocab/tmux-nvr
 -- - setup fish shell format and linting
@@ -54,8 +50,6 @@ vim.api.nvim_exec(
 --     - https://github.com/preservim/vim-textobj-sentence
 --   - https://github.com/tpope/vim-abolish
 --   - vim-wheel (find the setting for horizontal scroll) https://github.com/preservim/vim-wheel
--- - Good TS/LSP themes?
---   - https://github.com/sainnhe/edge
 -- - switch to lualine?
 -- - switch to Gina from Fugitive? 
 -- - use themis for testing?
