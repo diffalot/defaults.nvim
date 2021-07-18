@@ -150,7 +150,7 @@ augroup END
 ]]
 
 --mapped keybinding sequence timeout
-vim.o.timeoutlen = 0
+vim.o.timeoutlen = 750
 
 --Incremental live completion
 vim.o.inccommand = 'nosplit'
