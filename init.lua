@@ -130,6 +130,9 @@ vim.g.rooter_resolve_links = true
 vim.g.taboo_tab_format = " %m%P%I⎠"
 vim.g.taboo_renamed_tab_format = " %l%I%m⎠"
 
+-- TODO: also navigate tabs/buffers with hjkl
+-- TODO: resize windows and switch windows with arrows and hjkl
+-- TODO: match with tmux/nvim navigation with arrows and hjkl
 require("which-key").register({
     ["<C-A-Right>"] = { "<cmd>tabnext<CR>", "Next Tab" },
     ["<C-A-Left>"] = { "<cmd>tabprevious<CR>", "Previous Tab" },
@@ -364,8 +367,8 @@ require("which-key").register({
     -- TODO: add more prefixes
     --   - p = { name = "Prose" }
     --   - g = { name = "Git" }
+    --   - r = { name = "REPLs/Calculators" }
     --   - c = { name = "Schemes" }
-    --   - j = { name = "Journal/Wiki" }
     --   - w = { name = "Workspace Management"
     --              -- move/resize windows
     --              -- open files newtab/vsplit/hsplit
