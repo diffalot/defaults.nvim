@@ -89,6 +89,7 @@ require('packer').startup(function()
     use 'hrsh7th/nvim-compe' -- Autocompletion plugin
     use 'L3MON4D3/LuaSnip' -- Snippets plugin
     -- Lua Development
+    use 'wsdjeg/luarefvim' -- lua 5.0 and 5.1 documentation in vim help format
     use 'euclidianAce/BetterLua.vim' -- lua highlighting
     use 'rafcamlet/nvim-luapad' -- lua REPL
     -- SpaceEmacs Style Keybindings Help
