@@ -172,8 +172,20 @@ vim.cmd [[colorscheme ayu]]
 
 --Set statusbar
 vim.g.lightline = {
-    colorscheme = 'tokyonight',
-    active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } },
+    colorscheme = 'one',
+    tabline = { 
+        left = { 
+            { 'tabs' }
+        },
+        right = {
+        }
+    },
+    active = { 
+        left = { 
+            { 'mode', 'paste' }, 
+            { 'gitbranch', 'readonly', 'filename', 'modified' } 
+        } 
+    },
     component_function = { gitbranch = 'fugitive#head' },
 }
 
