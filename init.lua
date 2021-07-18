@@ -20,6 +20,45 @@ vim.api.nvim_exec(
     false
 )
 
+-- TODO: 
+-- - theme development
+--   - add lush plugin
+--   - add color preview thing
+--   - add goog=
+-- - checkout vmux for single nvim per tmux session https://github.com/jceb/vmux
+--   - this is probably way better: https://github.com/carlocab/tmux-nvr
+-- - setup fish shell format and linting
+-- - install development plugins
+--   - install lua & formatting & linting
+--   - https://github.com/kosayoda/nvim-lightbulb shows lsp code actions are available in gutter
+--   - todo-thingy
+--   - trouble
+--   - lsp-status in statusline
+--   - install fterm or https://github.com/Lenovsky/nuake
+--   - https://github.com/metakirby5/codi.vim
+-- - gutentags status in statusline
+-- - gutentags use gtags as well as ctags and cache in ~/.cache/tags
+-- - vim plugin development
+--   - list tabpage buffers in telescope
+--   - rename tabs
+--   - https://github.com/vim-jp/vital.vim
+-- - install prose plugins
+--   - wordy https://github.com/preservim/vim-wordy
+--   - https://github.com/dbmrq/vim-ditto
+--   - https://github.com/preservim/vim-pencil
+--   - https://github.com/preservim/vim-litecorrect
+--   - https://github.com/kana/vim-textobj-user
+--     - https://github.com/preservim/vim-textobj-quote
+--     - https://github.com/preservim/vim-textobj-sentence
+--   - https://github.com/tpope/vim-abolish
+--   - vim-wheel (find the setting for horizontal scroll) https://github.com/preservim/vim-wheel
+-- - Good TS/LSP themes?
+--   - https://github.com/marko-cerovac/material.nvim
+--   - https://github.com/sainnhe/edge
+-- - switch to lualine?
+-- - switch to Gina from Fugitive? 
+-- - use themis for testing?
+-- - check this out when you need a repl not provided by codi https://github.com/hkupty/iron.nvim
 local use = require('packer').use
 require('packer').startup(function()
     use 'wbthomason/packer.nvim' -- Package manager
