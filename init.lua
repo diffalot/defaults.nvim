@@ -33,9 +33,11 @@ vim.api.nvim_exec(
 --   - https://github.com/kosayoda/nvim-lightbulb shows lsp code actions are available in gutter
 --   - todo-thingy
 --   - trouble
+--   - https://github.com/rhysd/git-messenger.vim
 --   - lsp-status in statusline
 --   - install fterm or https://github.com/Lenovsky/nuake
 --   - https://github.com/metakirby5/codi.vim
+--   - https://github.com/RRethy/vim-illuminate ??
 -- - gutentags status in statusline
 -- - gutentags use gtags as well as ctags and cache in ~/.cache/tags
 -- - vim plugin development
@@ -53,7 +55,6 @@ vim.api.nvim_exec(
 --   - https://github.com/tpope/vim-abolish
 --   - vim-wheel (find the setting for horizontal scroll) https://github.com/preservim/vim-wheel
 -- - Good TS/LSP themes?
---   - https://github.com/marko-cerovac/material.nvim
 --   - https://github.com/sainnhe/edge
 -- - switch to lualine?
 -- - switch to Gina from Fugitive? 
