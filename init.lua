@@ -270,16 +270,57 @@ require('telescope').setup {
         },
     },
 }
---Add leader shortcuts
-vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>sf', [[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>sb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>sh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>st', [[<cmd>lua require('telescope.builtin').tags()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>sd', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>sp', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>so', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
+
+-- <leader> keybindings
+-- TODO: use a list of buffers associated with a tab rather than CWD buffers
+-- TODO: when selecting from "all buffers" switch to containing tab then open buffer
+tele_ivy = require('telescope.themes').get_ivy
+vim.cmd [[
+highlight TelescopeNormal guibg=#000000
+highlight TelescopePreviewNormal guibg=#0e0e0e
+]]
+require("which-key").register({
+    ["<space>"] = { "<cmd>lua require('telescope.builtin').buffers( tele_ivy({ winblend = 10, only_cwd = true }) )<CR>",
+					"Tabpage Buffers" },
+    ["?"]       = { "<cmd>lua require('telescope.builtin').oldfiles( tele_ivy({ winblend = 10}) )<CR>",
+                    "Recent Files"},
+    b           = { "<cmd>lua require('telescope.builtin').buffers( tele_ivy({ winblend = 10}) )<CR>",
+					"All Buffers" },
+    h           = { "<cmd>lua require('telescope.builtin').help_tags( tele_ivy({ winblend = 10}) )<CR>",
+                    "Search Help Tags" },
+    j           = { "<cmd>tabnew ~/cronofiles/journal/index.md<CR>",
+                    "Journal" },
+    s = {
+        name = "Search",
+        f = { "<cmd>lua require('telescope.builtin').fd( tele_ivy({ winblend = 10}) )<CR>",
+				"Search for File" },
+        g = { "<cmd>lua require('telescope.builtin').live_grep( tele_ivy({ winblend = 10}) )<CR>",
+				"Live Grep" },
+        s = { "<cmd>lua require('telescope.builtin').grep_string( tele_ivy({ winblend = 10}) )<CR>",
+				"Search For String Under Cursor" },
+        b = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find( tele_ivy({ winblend = 10}) )<CR>",
+				"Search in Current Buffer" },
+        t = { "<cmd>lua require('telescope.builtin').treesitter( tele_ivy({ winblend = 10}) )<CR>",
+				"Search Treesitter Symbols" },
+        t = { "<cmd>lua require('telescope.builtin').tags( tele_ivy({ winblend = 10}) )<CR>",
+				"Search Tags" },
+        o = { "<cmd>lua require('telescope.builtin').tags( tele_ivy({ winblend = 10, only_current_buffer = true }) )<CR>",
+                "Search Tags in Current Buffer" },
+    },
+    -- TODO: add descriptions for mappings defined elsewhere
+    -- TODO: figure out how to do treesitter selections and motions
+    -- TODO: add more prefixes
+    --   - p = { name = "Prose" }
+    --   - g = { name = "Git" }
+    --   - c = { name = "Schemes" }
+    --   - j = { name = "Journal/Wiki" }
+    --   - w = { name = "Workspace Management"
+    --              -- move/resize windows
+    --              -- open files newtab/vsplit/hsplit
+    --              -- add/rm tabs
+    --              -- mv/cp/rm buffers b/w tabs
+    --   -  = { name = "" }
+}, { prefix = "<leader>" })
 
 -- Highlight on yank
 vim.api.nvim_exec(
