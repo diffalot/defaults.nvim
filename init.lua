@@ -70,6 +70,7 @@ require('packer').startup(function()
     use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
     use 'folke/tokyonight.nvim' -- Ocean/Blue Theme with Treesitter Highlighting for neovim >= 0.5
     use 'Shatur/neovim-ayu' -- Black/White LSP and TS colorscheme in lua
+    use 'marko-cerovac/material.nvim' -- Black/White LSP and TS Colorscheme
     use 'itchyny/lightline.vim' -- Fancier statusline
     -- Add indentation guides even on blank lines
     use 'lukas-reineke/indent-blankline.nvim'
@@ -241,12 +242,25 @@ require('alice.preferences')
 
 --Set colorscheme (order is important here)
 vim.o.termguicolors = true
-vim.cmd [[colorscheme ayu]]
+-- 'darker', 'lighter', 'palenight', 'oceanic' and 'deep ocean'
+vim.g.material_style = "deep ocean"
+vim.g.material_contrast = true
+vim.g.material_lighter_contrast = true
+vim.g.material_italic_comments = true
+vim.g.material_italic_keywords = false
+vim.g.material_italic_functions = true
+vim.g.material_italic_variables = true
+vim.g.material_borders = true
+vim.g.material_hide_eob = true
+vim.g.material_disable_background = false
+require("which-key").register({
+    c = { "<cmd>lua require('material.functions').toggle_style()<CR>", "Cycle Material Style" }
+}, { prefix = "<leader>" })
+require('material').set()
 
 --Set statusbar
 vim.g.lightline = {
     colorscheme = 'one',
-    -- FIXME: Can this work with taboo.vim
     tabline = { 
         left = { 
             { 'tabs' }
