@@ -19,12 +19,53 @@
 --
 --▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
+-- TODO: figure out how to do treesitter selections and motions
+-- TODO: use a list of buffers associated with a tab rather than CWD buffers
+-- TODO: when selecting from "all buffers" switch to containing tab then open buffer
+-- - setup fish shell format and linting
+-- - lua formatting & linting
+-- - add nvim-dap debugging
+-- - vim plugin development
+--   - list tabpage buffers in telescope
+--   - rename tabs
+--   - https://github.com/vim-jp/vital.vim
+-- - https://github.com/tpope/vim-abolish
+-- - switch to lualine?
+-- - use themis for testing?
+-- - check this out when you need a repl not provided by codi https://github.com/hkupty/iron.nvim
+-- - see what setting is needed to turn of conceal of `markdown` syntax for git messages and emails
+-- - checkout vmux for single nvim per tmux session https://github.com/jceb/vmux
+-- - this is probably way better, but nvr seem to be due for a round of improvements according to the issues: https://github.com/carlocab/tmux-nvr
+
+
+
+
+
+
 vim.cmd [[
 if &shell =~# 'fish$'
     let $SHELL='/bin/zsh'
     set shell=/bin/zsh
 endif
 ]]
+
+
+
+
+
+--  ███████   ██                 ██
+-- ░██░░░░██ ░██          █████ ░░
+-- ░██   ░██ ░██ ██   ██ ██░░░██ ██ ███████   ██████
+-- ░███████  ░██░██  ░██░██  ░██░██░░██░░░██ ██░░░░
+-- ░██░░░░   ░██░██  ░██░░██████░██ ░██  ░██░░█████
+-- ░██       ░██░██  ░██ ░░░░░██░██ ░██  ░██ ░░░░░██
+-- ░██       ███░░██████  █████ ░██ ███  ░██ ██████
+-- ░░       ░░░  ░░░░░░  ░░░░░  ░░ ░░░   ░░ ░░░░░░
+
+
+
+
+
 
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
@@ -43,85 +84,10 @@ vim.api.nvim_exec(
     false
 )
 
--- TODO: figure out how to do treesitter selections and motions
--- TODO: use a list of buffers associated with a tab rather than CWD buffers
--- TODO: when selecting from "all buffers" switch to containing tab then open buffer
--- - setup fish shell format and linting
--- - lua formatting & linting
--- - add nvim-dap debugging
--- - vim plugin development
---   - list tabpage buffers in telescope
---   - rename tabs
---   - https://github.com/vim-jp/vital.vim
--- - https://github.com/tpope/vim-abolish
--- - switch to lualine?
--- - use themis for testing?
--- - check this out when you need a repl not provided by codi https://github.com/hkupty/iron.nvim
--- - see what setting is needed to turn of conceal of `markdown` syntax for git messages and emails
--- - checkout vmux for single nvim per tmux session https://github.com/jceb/vmux
--- - this is probably way better, but nvr seem to be due for a round of improvements according to the issues: https://github.com/carlocab/tmux-nvr
 local use = require('packer').use
 require('packer').startup(function()
     use 'wbthomason/packer.nvim' -- Package manager
-    use 'rhysd/git-messenger.vim' -- display git commit message for current line
-    use 'lambdalisue/gina.vim' -- minimal async git client
-    use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
-    use { 'folke/trouble.nvim',
-        requires = 'kyazdani42/nvim-web-devicons' } -- diagnostic quick list for whole workspace
-    use { "folke/todo-comments.nvim",
-        requires = "nvim-lua/plenary.nvim" }
-    use 'ludovicchabant/vim-gutentags' -- Gutentags - https://github.com/ludovicchabant/vim-gutentags
-    use 'skywind3000/gutentags_plus' -- gtags for Gutentags
-    -- UI to select things (files, grep results, open buffers...)
-    use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
-    use 'folke/tokyonight.nvim' -- Ocean/Blue Theme with Treesitter Highlighting for neovim >= 0.5
-    use 'Shatur/neovim-ayu' -- Black/White LSP and TS colorscheme in lua
-    use 'marko-cerovac/material.nvim' -- Black/White LSP and TS Colorscheme
-    use 'itchyny/lightline.vim' -- Fancier statusline
-    -- Add indentation guides even on blank lines
-    use 'lukas-reineke/indent-blankline.nvim'
-    -- Add git related info in the signs columns and popups
-    use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-    -- Highlight, edit, and navigate code using a fast incremental parsing library
-    use 'nvim-treesitter/nvim-treesitter'
-    -- Additional textobjects for treesitter
-    use 'nvim-treesitter/nvim-treesitter-textobjects'
-    use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
-    use 'kabouzeid/nvim-lspinstall' -- add LspInstall <server> command
-    use 'onsails/lspkind-nvim' -- provides default icons for types of completion
-    use 'yamatsum/nvim-nonicons' -- more icons in a font
-    use 'kosayoda/nvim-lightbulb' -- display lightbulb in gutter when lsp code actions are available
-    use 'nvim-lua/lsp-status.nvim' -- statusline info for lsp client
-    use 'hrsh7th/nvim-compe' -- Autocompletion plugin
-    use 'L3MON4D3/LuaSnip' -- Snippets plugin
-    -- Lua Development
-    use 'euclidianAce/BetterLua.vim' -- lua highlighting
-    use 'rafcamlet/nvim-luapad' -- lua REPL
-    use 'milisims/nvim-luaref' -- lua 5.1 docs
-    -- SpaceEmacs Style Keybindings Help
-    use {
-        "folke/which-key.nvim",
-        config = function()
-            require("which-key").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        end
-    }
-    -- Fern File Tree
-    use { 'lambdalisue/fern.vim',
-        requires = { 'antoinemadec/FixCursorHold.nvim' } }
-    use 'lambdalisue/fern-hijack.vim'
-    use { 'lambdalisue/fern-renderer-nerdfont.vim',
-        requires = { 'lambdalisue/nerdfont.vim' } }
-    use 'lambdalisue/fern-git-status.vim'
-    -- personal plugins
-    use 'inkch/vim-fish'
-    use 'glepnir/dashboard-nvim'
-    -- tab management
-    use 'gcmt/taboo.vim'
-    use 'airblade/vim-rooter'
+
     -- prose plugins
     use 'plasticboy/vim-markdown'
     use 'godlygeek/tabular'
@@ -137,16 +103,223 @@ require('packer').startup(function()
             'dbmrq/vim-ditto',
         }
     }
-    use 'junegunn/goyo.vim'
-    use 'junegunn/limelight.vim'
-    -- theme development
-    use 'norcalli/nvim-colorizer.lua'
+
+    -- LSP
+    use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+    use 'kabouzeid/nvim-lspinstall' -- add LspInstall <server> command
+    use 'hrsh7th/nvim-compe' -- Autocompletion plugin
+    use 'L3MON4D3/LuaSnip' -- Snippets plugin
+    use 'kosayoda/nvim-lightbulb' -- display lightbulb in gutter when lsp code actions are available
+    use 'nvim-lua/lsp-status.nvim' -- statusline info for lsp client
+    use 'onsails/lspkind-nvim' -- provides default icons for types of completion
+    use 'yamatsum/nvim-nonicons' -- more icons in a font
+
+    -- Code Diagnostics
+    use 'ludovicchabant/vim-gutentags' -- Gutentags - https://github.com/ludovicchabant/vim-gutentags
+    use 'skywind3000/gutentags_plus' -- gtags for Gutentags
+    use { 'folke/trouble.nvim',
+        requires = 'kyazdani42/nvim-web-devicons' } -- diagnostic quick list for whole workspace
+    use { "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim" }
+
+    -- TreeSitter - Highlight, edit, and navigate code using a fast incremental parsing library
+    use 'nvim-treesitter/nvim-treesitter'
+    use 'nvim-treesitter/nvim-treesitter-textobjects'
+
+    -- Syntax Highlighting
+    use 'inkch/vim-fish'
+    use 'euclidianAce/BetterLua.vim' -- lua highlighting
+
     -- terminals
     use 'Lenovsky/nuake'
     use 'numToStr/FTerm.nvim'
+
     -- REPLs
     use 'metakirby5/codi.vim'
+    use 'rafcamlet/nvim-luapad' -- lua REPL
+    use 'milisims/nvim-luaref' -- lua 5.1 docs
+
+    -- Code UI Imporvements
+    use 'norcalli/nvim-colorizer.lua'
+    use 'lukas-reineke/indent-blankline.nvim'
+    use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
+
+    -- Finders
+    use 'glepnir/dashboard-nvim'
+    use { 'nvim-telescope/telescope.nvim',
+        requires = {
+            { 'nvim-lua/popup.nvim' },
+            { 'nvim-lua/plenary.nvim' }
+        }
+    }
+
+    -- Keybindings Navigation
+    use "folke/which-key.nvim"
+
+    -- tab management
+    use 'gcmt/taboo.vim'
+    use 'airblade/vim-rooter'
+
+    -- Git
+    use 'lambdalisue/gina.vim' -- minimal async git client
+    use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+    use 'rhysd/git-messenger.vim' -- display git commit message for current line
+
+    -- Fern File Tree
+    use { 'lambdalisue/fern.vim',
+        requires = { 'antoinemadec/FixCursorHold.nvim' } }
+    use 'lambdalisue/fern-hijack.vim'
+    use { 'lambdalisue/fern-renderer-nerdfont.vim',
+        requires = { 'lambdalisue/nerdfont.vim' } }
+    use 'lambdalisue/fern-git-status.vim'
+
+    -- Zen Mode
+    use 'junegunn/goyo.vim'
+    use 'junegunn/limelight.vim'
+
+    -- Statusline and Tabline
+    use 'itchyny/lightline.vim' -- Fancier statusline
+
+    -- Themes
+    use 'marko-cerovac/material.nvim' -- Black/White LSP and TS Colorscheme
+    use 'folke/tokyonight.nvim' -- Ocean/Blue Theme with Treesitter Highlighting for neovim >= 0.5
+    use 'Shatur/neovim-ayu' -- Black/White LSP and TS colorscheme in lua
+
 end)
+
+
+
+
+
+
+
+--  ███████                   ████
+-- ░██░░░░██                 ░██░
+-- ░██   ░██ ██████  █████  ██████  █████  ██████  █████  ███████   █████   █████   ██████
+-- ░███████ ░░██░░█ ██░░░██░░░██░  ██░░░██░░██░░█ ██░░░██░░██░░░██ ██░░░██ ██░░░██ ██░░░░
+-- ░██░░░░   ░██ ░ ░███████  ░██  ░███████ ░██ ░ ░███████ ░██  ░██░██  ░░ ░███████░░█████
+-- ░██       ░██   ░██░░░░   ░██  ░██░░░░  ░██   ░██░░░░  ░██  ░██░██   ██░██░░░░  ░░░░░██
+-- ░██      ░███   ░░██████  ░██  ░░██████░███   ░░██████ ███  ░██░░█████ ░░██████ ██████
+-- ░░       ░░░     ░░░░░░   ░░    ░░░░░░ ░░░     ░░░░░░ ░░░   ░░  ░░░░░   ░░░░░░ ░░░░░░
+
+
+
+
+
+--mapped keybinding sequence timeout
+vim.o.timeoutlen = 750
+
+--Incremental live completion
+vim.o.inccommand = 'nosplit'
+
+--Set highlight on search
+vim.o.hlsearch = false
+
+--Make line numbers default
+vim.wo.number = true
+
+--Do not save when switching buffers
+vim.o.hidden = true
+
+--Enable mouse mode
+vim.o.mouse = 'a'
+
+--Enable break indent
+vim.o.breakindent = true
+
+--Save undo history
+vim.cmd [[set undofile]]
+
+--Case insensitive searching UNLESS /C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+--Decrease update time
+vim.o.updatetime = 250
+vim.wo.signcolumn = 'yes'
+
+-- import prefs
+require('alice.preferences')
+
+--Set colorscheme (order is important here)
+vim.o.termguicolors = true
+-- 'darker', 'lighter', 'palenight', 'oceanic' and 'deep ocean'
+vim.g.material_style = "oceanic"
+vim.g.material_contrast = true
+vim.g.material_lighter_contrast = true
+vim.g.material_italic_comments = true
+vim.g.material_italic_keywords = false
+vim.g.material_italic_functions = true
+vim.g.material_italic_variables = true
+vim.g.material_borders = true
+vim.g.material_hide_eob = true
+vim.g.material_disable_background = true
+require("which-key").register({
+    c = { "<cmd>lua require('material.functions').toggle_style()<CR>", "Cycle Material Style" }
+}, { prefix = "<leader>" })
+require('material').set()
+
+
+
+
+
+
+--    ██████                ██
+--   ██░░░░██              ░██
+--  ██    ░░   ██████      ░██  █████
+-- ░██        ██░░░░██  ██████ ██░░░██
+-- ░██       ░██   ░██ ██░░░██░███████
+-- ░░██    ██░██   ░██░██  ░██░██░░░░
+--  ░░██████ ░░██████ ░░██████░░██████
+--   ░░░░░░   ░░░░░░   ░░░░░░  ░░░░░░
+--  ████     ████                                                                             ██
+-- ░██░██   ██░██                               █████                                        ░██
+-- ░██░░██ ██ ░██  ██████   ███████   ██████   ██░░░██  █████  ██████████   █████  ███████  ██████
+-- ░██ ░░███  ░██ ░░░░░░██ ░░██░░░██ ░░░░░░██ ░██  ░██ ██░░░██░░██░░██░░██ ██░░░██░░██░░░██░░░██░
+-- ░██  ░░█   ░██  ███████  ░██  ░██  ███████ ░░██████░███████ ░██ ░██ ░██░███████ ░██  ░██  ░██  -- Which Key Setup
+-- ░██   ░    ░██ ██░░░░██  ░██  ░██ ██░░░░██  ░░░░░██░██░░░░  ░██ ░██ ░██░██░░░░  ░██  ░██  ░██  require("which-key").setup {}
+-- ░██        ░██░░████████ ███  ░██░░████████  █████ ░░██████ ███ ░██ ░██░░██████ ███  ░██  ░░██
+-- ░░         ░░  ░░░░░░░░ ░░░   ░░  ░░░░░░░░  ░░░░░   ░░░░░░ ░░░  ░░  ░░  ░░░░░░ ░░░   ░░    ░░  -- Telescope
+
+
+
+
+-- local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
+require('telescope').setup {
+    defaults = {
+        mappings = {
+            i = {
+                ["<C-t>"] = trouble.open_with_trouble,
+                ['<C-u>'] = false,
+                ['<C-d>'] = false,
+            },
+            n = { ["<C-t>"] = trouble.open_with_trouble },
+        },
+    },
+}
+
+-- fern config
+vim.g['fern#renderer'] = "nerdfont"
+require("which-key").register({
+    e = { "<cmd>Fern . -reveal=%<CR>", "Explore Directory Tree" }
+}, { prefix = "<leader>" })
+
+-- TODO: also navigate tabs/buffers with hjkl
+-- TODO: resize windows and switch windows with arrows and hjkl
+-- TODO: match with tmux/nvim navigation with arrows and hjkl
+-- tab management
+vim.g.rooter_cd_cmd = 'tcd'
+vim.g.rooter_targets = '/,*'
+vim.g.rooter_resolve_links = true
+vim.g.taboo_tab_format = " %m%P%I⎠"
+vim.g.taboo_renamed_tab_format = " %l%I%m⎠"
+require("which-key").register({
+    ["<C-A-Right>"] = { "<cmd>tabnext<CR>", "Next Tab" },
+    ["<C-A-Left>"] = { "<cmd>tabprevious<CR>", "Previous Tab" },
+    ["<C-A-Up>"] = { "<cmd>bnext<CR>", "Next Buffer" },
+    ["<C-A-Down>"] = { "<cmd>bprevious<CR>", "Previous Buffer" },
+})
 
 -- nuake dropdown terminal
 vim.g.nuake_position = 'top'     -- (default 'bottom')	Set the Nuake position to 'bottom', 'right', 'top' or 'left'.
@@ -164,12 +337,6 @@ require('FTerm').setup({
     },
     border = 'single' -- or 'double'
 })
--- map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
-
--- Codi REPLs
-vim.g['codi#rightsplit'] = false
-vim.g['codi#rightalign'] = false
-vim.g['codi#virtual_text_prefix'] = '✶ ❱ '
 
 -- vim-lightbulb (watch for lsp code actions)
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
@@ -240,66 +407,6 @@ require("todo-comments").setup {
     },
 }
 
--- fern config
-vim.g['fern#renderer'] = "nerdfont"
-require("which-key").register({
-    e = { "<cmd>Fern . -reveal=%<CR>", "Explore Directory Tree" }
-}, { prefix = "<leader>" })
-
--- tab management
-vim.g.rooter_cd_cmd = 'tcd'
-vim.g.rooter_targets = '/,*'
-vim.g.rooter_resolve_links = true
-vim.g.taboo_tab_format = " %m%P%I⎠"
-vim.g.taboo_renamed_tab_format = " %l%I%m⎠"
-
--- TODO: also navigate tabs/buffers with hjkl
--- TODO: resize windows and switch windows with arrows and hjkl
--- TODO: match with tmux/nvim navigation with arrows and hjkl
-require("which-key").register({
-    ["<C-A-Right>"] = { "<cmd>tabnext<CR>", "Next Tab" },
-    ["<C-A-Left>"] = { "<cmd>tabprevious<CR>", "Previous Tab" },
-    ["<C-A-Up>"] = { "<cmd>bnext<CR>", "Next Buffer" },
-    ["<C-A-Down>"] = { "<cmd>bprevious<CR>", "Previous Buffer" },
-})
-
--- dashboard options
-vim.g.dashboard_default_executive = 'telescope'
-vim.g.dashboard_session_directory = vim.env.HOME .. '/local/share/nvim/sessions'
-
-vim.cmd [[
-    autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2
-]]
-
-vim.g.dashboard_custom_header = {
-    ' ██████▒██▓  █████▄  ▄█░ ▒█    ▄███████ ▒████▒  ▄██████ ▄███████▓    ▄█▀███   █   ░██  ███▄    █  ███▄    █ ▓█████  ██▀███░ ',
-    '▓██   ▒▓██▒▒██    ▒ ▓██░ ██▒   ▓  ██▒ ▓▒▓█  ░  ▒██    ▒ ▓  ██▒ ▓▒   ▓██ ▒ ██▒ ██  ▓██▒ ██ ▀█   █  ██ ▀█   █ ▓█   ▀ ▓██ ▒ ██▒',
-    '▒████ ░▒██▒░ ▓██▄   ▒██▀▀██░   ▒ ▓██░ ▒░▒███   ░ ▓██▄   ▒ ▓██░ ▒░   ▓██ ░▄█ ▒▓██  ▒██░▓██  ▀█ ██▒▓██  ▀█ ██▒▒███   ▓██ ░▄█ ▒',
-    '░▓█▒  ░░██░  ▒   ██▒░▓█ ░██    ░ ▓██▓ ░ ▒▓█░ ▄   ▒ ░ ██▒░ ▓██▓ ░    ▒██▀▀█▄  ▓▓█  ░██░▓██▒  ▐▌██▒▓██▒  ▐▌██▒▒▓█  ▄ ▒██▀▀█▄  ',
-    '░▓█░   ░██░▒▀█████▒▒░▓█▒░██▓     ▒██▒ ░ ░▓████▒▒██████▒▒  ▒██▒ ░    ░██▓ ▒██▒▒▒█████▓ ▒██░   ▓██░▒▀█░   ▓██░░▓████▒░▀█▓ ▒██▒',
-    ' ▒ ░   ░▓  ▒ ▒▓▒ ▒ ░ ▒ ░░▒░▒     ▒ ░░   ░░ ▒░ ░▒ ▒▓▒ ▒ ░  ▒ ░░      ░ ▒▓ ░▒▓░░▒▓▒ ▒ ▒ ░ ▒░   ▒ ▒ ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒▓ ░▒▓░',
-    ' ░      ▒ ░░ ░▒  ░ ░ ▒ ░ ▄  ▄░           ░ ░  ░░ ░▒  ░ ░    ░         ░▒ ░ ▒░░░▒░ ░ ░ ░ ░░   ░ ▒░░ ░░   ░ ▒░ ░ ░  ░  ░▒ ░ ▒░',
-    ' ░ ░    ▒ ░░  ░  ░   ▄█▄ █▀█▀█ ▄█▄         ░   ░  ░    ░    ░           ░░   ░  ░░░ ░ ░  ░   ░░░        ░ ░    ░  ▒  ░░   ░ ',
-    '                    ▀▀████▄█▄████▀▀                                      ░      ▒░           ░ ░        ░      ░  ░   ░     ',
-    '                        ▀█▀█▀                                                   ▒            ░                 ░      ░     ',
-}
-
-vim.g.dashboard_custom_footer =  {
-    '                                                                                                                            ',
-    '                                                                                                     ▄   ▄                  ',
-    '                                                                                                     █▀█▀█                  ',
-    '                                                                                                     █▄█▄█                  ',
-    '                                                                                                      ███  ▄▄               ',
-    '                                                                                                      ████▐█ █              ',
-    '    ▄▄▄▄  ▄▄▄ ▄▄▄▄▄ ▄▄▄▄▄   ▄▄  ▄▄▄   ▄▄▄▄ ▄▄▄▄▄                                                      ████   █              ',
-    '█████▄─▄▄▀█▄─▄█▄─▄▄─█▄─▄▄─██▀▄─██▄─▄███─▄▄─█─▄─▄─██████████████████████████████████████████████████   ████▄▄█▀   ███████████',
-    '██████─██─██─███─▄████─▄████─▀─███─██▀█─██─███─█████████████████████████████████████████████████████████████████████████████',
-    '█████▄▄▄▄██▄▄▄█▄▄▄███▄▄▄███▄▄█▄▄█▄▄▄▄▄█▄▄▄▄██▄▄▄████████████████████████████████████████████████████████████████████████████',
-    '████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████',
-    '▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀',
-    '                                                                                    Alice Davis <alice@gigantic.computer>   ',
-}
-
 -- Gutentags
 vim.g.gutentags_enabled=1
 vim.g.gutentags_plus_nomap = 1
@@ -309,142 +416,10 @@ vim.g.gutentags_add_default_project_roots = 1
 vim.g.gutentags_cache_dir = vim.fn.expand('~/.cache/tags')
 vim.g.gutentags_plus_switch = 1
 
--- prose options
-
--- plasticboy/vim-markdown
-vim.g.vim_markdown_folding_disabled = true
-vim.g.vim_markdown_no_default_key_mappings = false
-vim.g.vim_markdown_follow_anchor = true
-vim.g.vim_markdown_frontmatter = true
-vim.g.vim_markdown_strikethrough = true
-vim.g.vim_markdown_new_list_item_indent = 2
-vim.g.vim_markdown_no_extensions_in_markdown = true
-vim.g.vim_markdown_autowrite = true
-
--- lexical
-vim.g['lexical#spell']      = 1
-vim.g['lexical#spelllang']  = { 'en_us', 'en_ca', 'en_gb' }
-vim.g['lexical#thesaurus']  = { '~/.config/nvim/spell/MobyThesaurus.txt' }
-vim.g['lexical#dictionary'] = { '/usr/share/dict/words' }
-
--- Ditto
-vim.g.ditto_mode = 'paragraph'
-vim.cmd[[ let g:ditto_dir = &l:runtimepath . "/spell" ]]
-
--- Prose Mode
-vim.cmd [[
-function! Prose(...)
-    if a:0 > 0
-        let pencil_opts = a:1
-    else
-        let pencil_opts = {}
-    end
-    call pencil#init(pencil_opts)
-    call lexical#init()
-    call litecorrect#init()
-    call textobj#quote#init({'educate': 1})
-    call textobj#sentence#init()
-
-    " Ditto Setup
-    DittoOn
-    DittoUpdate
-    nnoremap <buffer> <silent> ]o  <Plug>DittoNext    " Jump to the next word
-    nnoremap <buffer> <silent> [o  <Plug>DittoPrev    " Jump to the previous word
-    nnoremap <buffer> <silent> zdg <Plug>DittoGood    " Ignore the word under the cursor
-    nnoremap <buffer> <silent> zdw <Plug>DittoBad     " Stop ignoring the word under the cursor
-
-    " manual reformatting shortcuts
-    nnoremap <buffer> <silent> Q gqap
-    xnoremap <buffer> <silent> Q gq
-    nnoremap <buffer> <silent> <leader>qq vapJgqap
-
-    " toggle pencil autoformat
-    noremap <silent> <F7> :<C-u>PFormatToggle<cr>
-    inoremap <silent> <F7> <C-o>:PFormatToggle<cr>
-
-    " force top correction on most recent misspelling
-    nnoremap <buffer> <C-s> [s1z=<c-o>
-    inoremap <buffer> <C-s> <c-g>u<Esc>[s1z=`]A<c-g>u
-
-    " replace common punctuation
-    iabbrev <buffer> -- –
-    iabbrev <buffer> --- —
-    iabbrev <buffer> << «
-    iabbrev <buffer> >> »
-
-    " replace typographical quotes (reedes/vim-textobj-quote)
-    nnoremap <buffer> <leader>qe <Plug>ToggleEducate
-    nnoremap <silent> <buffer> <leader>qc <Plug>ReplaceWithCurly
-    nnoremap <silent> <buffer> <leader>qs <Plug>ReplaceWithStraight
-
-    " highlight words (reedes/vim-wordy)
-    noremap <silent> <buffer> <F6> :<C-u>NextWordy<cr>
-    xnoremap <silent> <buffer> <F6> :<C-u>NextWordy<cr>
-    inoremap <silent> <buffer> <F6> <C-o>:NextWordy<cr>
-
-endfunction
-
-" automatically initialize buffer by file type
-augroup pencil
-    autocmd!
-    autocmd FileType markdown,mkd,text call Prose({'wrap': 'soft'})
-    autocmd Filetype git,gitsendemail,*commit*,*COMMIT* call Prose({'wrap': 'hard', 'textwidth': 72, 'autoformat': 1})
-augroup END
-
-" invoke manually by command for other file types
-command! -nargs=0 Prose call Prose()
-]]
-
--- Goyo Zen Mode
-vim.cmd [[
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 250
-
-" Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = '#adadad'
-
-" Default: 0.5
-let g:limelight_default_coefficient = 0.8
-
-" Number of preceding/following paragraphs to include (default: 0)
-let g:limelight_paragraph_span = 1
-
-" autocommands to dim surrounding paragraphs with limelight, when Goyo active
-function! Goyo_enter()
-  if executable('tmux') && strlen($TMUX)
-    silent !tmux set status off
-    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-  endif
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-  Limelight
-  " ...
-endfunction
-
-function! Goyo_leave()
-  if executable('tmux') && strlen($TMUX)
-    silent !tmux set status on
-    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-  endif
-  set showmode
-  set showcmd
-  set scrolloff=5
-  Limelight!
-  " ...
-endfunction
-
-autocmd! User GoyoEnter call Goyo_enter()
-autocmd! User GoyoLeave call Goyo_leave()
-
-function! ZenMode ()
-    DittoOff
-    Wordy off
-    Goyo 120x70%
-endfunction
-
-command! Zen :call ZenMode()
-]]
+-- Codi REPLs
+vim.g['codi#rightsplit'] = false
+vim.g['codi#rightalign'] = false
+vim.g['codi#virtual_text_prefix'] = '✶ ❱ '
 
 -- luapad
 require 'luapad'.config{
@@ -461,58 +436,21 @@ require 'luapad'.config{
   }
 }
 
---mapped keybinding sequence timeout
-vim.o.timeoutlen = 750
 
---Incremental live completion
-vim.o.inccommand = 'nosplit'
 
---Set highlight on search
-vim.o.hlsearch = false
 
---Make line numbers default
-vim.wo.number = true
 
---Do not save when switching buffers
-vim.o.hidden = true
 
---Enable mouse mode
-vim.o.mouse = 'a'
+--  ██       ██         ██        ██    ██ ██
+-- ░██      ░░   █████ ░██       ░██   ░██░░
+-- ░██       ██ ██░░░██░██      ██████ ░██ ██ ███████   █████
+-- ░██      ░██░██  ░██░██████ ░░░██░  ░██░██░░██░░░██ ██░░░██
+-- ░██      ░██░░██████░██░░░██  ░██   ░██░██ ░██  ░██░███████
+-- ░██      ░██ ░░░░░██░██  ░██  ░██   ░██░██ ░██  ░██░██░░░░
+-- ░████████░██  █████ ░██  ░██  ░░██  ███░██ ███  ░██░░██████
+-- ░░░░░░░░ ░░  ░░░░░  ░░   ░░    ░░  ░░░ ░░ ░░░   ░░  ░░░░░░
 
---Enable break indent
-vim.o.breakindent = true
 
---Save undo history
-vim.cmd [[set undofile]]
-
---Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
---Decrease update time
-vim.o.updatetime = 250
-vim.wo.signcolumn = 'yes'
-
--- import prefs
-require('alice.preferences')
-
---Set colorscheme (order is important here)
-vim.o.termguicolors = true
--- 'darker', 'lighter', 'palenight', 'oceanic' and 'deep ocean'
-vim.g.material_style = "oceanic"
-vim.g.material_contrast = true
-vim.g.material_lighter_contrast = true
-vim.g.material_italic_comments = true
-vim.g.material_italic_keywords = false
-vim.g.material_italic_functions = true
-vim.g.material_italic_variables = true
-vim.g.material_borders = true
-vim.g.material_hide_eob = true
-vim.g.material_disable_background = true
-require("which-key").register({
-    c = { "<cmd>lua require('material.functions').toggle_style()<CR>", "Cycle Material Style" }
-}, { prefix = "<leader>" })
-require('material').set()
 
 -- lsp-status setup
 _G.lsp_statusline = require("lsp-status.statusline")
@@ -557,21 +495,28 @@ vim.g.lightline = {
     },
 }
 
---Remap space as leader key
-vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
---Remap for dealing with word wrap
-vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
-vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
-
---Map blankline
+-- setup blankline
 vim.g.indent_blankline_char = '┊'
 vim.g.indent_blankline_filetype_exclude = { 'help', 'packer', 'dashboard' }
 vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
 vim.g.indent_blankline_char_highlight = 'LineNr'
 vim.g.indent_blankline_show_trailing_blankline_indent = false
+
+
+
+
+
+--  ██   ██                    ████     ████                           ██
+-- ░██  ██           ██   ██  ░██░██   ██░██           ██████  ██████ ░░            █████
+-- ░██ ██    █████  ░░██ ██   ░██░░██ ██ ░██  ██████  ░██░░░██░██░░░██ ██ ███████  ██░░░██  ██████
+-- ░████    ██░░░██  ░░███    ░██ ░░███  ░██ ░░░░░░██ ░██  ░██░██  ░██░██░░██░░░██░██  ░██ ██░░░░
+-- ░██░██  ░███████   ░██     ░██  ░░█   ░██  ███████ ░██████ ░██████ ░██ ░██  ░██░░██████░░█████
+-- ░██░░██ ░██░░░░    ██      ░██   ░    ░██ ██░░░░██ ░██░░░  ░██░░░  ░██ ░██  ░██ ░░░░░██ ░░░░░██
+-- ░██ ░░██░░██████  ██       ░██        ░██░░████████░██     ░██     ░██ ███  ░██  █████  ██████
+-- ░░   ░░  ░░░░░░  ░░        ░░         ░░  ░░░░░░░░ ░░      ░░      ░░ ░░░   ░░  ░░░░░  ░░░░░░
+
+
+
 
 -- Gitsigns
 require('gitsigns').setup {
@@ -605,21 +550,14 @@ require('gitsigns').setup {
     },
 }
 
--- Telescope
--- local actions = require("telescope.actions")
-local trouble = require("trouble.providers.telescope")
-require('telescope').setup {
-    defaults = {
-        mappings = {
-            i = {
-                ["<C-t>"] = trouble.open_with_trouble,
-                ['<C-u>'] = false,
-                ['<C-d>'] = false,
-            },
-            n = { ["<C-t>"] = trouble.open_with_trouble },
-        },
-    },
-}
+-- Remap space as leader key
+vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+-- Remap for dealing with word wrap
+vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
+vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
 
 -- <leader> keybindings
 -- TODO: add descriptions for mappings defined elsewhere
@@ -669,19 +607,13 @@ require("which-key").register({
     },
 }, { prefix = "<leader>" })
 
--- Highlight on yank
-vim.api.nvim_exec(
-    [[
-    augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-    augroup end
-    ]],
-    false
-)
-
 -- Y yank until the end of line
 vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
+
+
+
+
+
 
 --  ██        ████████ ███████     ████████           ██     ██   ██
 -- ░██       ██░░░░░░ ░██░░░░██   ██░░░░░░           ░██    ░██  ░░            █████
@@ -693,9 +625,11 @@ vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
 -- ░░░░░░░░ ░░░░░░░░  ░░         ░░░░░░░░   ░░░░░░    ░░     ░░  ░░ ░░░   ░░  ░░░░░  ░░░░░░
 --
 -- # LSP settings
-
 -- vim.lsp.set_log_level("debug")
---
+
+
+
+
 -- needs https://github.com/microsoft/vscode-codicons/blob/master/dist/codicon.ttf
 -- setup in the terminal (kitty.conf) with ``
 require("vim.lsp.protocol").CompletionItemKind = {
@@ -874,8 +808,24 @@ end
 -- UI just like `:LspInfo` to show which capabilities each attached server has
 vim.api.nvim_command("command! LspCapabilities lua require'lsp-capabilities'()")
 
+
+
+
+
+--  ██████████                           ████████ ██   ██     ██
+-- ░░░░░██░░░                           ██░░░░░░ ░░   ░██    ░██
+--     ░██     ██████  █████   █████   ░██        ██ ██████ ██████  █████  ██████
+--     ░██    ░░██░░█ ██░░░██ ██░░░██  ░█████████░██░░░██░ ░░░██░  ██░░░██░░██░░█
+--     ░██     ░██ ░ ░███████░███████  ░░░░░░░░██░██  ░██    ░██  ░███████ ░██ ░
+--     ░██     ░██   ░██░░░░ ░██░░░░          ░██░██  ░██    ░██  ░██░░░░  ░██
+--     ░██    ░███   ░░██████░░██████   ████████ ░██  ░░██   ░░██ ░░██████░███
+--     ░░     ░░░     ░░░░░░  ░░░░░░   ░░░░░░░░  ░░    ░░     ░░   ░░░░░░ ░░░
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
+
+
+
+
 require('nvim-treesitter.configs').setup {
     highlight = {
         enable = true, -- false will disable the whole extension
@@ -927,8 +877,22 @@ require('nvim-treesitter.configs').setup {
     },
 }
 
+
+
+
+
+--    ██████                                ██           ██   ██
+--   ██░░░░██                      ██████  ░██          ░██  ░░
+--  ██    ░░   ██████  ██████████ ░██░░░██ ░██  █████  ██████ ██  ██████  ███████
+-- ░██        ██░░░░██░░██░░██░░██░██  ░██ ░██ ██░░░██░░░██░ ░██ ██░░░░██░░██░░░██
+-- ░██       ░██   ░██ ░██ ░██ ░██░██████  ░██░███████  ░██  ░██░██   ░██ ░██  ░██
+-- ░░██    ██░██   ░██ ░██ ░██ ░██░██░░░   ░██░██░░░░   ░██  ░██░██   ░██ ░██  ░██
+--  ░░██████ ░░██████  ███ ░██ ░██░██      ███░░██████  ░░██ ░██░░██████  ███  ░██
+--   ░░░░░░   ░░░░░░  ░░░  ░░  ░░ ░░      ░░░  ░░░░░░    ░░  ░░  ░░░░░░  ░░░   ░░
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect,noinsert'
+
+
 
 -- Compe setup
 require('compe').setup {
@@ -994,3 +958,209 @@ vim.api.nvim_set_keymap('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true 
 -- Map compe confirm and complete functions
 vim.api.nvim_set_keymap('i', '<cr>', 'compe#confirm("<cr>")', { expr = true })
 vim.api.nvim_set_keymap('i', '<c-space>', 'compe#complete()', { expr = true })
+
+
+
+
+
+
+--  ███████                     ██      ██                                     ██
+-- ░██░░░░██                   ░██     ░██                                    ░██
+-- ░██    ░██  ██████    ██████░██     ░██       ██████   ██████   ██████     ░██
+-- ░██    ░██ ░░░░░░██  ██░░░░ ░██████ ░██████  ██░░░░██ ░░░░░░██ ░░██░░█  ██████
+-- ░██    ░██  ███████ ░░█████ ░██░░░██░██░░░██░██   ░██  ███████  ░██ ░  ██░░░██
+-- ░██    ██  ██░░░░██  ░░░░░██░██  ░██░██  ░██░██   ░██ ██░░░░██  ░██   ░██  ░██
+-- ░███████  ░░████████ ██████ ░██  ░██░██████ ░░██████ ░░████████░███   ░░██████
+-- ░░░░░░░    ░░░░░░░░ ░░░░░░  ░░   ░░ ░░░░░    ░░░░░░   ░░░░░░░░ ░░░     ░░░░░░
+-- dashboard options
+vim.g.dashboard_default_executive = 'telescope'
+vim.g.dashboard_session_directory = vim.env.HOME .. '/local/share/nvim/sessions'
+
+
+
+
+
+
+vim.cmd [[
+    autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2
+]]
+
+vim.g.dashboard_custom_header = {
+    ' ██████▒██▓  █████▄  ▄█░ ▒█    ▄███████ ▒████▒  ▄██████ ▄███████▓    ▄█▀███   █   ░██  ███▄    █  ███▄    █ ▓█████  ██▀███░ ',
+    '▓██   ▒▓██▒▒██    ▒ ▓██░ ██▒   ▓  ██▒ ▓▒▓█  ░  ▒██    ▒ ▓  ██▒ ▓▒   ▓██ ▒ ██▒ ██  ▓██▒ ██ ▀█   █  ██ ▀█   █ ▓█   ▀ ▓██ ▒ ██▒',
+    '▒████ ░▒██▒░ ▓██▄   ▒██▀▀██░   ▒ ▓██░ ▒░▒███   ░ ▓██▄   ▒ ▓██░ ▒░   ▓██ ░▄█ ▒▓██  ▒██░▓██  ▀█ ██▒▓██  ▀█ ██▒▒███   ▓██ ░▄█ ▒',
+    '░▓█▒  ░░██░  ▒   ██▒░▓█ ░██    ░ ▓██▓ ░ ▒▓█░ ▄   ▒ ░ ██▒░ ▓██▓ ░    ▒██▀▀█▄  ▓▓█  ░██░▓██▒  ▐▌██▒▓██▒  ▐▌██▒▒▓█  ▄ ▒██▀▀█▄  ',
+    '░▓█░   ░██░▒▀█████▒▒░▓█▒░██▓     ▒██▒ ░ ░▓████▒▒██████▒▒  ▒██▒ ░    ░██▓ ▒██▒▒▒█████▓ ▒██░   ▓██░▒▀█░   ▓██░░▓████▒░▀█▓ ▒██▒',
+    ' ▒ ░   ░▓  ▒ ▒▓▒ ▒ ░ ▒ ░░▒░▒     ▒ ░░   ░░ ▒░ ░▒ ▒▓▒ ▒ ░  ▒ ░░      ░ ▒▓ ░▒▓░░▒▓▒ ▒ ▒ ░ ▒░   ▒ ▒ ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒▓ ░▒▓░',
+    ' ░      ▒ ░░ ░▒  ░ ░ ▒ ░ ▄  ▄░           ░ ░  ░░ ░▒  ░ ░    ░         ░▒ ░ ▒░░░▒░ ░ ░ ░ ░░   ░ ▒░░ ░░   ░ ▒░ ░ ░  ░  ░▒ ░ ▒░',
+    ' ░ ░    ▒ ░░  ░  ░   ▄█▄ █▀█▀█ ▄█▄         ░   ░  ░    ░    ░           ░░   ░  ░░░ ░ ░  ░   ░░░        ░ ░    ░  ▒  ░░   ░ ',
+    '                    ▀▀████▄█▄████▀▀                                      ░      ▒░           ░ ░        ░      ░  ░   ░     ',
+    '                        ▀█▀█▀                                                   ▒            ░                 ░      ░     ',
+}
+
+vim.g.dashboard_custom_footer =  {
+    '                                                                                                                            ',
+    '                                                                                                     ▄   ▄                  ',
+    '                                                                                                     █▀█▀█                  ',
+    '                                                                                                     █▄█▄█                  ',
+    '                                                                                                      ███  ▄▄               ',
+    '                                                                                                      ████▐█ █              ',
+    '    ▄▄▄▄  ▄▄▄ ▄▄▄▄▄ ▄▄▄▄▄   ▄▄  ▄▄▄   ▄▄▄▄ ▄▄▄▄▄                                                      ████   █              ',
+    '█████▄─▄▄▀█▄─▄█▄─▄▄─█▄─▄▄─██▀▄─██▄─▄███─▄▄─█─▄─▄─██████████████████████████████████████████████████   ████▄▄█▀   ███████████',
+    '██████─██─██─███─▄████─▄████─▀─███─██▀█─██─███─█████████████████████████████████████████████████████████████████████████████',
+    '█████▄▄▄▄██▄▄▄█▄▄▄███▄▄▄███▄▄█▄▄█▄▄▄▄▄█▄▄▄▄██▄▄▄████████████████████████████████████████████████████████████████████████████',
+    '████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████',
+    '▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀',
+    '                                                                                    Alice Davis <alice@gigantic.computer>   ',
+}
+
+
+
+
+
+
+
+--  ███████                                    ██████████                    ██
+-- ░██░░░░██                                  ░░░░░██░░░                    ░██
+-- ░██   ░██ ██████  ██████   ██████  █████       ░██      ██████   ██████  ░██  ██████
+-- ░███████ ░░██░░█ ██░░░░██ ██░░░░  ██░░░██      ░██     ██░░░░██ ██░░░░██ ░██ ██░░░░
+-- ░██░░░░   ░██ ░ ░██   ░██░░█████ ░███████      ░██    ░██   ░██░██   ░██ ░██░░█████
+-- ░██       ░██   ░██   ░██ ░░░░░██░██░░░░       ░██    ░██   ░██░██   ░██ ░██ ░░░░░██
+-- ░██      ░███   ░░██████  ██████ ░░██████      ░██    ░░██████ ░░██████  ███ ██████
+-- ░░       ░░░     ░░░░░░  ░░░░░░   ░░░░░░       ░░      ░░░░░░   ░░░░░░  ░░░ ░░░░░░
+-- prose tools
+
+-- plasticboy/vim-markdown
+vim.g.vim_markdown_folding_disabled = true
+vim.g.vim_markdown_no_default_key_mappings = false
+vim.g.vim_markdown_follow_anchor = true
+vim.g.vim_markdown_frontmatter = true
+vim.g.vim_markdown_strikethrough = true
+vim.g.vim_markdown_new_list_item_indent = 2
+vim.g.vim_markdown_no_extensions_in_markdown = true
+vim.g.vim_markdown_autowrite = true
+
+-- lexical
+vim.g['lexical#spell']      = 1
+vim.g['lexical#spelllang']  = { 'en_us', 'en_ca', 'en_gb' }
+vim.g['lexical#thesaurus']  = { '~/.config/nvim/spell/MobyThesaurus.txt' }
+vim.g['lexical#dictionary'] = { '/usr/share/dict/words' }
+
+-- Ditto
+vim.g.ditto_mode = 'paragraph'
+vim.cmd[[ let g:ditto_dir = &l:runtimepath . "/spell" ]]
+
+-- Prose Mode
+vim.cmd [[
+function! Prose(...)
+    if a:0 > 0
+        let pencil_opts = a:1
+    else
+        let pencil_opts = {}
+    end
+    call pencil#init(pencil_opts)
+    call lexical#init()
+    call litecorrect#init()
+    call textobj#quote#init({'educate': 1})
+    call textobj#sentence#init()
+
+    " Ditto Setup
+    DittoOn
+    DittoUpdate
+    nnoremap <buffer> <silent> ]o  <Plug>DittoNext    " Jump to the next word
+    nnoremap <buffer> <silent> [o  <Plug>DittoPrev    " Jump to the previous word
+    nnoremap <buffer> <silent> zdg <Plug>DittoGood    " Ignore the word under the cursor
+    nnoremap <buffer> <silent> zdw <Plug>DittoBad     " Stop ignoring the word under the cursor
+
+    " manual reformatting shortcuts
+    nnoremap <buffer> <silent> Q gqap
+    xnoremap <buffer> <silent> Q gq
+    nnoremap <buffer> <silent> <leader>qq vapJgqap
+
+    " toggle pencil autoformat
+    noremap <silent> <F7> :<C-u>PFormatToggle<cr>
+    inoremap <silent> <F7> <C-o>:PFormatToggle<cr>
+
+    " force top correction on most recent misspelling
+    nnoremap <buffer> <C-s> [s1z=<c-o>
+    inoremap <buffer> <C-s> <c-g>u<Esc>[s1z=`]A<c-g>u
+
+    " replace common punctuation
+    iabbrev <buffer> -- –
+    iabbrev <buffer> --- —
+    iabbrev <buffer> << «
+    iabbrev <buffer> >> »
+
+    " replace typographical quotes (reedes/vim-textobj-quote)
+    nnoremap <buffer> <leader>qe <Plug>ToggleEducate
+    nnoremap <silent> <buffer> <leader>qc <Plug>ReplaceWithCurly
+    nnoremap <silent> <buffer> <leader>qs <Plug>ReplaceWithStraight
+
+    " highlight words (reedes/vim-wordy)
+    noremap <silent> <buffer> <F6> :<C-u>NextWordy<cr>
+    xnoremap <silent> <buffer> <F6> :<C-u>NextWordy<cr>
+    inoremap <silent> <buffer> <F6> <C-o>:NextWordy<cr>
+
+endfunction
+
+" automatically initialize buffer by file type
+augroup pencil
+    autocmd!
+    autocmd FileType markdown,mkd,text call Prose({'wrap': 'soft'})
+    autocmd Filetype git,gitsendemail,*commit*,*COMMIT* call Prose({'wrap': 'hard', 'textwidth': 72, 'autoformat': 1})
+augroup END
+
+" invoke manually by command for other file types
+command! -nargs=0 Prose call Prose()
+]]
+
+-- Goyo Zen Mode
+vim.cmd [[
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 250
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = '#adadad'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.8
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 1
+
+" autocommands to dim surrounding paragraphs with limelight, when Goyo active
+function! Goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+  " ...
+endfunction
+
+function! Goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+  " ...
+endfunction
+
+autocmd! User GoyoEnter call Goyo_enter()
+autocmd! User GoyoLeave call Goyo_leave()
+
+function! ZenMode ()
+    DittoOff
+    Wordy off
+    Goyo 120x70%
+endfunction
+
+command! Zen :call ZenMode()
+]]
