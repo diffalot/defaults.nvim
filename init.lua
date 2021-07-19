@@ -42,16 +42,16 @@ vim.api.nvim_exec(
     false
 )
 
--- TODO: 
+-- TODO:
 -- - setup fish shell format and linting
+-- - lua formatting & linting
 -- - install development plugins
---   - install lua & formatting & linting
---   - todo-thingy
---   - trouble
---   - lsp-status in statusline
---   - install fterm or https://github.com/Lenovsky/nuake
+--   - https://github.com/Lenovsky/nuake
 --   - https://github.com/metakirby5/codi.vim
 --   - https://github.com/RRethy/vim-illuminate ??
+--   - install fterm?
+-- - gutentags status in statusline
+-- - gutentags use gtags as well as ctags and cache in ~/.cache/tags
 -- - vim plugin development
 --   - list tabpage buffers in telescope
 --   - rename tabs
@@ -63,8 +63,6 @@ vim.api.nvim_exec(
 -- - see what setting is needed to turn of conceal of `markdown` syntax for git messages and emails
 -- - checkout vmux for single nvim per tmux session https://github.com/jceb/vmux
 --   - this is probably way better: https://github.com/carlocab/tmux-nvr
--- - gutentags status in statusline
--- - gutentags use gtags as well as ctags and cache in ~/.cache/tags
 local use = require('packer').use
 require('packer').startup(function()
     use 'wbthomason/packer.nvim' -- Package manager
