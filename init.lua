@@ -72,7 +72,7 @@ require('packer').startup(function()
     use 'lambdalisue/gina.vim' -- minimal async git client
     use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
     use { 'folke/trouble.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' } } -- diagnostic quick list for whole workspace
+        requires = 'kyazdani42/nvim-web-devicons' } -- diagnostic quick list for whole workspace
     use { "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim" }
     use 'ludovicchabant/vim-gutentags' -- Automatic tags management
@@ -167,11 +167,11 @@ require("which-key").register({
     }
 }, { prefix = "<leader>" })
 require("which-key").register({
-    gR     = { "<cmd>TroubleToggle lsp_references<CR>", 
+    gR     = { "<cmd>TroubleToggle lsp_references<CR>",
 			"LSP Trouble" },
-    [']x'] = { "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>", 
+    [']x'] = { "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>",
 			"Next Trouble" },
-    ['[x'] = { "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>", 
+    ['[x'] = { "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>",
 			"Previous Trouble" },
 })
 
