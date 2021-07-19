@@ -294,9 +294,6 @@ vim.g.dashboard_custom_footer =  {
 
 -- prose options
 
--- ditto
-vim.g.ditto_mode = 'paragraph'
-
 -- plasticboy/vim-markdown
 vim.g.vim_markdown_folding_disabled = true
 vim.g.vim_markdown_no_default_key_mappings = false
@@ -310,8 +307,12 @@ vim.g.vim_markdown_autowrite = true
 -- lexical
 vim.g['lexical#spell']      = 1
 vim.g['lexical#spelllang']  = { 'en_us', 'en_ca', 'en_gb' }
-vim.g['lexical#thesaurus']  = { '~/.config/nvim/language/MobyThesaurus.txt' }
+vim.g['lexical#thesaurus']  = { '~/.config/nvim/spell/MobyThesaurus.txt' }
 vim.g['lexical#dictionary'] = { '/usr/share/dict/words' }
+
+-- Ditto 
+vim.g.ditto_mode = 'paragraph'
+vim.cmd[[ let g:ditto_dir = &l:runtimepath . "/spell" ]]
 
 -- Prose Mode
 vim.cmd [[
