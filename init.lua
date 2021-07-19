@@ -36,8 +36,8 @@ end
 vim.api.nvim_exec(
     [[
     augroup Packer
-    autocmd!
-    autocmd BufWritePost init.lua PackerCompile
+        autocmd!
+        autocmd BufWritePost init.lua PackerCompile
     augroup end
     ]],
     false
@@ -223,9 +223,9 @@ require("todo-comments").setup {
         PERF = { icon = " ", color = "default", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
     },
     highlight = {
-        before        = "bg",                    -- "fg" or "bg" or empty
+        before        = "bg",                  -- "fg" or "bg" or empty
         keyword       = "wide",                -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
-        after         = "fg",                  -- "fg" or "bg" or empty
+        after         = "bg",                  -- "fg" or "bg" or empty
         pattern       = [[.*<(KEYWORDS)\s*:]], -- pattern used for highlightng (vim regex)
         comments_only = true,                  -- uses treesitter to match keywords in comments only
         max_line_len  = 400,                   -- ignore lines longer than this
@@ -318,7 +318,7 @@ vim.g['lexical#spelllang']  = { 'en_us', 'en_ca', 'en_gb' }
 vim.g['lexical#thesaurus']  = { '~/.config/nvim/spell/MobyThesaurus.txt' }
 vim.g['lexical#dictionary'] = { '/usr/share/dict/words' }
 
--- Ditto 
+-- Ditto
 vim.g.ditto_mode = 'paragraph'
 vim.cmd[[ let g:ditto_dir = &l:runtimepath . "/spell" ]]
 
@@ -547,7 +547,7 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 -- Gitsigns
 require('gitsigns').setup {
     signs = {
-        add          = { hl = 'GitGutterAdd', text = '+' },
+        add          = { hl = 'GitGutterAdd',    text = '+' },
         change       = { hl = 'GitGutterChange', text = '~' },
         delete       = { hl = 'GitGutterDelete', text = '_' },
         topdelete    = { hl = 'GitGutterDelete', text = '‾' },
