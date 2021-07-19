@@ -85,6 +85,7 @@ require('packer').startup(function()
     use 'nvim-treesitter/nvim-treesitter-textobjects'
     use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
     use 'williamboman/nvim-lsp-installer' -- add LspInstall <server> command
+    use 'kosayoda/nvim-lightbulb' -- display lightbulb in gutter when lsp code actions are available
     use 'hrsh7th/nvim-compe' -- Autocompletion plugin
     use 'L3MON4D3/LuaSnip' -- Snippets plugin
     -- Lua Development
@@ -135,6 +136,9 @@ require('packer').startup(function()
     -- theme development
     use 'norcalli/nvim-colorizer.lua'
 end)
+
+-- vim-lightbulb (watch for lsp code actions)
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 
 -- fern config
 vim.g['fern#renderer'] = "nerdfont"
