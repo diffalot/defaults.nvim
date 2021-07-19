@@ -185,6 +185,8 @@ require("which-key").register({
         d    = { "<cmd>TroubleToggle lsp_document_diagnostics<CR>",    "Document Trouble" },
         q    = { "<cmd>TroubleToggle quickfix<CR>",                    "Quickfix Trouble" },
         l    = { "<cmd>TroubleToggle loclist<CR>",                     "Loclist Trouble" },
+        t    = { "<cmd>TodoTrouble<CR>",                               "Todo Trouble" },
+        o    = { "<cmd>TodoTelescope<CR>",                             "Telescope Todos" },
     }
 }, { prefix = "<leader>" })
 require("which-key").register({
