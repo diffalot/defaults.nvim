@@ -466,19 +466,19 @@ let g:Lsp_status = luaeval('_G.lsp_statusline.status')
 --Set statusbar
 vim.g.lightline = {
     colorscheme = 'one',
-    tabline = { 
-        left = { 
+    tabline = {
+        left = {
             { 'tabs' }
         },
         right = {
         }
     },
-    active = { 
-        left = { 
-            { 'mode', 'pencilmode', 'paste' }, 
-            { 'gitbranch', 'readonly', 'filename', 'modified' } 
+    active = {
+        left = {
+            { 'mode', 'pencilmode', 'paste' },
+            { 'gitbranch', 'readonly', 'filename', 'modified' }
         },
-        right = { 
+        right = {
             { 'charvaluehex', 'lineinfo' },
             { 'percent' },
             { 'fileformat', 'fileencoding', 'filetype', 'lspstatus' }
