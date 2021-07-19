@@ -622,48 +622,51 @@ require('telescope').setup {
 }
 
 -- <leader> keybindings
--- TODO: use a list of buffers associated with a tab rather than CWD buffers
--- TODO: when selecting from "all buffers" switch to containing tab then open buffer
-tele_ivy = require('telescope.themes').get_ivy
+-- TODO: add descriptions for mappings defined elsewhere
+-- TODO: add more prefixes
+--   - r = { name = "REPLs/Calculators" }
+TeleIvy = require('telescope.themes').get_ivy
 require("which-key").register({
-    ["<space>"] = { "<cmd>lua require('telescope.builtin').buffers( tele_ivy({ winblend = 10, only_cwd = true }) )<CR>",
+    ["<space>"] = { "<cmd>lua require('telescope.builtin').buffers( TeleIvy({ winblend = 10, only_cwd = true }) )<CR>",
 					"Tabpage Buffers" },
-    ["?"]       = { "<cmd>lua require('telescope.builtin').oldfiles( tele_ivy({ winblend = 10}) )<CR>",
+    ["?"]       = { "<cmd>lua require('telescope.builtin').oldfiles( TeleIvy({ winblend = 10}) )<CR>",
                     "Recent Files"},
-    b           = { "<cmd>lua require('telescope.builtin').buffers( tele_ivy({ winblend = 10}) )<CR>",
+    b           = { "<cmd>lua require('telescope.builtin').buffers( TeleIvy({ winblend = 10}) )<CR>",
 					"All Buffers" },
-    h           = { "<cmd>lua require('telescope.builtin').help_tags( tele_ivy({ winblend = 10}) )<CR>",
+    h           = { "<cmd>lua require('telescope.builtin').help_tags( TeleIvy({ winblend = 10}) )<CR>",
                     "Search Help Tags" },
     j           = { "<cmd>tabnew ~/cronofiles/journal/index.md<CR>",
                     "Journal" },
+-- mappings defined elsewhere
     q           = { name = "Prose" },
     g           = { name = "Git" },
+    w = {
+        name = "Workspace Management",
+--      -- move/resize windows
+--      -- open files newtab/vsplit/hsplit
+--      -- add/rm tabs
+--      -- mv/cp/rm buffers b/w tabs
+        a = { name = "Add Folder to LSP Workspace" },
+        r = { name = "Remove Folder from LSP Workspace" },
+        l = { name = "List LSP Workspace Folders" },
+    },
     s = {
         name = "Search",
-        f = { "<cmd>lua require('telescope.builtin').fd( tele_ivy({ winblend = 10}) )<CR>",
+        f = { "<cmd>lua require('telescope.builtin').fd( TeleIvy({ winblend = 10}) )<CR>",
 				"Search for File" },
-        g = { "<cmd>lua require('telescope.builtin').live_grep( tele_ivy({ winblend = 10}) )<CR>",
+        g = { "<cmd>lua require('telescope.builtin').live_grep( TeleIvy({ winblend = 10}) )<CR>",
 				"Live Grep" },
-        s = { "<cmd>lua require('telescope.builtin').grep_string( tele_ivy({ winblend = 10}) )<CR>",
+        s = { "<cmd>lua require('telescope.builtin').grep_string( TeleIvy({ winblend = 10}) )<CR>",
 				"Search For String Under Cursor" },
-        b = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find( tele_ivy({ winblend = 10}) )<CR>",
+        b = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find( TeleIvy({ winblend = 10}) )<CR>",
 				"Search in Current Buffer" },
-        t = { "<cmd>lua require('telescope.builtin').treesitter( tele_ivy({ winblend = 10}) )<CR>",
+        r = { "<cmd>lua require('telescope.builtin').treesitter( TeleIvy({ winblend = 10}) )<CR>",
 				"Search Treesitter Symbols" },
-        t = { "<cmd>lua require('telescope.builtin').tags( tele_ivy({ winblend = 10}) )<CR>",
+        t = { "<cmd>lua require('telescope.builtin').tags( TeleIvy({ winblend = 10}) )<CR>",
 				"Search Tags" },
-        o = { "<cmd>lua require('telescope.builtin').tags( tele_ivy({ winblend = 10, only_current_buffer = true }) )<CR>",
+        o = { "<cmd>lua require('telescope.builtin').tags( TeleIvy({ winblend = 10, only_current_buffer = true }) )<CR>",
                 "Search Tags in Current Buffer" },
     },
-    -- TODO: add descriptions for mappings defined elsewhere
-    -- TODO: figure out how to do treesitter selections and motions
-    -- TODO: add more prefixes
-    --   - r = { name = "REPLs/Calculators" }
-    --   - w = { name = "Workspace Management"
-    --              -- move/resize windows
-    --              -- open files newtab/vsplit/hsplit
-    --              -- add/rm tabs
-    --              -- mv/cp/rm buffers b/w tabs
 }, { prefix = "<leader>" })
 
 -- Highlight on yank
