@@ -73,6 +73,8 @@ require('packer').startup(function()
     use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
     use { 'folke/trouble.nvim',
         requires = { 'kyazdani42/nvim-web-devicons' } } -- diagnostic quick list for whole workspace
+    use { "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim" }
     use 'ludovicchabant/vim-gutentags' -- Automatic tags management
     -- UI to select things (files, grep results, open buffers...)
     use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
@@ -172,6 +174,40 @@ require("which-key").register({
     ['[x'] = { "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>", 
 			"Previous Trouble" },
 })
+
+-- todo-comments
+require("todo-comments").setup {
+    keywords = {
+        FIX  = {
+            icon  = " ", -- icon used for the sign, and in search results
+            color = "error", -- can be a hex color, or a named color (see below)
+            alt   = { "FIXME", "BUG", "FIXIT", "ISSUE", "OH SHIT" }, -- a set of other keywords that all map to this FIX keywords
+            -- signs = false, -- configure signs for some keywords individually
+        },
+        HACK = { icon = " ", color = "error",   alt = { "XXX", "NO", "CURSED", "EXORCISM NEEDED", "OK, SO", "WTF" } },
+        WARN = { icon = " ", color = "warning", alt = { "WARNING", "WOW", "DRAGONS", "UH OH", "HWAT", "WHAT" } },
+        TODO = { icon = " ", color = "warning", alt = { "PLEASE", "UNFORTUNATELY", "WELL, ACTUALLY" } },
+        HELP = { icon = " ", color = "info",    alt = { "CHECK", "CHECKME", "HELP WANTED", "WELL", "MAYBE" } },
+        NOTE = { icon = " ", color = "hint",    alt = { "NOTE", "LOOK", "IMPORTANT", "INFO", "YES", "YAY" } },
+        PERF = { icon = " ", color = "default", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+    },
+    highlight = {
+        before        = "bg",                    -- "fg" or "bg" or empty
+        keyword       = "wide",                -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
+        after         = "fg",                  -- "fg" or "bg" or empty
+        pattern       = [[.*<(KEYWORDS)\s*:]], -- pattern used for highlightng (vim regex)
+        comments_only = true,                  -- uses treesitter to match keywords in comments only
+        max_line_len  = 400,                   -- ignore lines longer than this
+        exclude       = {},                    -- list of file types to exclude highlighting
+    },
+    colors = {
+        error   = { "LspDiagnosticsDefaultError",         "ErrorMsg",   "#DC2626" },
+        warning = { "LspDiagnosticsDefaultWarning",       "WarningMsg", "#FBBF24" },
+        info    = { "LspDiagnosticsDefaultInformation",                 "#2563EB" },
+        hint    = { "LspDiagnosticsDefaultHint",                        "#10B981" },
+        default = { "Identifier",                                       "#7C3AED" },
+    },
+}
 
 -- fern config
 vim.g['fern#renderer'] = "nerdfont"
