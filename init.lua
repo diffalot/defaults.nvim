@@ -144,6 +144,8 @@ require('packer').startup(function()
     -- terminals
     use 'Lenovsky/nuake'
     use 'numToStr/FTerm.nvim'
+    -- REPLs
+    use 'metakirby5/codi.vim'
 end)
 
 -- nuake dropdown terminal
@@ -163,6 +165,11 @@ require('FTerm').setup({
     border = 'single' -- or 'double'
 })
 -- map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
+
+-- Codi REPLs
+vim.g['codi#rightsplit'] = false
+vim.g['codi#rightalign'] = false
+vim.g['codi#virtual_text_prefix'] = '✶ ❱ '
 
 -- vim-lightbulb (watch for lsp code actions)
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
