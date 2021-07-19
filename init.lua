@@ -47,7 +47,6 @@ vim.api.nvim_exec(
 --   - https://github.com/kosayoda/nvim-lightbulb shows lsp code actions are available in gutter
 --   - todo-thingy
 --   - trouble
---   - https://github.com/rhysd/git-messenger.vim
 --   - lsp-status in statusline
 --   - install fterm or https://github.com/Lenovsky/nuake
 --   - https://github.com/metakirby5/codi.vim
