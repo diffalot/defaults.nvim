@@ -140,7 +140,28 @@ require('packer').startup(function()
     use 'junegunn/limelight.vim'
     -- theme development
     use 'norcalli/nvim-colorizer.lua'
+    -- terminals
+    use 'Lenovsky/nuake'
+    use 'numToStr/FTerm.nvim'
 end)
+
+-- nuake dropdown terminal
+vim.g.nuake_position = 'top'     -- (default 'bottom')	Set the Nuake position to 'bottom', 'right', 'top' or 'left'.
+vim.g.nuake_size     = 0.35      -- (default 0.25)	    Set the Nuake size in percent.
+vim.g.nuake_per_tab  = true      -- (default 0)
+
+-- floating terminal
+require('FTerm').setup({
+    cmd = "cd ~;  tmux new-session -A -s floating",
+    dimensions  = {
+        height = 0.4,
+        width = 0.56,
+        x = 1.3,
+        y = 0.00
+    },
+    border = 'single' -- or 'double'
+})
+-- map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
 
 -- vim-lightbulb (watch for lsp code actions)
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
@@ -155,7 +176,9 @@ require("trouble").setup({
     auto_fold = false, -- automatically fold a file trouble list at creation
 })
 require("which-key").register({
-    x = {
+    ['~'] = { "<cmd>Nuake<CR>", "Terminal for Tab" },
+    ['`'] = { "<cmd>lua require('FTerm').toggle()<CR>", "Floating Terminal" },
+    x     = {
         name = 'Trouble Diagnostics',
         x    = { "<cmd>TroubleToggle<CR>",                             "Toggle Trouble" },
         w    = { "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>",   "Workspace Trouble" },
