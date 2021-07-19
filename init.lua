@@ -70,7 +70,8 @@ require('packer').startup(function()
         requires = 'kyazdani42/nvim-web-devicons' } -- diagnostic quick list for whole workspace
     use { "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim" }
-    use 'ludovicchabant/vim-gutentags' -- Automatic tags management
+    use 'ludovicchabant/vim-gutentags' -- Gutentags - https://github.com/ludovicchabant/vim-gutentags
+    use 'skywind3000/gutentags_plus' -- gtags for Gutentags
     -- UI to select things (files, grep results, open buffers...)
     use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
     use 'folke/tokyonight.nvim' -- Ocean/Blue Theme with Treesitter Highlighting for neovim >= 0.5
@@ -295,6 +296,15 @@ vim.g.dashboard_custom_footer =  {
     '▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀',
     '                                                                                    Alice Davis <alice@gigantic.computer>   ',
 }
+
+-- Gutentags
+vim.g.gutentags_enabled=1
+vim.g.gutentags_plus_nomap = 1
+vim.g.gutentags_modules = { 'ctags', 'gtags_cscope' }
+vim.g.gutentags_project_root = { '.root', 'Makefile', '.git', '.diffalot' }
+vim.g.gutentags_add_default_project_roots = 1
+vim.g.gutentags_cache_dir = vim.fn.expand('~/.cache/tags')
+vim.g.gutentags_plus_switch = 1
 
 -- prose options
 
