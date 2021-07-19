@@ -97,6 +97,7 @@ require('packer').startup(function()
     -- Lua Development
     use 'euclidianAce/BetterLua.vim' -- lua highlighting
     use 'rafcamlet/nvim-luapad' -- lua REPL
+    use 'milisims/nvim-luaref' -- lua 5.1 docs
     -- SpaceEmacs Style Keybindings Help
     use {
         "folke/which-key.nvim",
