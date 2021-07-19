@@ -43,16 +43,12 @@ vim.api.nvim_exec(
     false
 )
 
--- TODO:
+-- TODO: figure out how to do treesitter selections and motions
+-- TODO: use a list of buffers associated with a tab rather than CWD buffers
+-- TODO: when selecting from "all buffers" switch to containing tab then open buffer
 -- - setup fish shell format and linting
 -- - lua formatting & linting
--- - install development plugins
---   - https://github.com/Lenovsky/nuake
---   - https://github.com/metakirby5/codi.vim
---   - https://github.com/RRethy/vim-illuminate ??
---   - install fterm?
--- - gutentags status in statusline
--- - gutentags use gtags as well as ctags and cache in ~/.cache/tags
+-- - add nvim-dap debugging
 -- - vim plugin development
 --   - list tabpage buffers in telescope
 --   - rename tabs
@@ -63,7 +59,7 @@ vim.api.nvim_exec(
 -- - check this out when you need a repl not provided by codi https://github.com/hkupty/iron.nvim
 -- - see what setting is needed to turn of conceal of `markdown` syntax for git messages and emails
 -- - checkout vmux for single nvim per tmux session https://github.com/jceb/vmux
---   - this is probably way better: https://github.com/carlocab/tmux-nvr
+-- - this is probably way better, but nvr seem to be due for a round of improvements according to the issues: https://github.com/carlocab/tmux-nvr
 local use = require('packer').use
 require('packer').startup(function()
     use 'wbthomason/packer.nvim' -- Package manager
