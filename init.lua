@@ -590,9 +590,6 @@ require('gitsigns').setup {
         ['n ]g'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
         ['n [g'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
 
-        ['n <leader>gn'] = '<cmd>lua require"gitsigns.actions".next_hunk()<CR>',
-        ['n <leader>gp'] = '<cmd>lua require"gitsigns.actions".prev_hunk()<CR>',
-
         ['n <leader>gs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
         ['v <leader>gs'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
         ['n <leader>gu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
@@ -609,7 +606,7 @@ require('gitsigns').setup {
 }
 
 -- Telescope
-local actions = require("telescope.actions")
+-- local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 require('telescope').setup {
     defaults = {
