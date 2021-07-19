@@ -533,22 +533,27 @@ vim.g.lightline = {
     },
     active = {
         left = {
-            { 'mode', 'pencilmode', 'paste' },
-            { 'gitbranch', 'readonly', 'filename', 'modified' }
+            { 'mode', 'paste' },
+            { 'gitbranch', 'readonly', 'filename', 'modified' },
+            { 'pencilmode', 'luapad_status', 'luapad_msg' },
+            { 'lspstatus', 'gutentags' },
         },
         right = {
             { 'charvaluehex', 'lineinfo' },
             { 'percent' },
-            { 'fileformat', 'fileencoding', 'filetype', 'lspstatus' }
+            { 'fileformat', 'fileencoding', 'filetype' }
         }
     },
     component = {
         charvaluehex = '0x%B'
     },
     component_function = {
-        gitbranch = 'fugitive#head',
+        gitbranch = 'gina#component#repo#branch',
         pencilmode = 'PencilMode',
         lspstatus = 'Lsp_status',
+        gutentags = 'gutentags#statusline',
+        luapad_msg = 'luapad#lightline_msg',
+        luapad_status = 'luapad#lightline_status',
     },
 }
 
