@@ -21,6 +21,7 @@
 
 vim.cmd [[
 if &shell =~# 'fish$'
+    let $SHELL='/bin/zsh'
     set shell=/bin/zsh
 endif
 ]]
