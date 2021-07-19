@@ -69,6 +69,8 @@ require('packer').startup(function()
     use 'rhysd/git-messenger.vim' -- display git commit message for current line
     use 'lambdalisue/gina.vim' -- minimal async git client
     use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
+    use { 'folke/trouble.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons' } } -- diagnostic quick list for whole workspace
     use 'ludovicchabant/vim-gutentags' -- Automatic tags management
     -- UI to select things (files, grep results, open buffers...)
     use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
@@ -140,6 +142,34 @@ end)
 
 -- vim-lightbulb (watch for lsp code actions)
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+
+-- trouble
+require("trouble").setup({
+    position = "bottom", -- position of the list can be: bottom, top, left, right
+    height = 15, -- height of the trouble list when position is top or bottom
+    auto_open = true, -- automatically open the list when you have diagnostics
+    auto_close = true, -- automatically close the list when you have no diagnostics
+    auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+    auto_fold = false, -- automatically fold a file trouble list at creation
+})
+require("which-key").register({
+    x = {
+        name = 'Trouble Diagnostics',
+        x    = { "<cmd>TroubleToggle<CR>",                             "Toggle Trouble" },
+        w    = { "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>",   "Workspace Trouble" },
+        d    = { "<cmd>TroubleToggle lsp_document_diagnostics<CR>",    "Document Trouble" },
+        q    = { "<cmd>TroubleToggle quickfix<CR>",                    "Quickfix Trouble" },
+        l    = { "<cmd>TroubleToggle loclist<CR>",                     "Loclist Trouble" },
+    }
+}, { prefix = "<leader>" })
+require("which-key").register({
+    gR     = { "<cmd>TroubleToggle lsp_references<CR>", 
+			"LSP Trouble" },
+    [']x'] = { "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>", 
+			"Next Trouble" },
+    ['[x'] = { "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>", 
+			"Previous Trouble" },
+})
 
 -- fern config
 vim.g['fern#renderer'] = "nerdfont"
@@ -480,13 +510,17 @@ require('gitsigns').setup {
 }
 
 -- Telescope
+local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
 require('telescope').setup {
     defaults = {
         mappings = {
             i = {
+                ["<C-t>"] = trouble.open_with_trouble,
                 ['<C-u>'] = false,
                 ['<C-d>'] = false,
             },
+            n = { ["<C-t>"] = trouble.open_with_trouble },
         },
     },
 }
