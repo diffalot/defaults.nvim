@@ -44,7 +44,6 @@ vim.api.nvim_exec(
 -- - setup fish shell format and linting
 -- - install development plugins
 --   - install lua & formatting & linting
---   - https://github.com/kosayoda/nvim-lightbulb shows lsp code actions are available in gutter
 --   - todo-thingy
 --   - trouble
 --   - lsp-status in statusline
