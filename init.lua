@@ -103,8 +103,9 @@ require("packer").startup(function()
     use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
 
     -- TreeSitter - Highlight, edit, and navigate code using a fast incremental parsing library
-    use "nvim-treesitter/nvim-treesitter"
+    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
     use "nvim-treesitter/nvim-treesitter-textobjects"
+    use "nvim-treesitter/playground" -- treesitter debugging
 
     -- Syntax Highlighting
     use "inkch/vim-fish"
