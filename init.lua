@@ -131,6 +131,7 @@ require("packer").startup(function()
         "nvim-telescope/telescope.nvim",
         requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
     }
+    use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
     -- Keybindings Navigation
     use "folke/which-key.nvim"
@@ -257,11 +258,21 @@ local trouble = require("trouble.providers.telescope")
 require("telescope").setup {
     defaults = {
         mappings = {
-            i = { ["<C-t>"] = trouble.open_with_trouble, ["<C-u>"] = false, ["<C-d>"] = false },
+            i = { ["<esc>"] = actions.close, ["<C-t>"] = trouble.open_with_trouble, ["<C-u>"] = false, ["<C-d>"] = false },
             n = { ["<C-t>"] = trouble.open_with_trouble },
         },
     },
+    extensions = {
+        fzf = {
+            fuzzy = true,                   -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "ignore_case",      -- or "ignore_case" or "respect_case"
+                                            -- the default case_mode is "smart_case"
+        }
+    }
 }
+require("telescope").load_extension("fzf")
 
 -- fern config
 vim.g["fern#renderer"] = "nerdfont"
