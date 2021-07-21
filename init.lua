@@ -435,13 +435,13 @@ require("todo-comments").setup {
 }
 
 -- Gutentags
-vim.g.gutentags_enabled = 1
-vim.g.gutentags_plus_nomap = 1
+vim.g.gutentags_enabled = true
+vim.g.gutentags_plus_nomap = true
 vim.g.gutentags_modules = { "ctags", "gtags_cscope" }
 vim.g.gutentags_project_root = { ".root", "Makefile", ".git", ".diffalot" }
-vim.g.gutentags_add_default_project_roots = 1
+vim.g.gutentags_add_default_project_roots = true
 vim.g.gutentags_cache_dir = vim.fn.expand("~/.cache/tags")
-vim.g.gutentags_plus_switch = 1
+vim.g.gutentags_plus_switch = true
 
 -- Codi REPLs
 vim.g["codi#rightsplit"] = false
@@ -1007,7 +1007,7 @@ vim.g.vim_markdown_no_extensions_in_markdown = true
 vim.g.vim_markdown_autowrite = true
 
 -- lexical
-vim.g["lexical#spell"] = 1
+vim.g["lexical#spell"] = true
 vim.g["lexical#spelllang"] = { "en_us", "en_ca", "en_gb" }
 vim.g["lexical#thesaurus"] = { "~/.config/nvim/spell/MobyThesaurus.txt" }
 vim.g["lexical#dictionary"] = { "/usr/share/dict/words" }
