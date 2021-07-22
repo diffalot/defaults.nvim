@@ -23,11 +23,26 @@
 -- TODO: when selecting from "all buffers" switch to containing tab then open buffer
 -- - setup fish shell format and linting
 -- - add nvim-dap debugging
+-- - figure out how to have tilish use easy mode and HJKL too for vim navigation
+--   - keybindings are intercepted by tmux and window switching in vim is done with send keys
+--   - easy mode in tilish is complicating it, but I am not sure why I still
+--     have HJKL working after turning on easy mode to use arrows, maybe the
+--     tmux-navigator plugin set up hjkl?
+-- - set most plugins to be optionally loaded with triggers to start loading
+-- - check available compe sources
+-- - figure out if current function signatures are helpful https://github.com/ray-x/lsp_signature.nvim
+-- - figure out if popup prompts/info from lsp is needed: lspsaga
+-- - fix lsp statusline
+-- - Verify ctags and gtags are in cache
+-- - add visualizers for tags and symbols
+-- - set up stylua
 -- - vim plugin development
+--   - continue working through: https://www.2n.pl/blog/how-to-make-ui-for-neovim-plugins-in-lua
 --   - list tabpage buffers in telescope
 --   - rename tabs
 --   - https://github.com/vim-jp/vital.vim
 -- - https://github.com/tpope/vim-abolish
+-- - convert prose setup to lua as much as possible
 -- - switch to lualine?
 -- - use themis for testing?
 -- - check this out when you need a repl not provided by codi https://github.com/hkupty/iron.nvim
