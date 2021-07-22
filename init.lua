@@ -106,10 +106,13 @@ require("packer").startup(function()
     use "neovim/nvim-lspconfig" -- Collection of configurations for built-in LSP client
     use "kabouzeid/nvim-lspinstall" -- add LspInstall <server> command
     use "hrsh7th/nvim-compe" -- Autocompletion plugin
-    use "L3MON4D3/LuaSnip" -- Snippets plugin
     use "kosayoda/nvim-lightbulb" -- display lightbulb in gutter when lsp code actions are available
     use "nvim-lua/lsp-status.nvim" -- statusline info for lsp client
     use "yamatsum/nvim-nonicons" -- more icons in a font
+
+    -- Snippets
+    use "L3MON4D3/LuaSnip" -- Snippets plugin
+    use 'rafamadriz/friendly-snippets' -- snippets gatered from all over
 
     -- Code Diagnostics
     use "ludovicchabant/vim-gutentags" -- Gutentags - https://github.com/ludovicchabant/vim-gutentags
