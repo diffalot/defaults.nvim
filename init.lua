@@ -355,7 +355,7 @@ vim.g.nuake_per_tab = true -- (default 0)
 
 -- floating terminal
 require("FTerm").setup({
-    cmd = "cd ~;  tmux new-session -A -s floating",
+    cmd = "cd ~;  tmux new-session -A -s $(tmux display-message -p '#S')-floating",
     dimensions = { height = 0.4, width = 0.56, x = 1.3, y = 0.00 },
     border = "single", -- or 'double'
 })
