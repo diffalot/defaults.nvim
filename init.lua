@@ -1180,13 +1180,13 @@ command! -nargs=0 Prose call Prose()
 -- Goyo Zen Mode
 vim.cmd [[
 " Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 250
+let g:limelight_conceal_ctermfg = 242
 
 " Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = '#adadad'
+let g:limelight_conceal_guifg = '#404040'
 
 " Default: 0.5
-let g:limelight_default_coefficient = 0.8
+let g:limelight_default_coefficient = 0.2
 
 " Number of preceding/following paragraphs to include (default: 0)
 let g:limelight_paragraph_span = 1
@@ -1222,7 +1222,7 @@ autocmd! User GoyoLeave call Goyo_leave()
 function! ZenMode ()
     DittoOff
     Wordy off
-    Goyo 120x70%
+    Goyo 100x70%
 endfunction
 
 command! Zen :call ZenMode()
