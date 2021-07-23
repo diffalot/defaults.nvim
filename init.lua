@@ -450,7 +450,7 @@ vim.g["codi#virtual_text_prefix"] = "✶ ❱ "
 -- luapad
 require"luapad".config {
     count_limit = 150000,
-    error_indicator = false,
+    error_indicator = true,
     eval_on_move = true,
     error_highlight = "WarningMsg",
     on_init = function() print "Hello from Luapad!" end,
