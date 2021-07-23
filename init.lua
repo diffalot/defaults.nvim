@@ -49,7 +49,7 @@
 -- - see what setting is needed to turn of conceal of `markdown` syntax for git messages and emails
 -- - checkout vmux for single nvim per tmux session https://github.com/jceb/vmux
 -- - this is probably way better, but nvr seem to be due for a round of improvements according to the issues: https://github.com/carlocab/tmux-nvr
--- vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
+
 vim.cmd [[
 if &shell =~# 'fish$'
     let $SHELL='/bin/zsh'
@@ -70,6 +70,8 @@ endif
 local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    -- only needed for first run of paker luarocks intall (hererocks)
+    -- vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
     vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
 end
 
