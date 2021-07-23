@@ -283,9 +283,6 @@ vim.g.material_italic_variables = false
 vim.g.material_borders = true
 vim.g.material_hide_eob = true
 vim.g.material_disable_background = true
-require("which-key").register({
-    c = { "<cmd>lua require('material.functions').toggle_style()<CR>", "Cycle Material Style" },
-}, { prefix = "<leader>" })
 require("material").set()
 
 --    ██████                ██
@@ -334,6 +331,8 @@ require("which-key").register({ e = { "<cmd>Fern . -reveal={%}<CR>", "Explore Di
 
 -- TODO: resize windows and switch windows with arrows and hjkl
 -- TODO: match with tmux/nvim navigation with arrows and hjkl
+-- It looks like <alt + arrow> mappnigs in tmux should be set up the same as
+-- <alt + hjkl> currently are
 -- tab management
 vim.g.rooter_cd_cmd = "tcd"
 vim.g.rooter_targets = "/,*"
@@ -374,33 +373,9 @@ require("trouble").setup({
     auto_open = false, -- automatically open the list when you have diagnostics
     auto_close = false, -- automatically close the list when you have no diagnostics
     auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
-    auto_fold = false, -- automatically fold a file trouble list at creation
+    auto_fold = true, -- automatically fold a file trouble list at creation
 })
-require("which-key").register({
-    ["`"] = { "<cmd>Nuake<CR>", "Terminal for Tab" },
-    ["~"] = { "<cmd>lua require('FTerm').toggle()<CR>", "Floating Terminal" },
-    x = {
-        name = "Trouble Diagnostics",
-        x = { "<cmd>TroubleToggle<CR>", "Toggle Trouble" },
-        w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", "Workspace Trouble" },
-        d = { "<cmd>TroubleToggle lsp_document_diagnostics<CR>", "Document Trouble" },
-        q = { "<cmd>TroubleToggle quickfix<CR>", "Quickfix Trouble" },
-        l = { "<cmd>TroubleToggle loclist<CR>", "Loclist Trouble" },
-        t = { "<cmd>TodoTrouble<CR>", "Todo Trouble" },
-        o = { "<cmd>TodoTelescope<CR>", "Telescope Todos" },
-    },
-}, { prefix = "<leader>" })
-require("which-key").register({
-    gR = { "<cmd>TroubleToggle lsp_references<CR>", "LSP Trouble" },
-    ["]x"] = {
-        "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>",
-        "Next Trouble",
-    },
-    ["[x"] = {
-        "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>",
-        "Previous Trouble",
-    },
-})
+-- Trouble keybindings have been moved to main mapping section
 
 -- todo-comments
 require("todo-comments").setup {
@@ -539,6 +514,21 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 -- ░██░░██ ░██░░░░    ██      ░██   ░    ░██ ██░░░░██ ░██░░░  ░██░░░  ░██ ░██  ░██ ░░░░░██ ░░░░░██
 -- ░██ ░░██░░██████  ██       ░██        ░██░░████████░██     ░██     ░██ ███  ░██  █████  ██████
 -- ░░   ░░  ░░░░░░  ░░        ░░         ░░  ░░░░░░░░ ░░      ░░      ░░ ░░░   ░░  ░░░░░  ░░░░░░
+--
+--   - r = { name = "REPLs/Calculators" }
+    -- w = {
+        -- name = "Workspace Management",
+        --      -- move/resize windows
+        --      -- open files newtab/vsplit/hsplit
+        --      -- add/rm tabs
+        --      -- mv/cp/rm buffers b/w tabs
+
+TeleIvy = require("telescope.themes").get_ivy
+
+-- Remap space as leader key
+vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Gitsigns
 require("gitsigns").setup {
@@ -549,7 +539,6 @@ require("gitsigns").setup {
         topdelete = { hl = "GitGutterDelete", text = "‾" },
         changedelete = { hl = "GitGutterChange", text = "~" },
     },
-    -- CHECKME: Not sure if the [g and ]g got mangled
     keymaps = {
         -- Default keymap options
         noremap = true,
@@ -579,23 +568,33 @@ require("gitsigns").setup {
     },
 }
 
--- Remap space as leader key
-vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
--- Remap for dealing with word wrap
-vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? 'gk' : 'k'",
-                        { noremap = true, expr = true, silent = true })
-vim.api.nvim_set_keymap("n", "j", "v:count == 0 ? 'gj' : 'j'",
-                        { noremap = true, expr = true, silent = true })
-
--- <leader> keybindings
--- TODO: add descriptions for mappings defined elsewhere
--- TODO: add more prefixes
---   - r = { name = "REPLs/Calculators" }
-TeleIvy = require("telescope.themes").get_ivy
+-- visual mode mappings
 require("which-key").register({
+    ga = { "<plug>(EasyAlign)", "Easy Align" },
+}, { mode = "x" })
+
+-- normal mode mappings
+require("which-key").register({
+    -- vim defaults
+    ["g"] = { name = "Global" },
+    ["z"] = { name = "Utilities" },
+    -- mappings defined elsewhere
+    ["<leader>"] = { name = "<leader>" },
+    ["["] = { name = "previous..." },
+    ["]"] = { name = "next..." },
+    gR = { "<cmd>TroubleToggle lsp_references<CR>", "LSP Trouble" },
+    ga = { "<plug>(EasyAlign)", "Easy Align" },
+    k = { "v:count == 0 ? 'gk' : 'k'", "k one line up when wrapped" },
+    j = { "v:count == 0 ? 'gj' : 'j'", "j one line up when wrapped" },
+    Y = { "y$", "Yank to Line End" },
+})
+
+-- normal mode <leader> mappings
+require("which-key").register({
+    -- mappings defined elsewhere
+    q = { name = "Prose" },
+    g = { name = "Git" },
+    -- mapped here
     ["<space>"] = {
         "<cmd>lua require('telescope.builtin').buffers( TeleIvy({ winblend = 10, only_cwd = true }) )<CR>",
         "Tabpage Buffers",
@@ -603,6 +602,25 @@ require("which-key").register({
     ["?"] = {
         "<cmd>lua require('telescope.builtin').oldfiles( TeleIvy({ winblend = 10}) )<CR>",
         "Recent Files",
+    },
+    ["`"] = { "<cmd>Nuake<CR>", "Terminal for Tab" },
+    ["~"] = { "<cmd>lua require('FTerm').toggle()<CR>", "Floating Terminal" },
+    c = { "<cmd>lua require('material.functions').toggle_style()<CR>", "Cycle Material Style" },
+    x = {
+        name = "Trouble Diagnostics",
+        x = { "<cmd>TroubleToggle<CR>", "Toggle Trouble" },
+        w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", "Workspace Trouble" },
+        d = { "<cmd>TroubleToggle lsp_document_diagnostics<CR>", "Document Trouble" },
+        q = { "<cmd>TroubleToggle quickfix<CR>", "Quickfix Trouble" },
+        l = { "<cmd>TroubleToggle loclist<CR>", "Loclist Trouble" },
+        t = { "<cmd>TodoTrouble<CR>", "Todo Trouble" },
+        o = { "<cmd>TodoTelescope<CR>", "Telescope Todos" },
+    },
+    f = {
+        name = "Formatting",
+        t = { "<cmd>TrimWhitespace<CR>", "Trim Whitespace" },
+        c = { "<cmd>ToggleSpecialCharacters<CR>", "Toggle Special Characters" },
+        u = { "<cmd>MakeUnixFileformat<CR>", "Make Unix File Format" },
     },
     b = {
         "<cmd>lua require('telescope.builtin').buffers( TeleIvy({ winblend = 10}) )<CR>",
@@ -613,19 +631,6 @@ require("which-key").register({
         "Search Help Tags",
     },
     j = { "<cmd>tabnew ~/cronofiles/journal/index.md<CR>", "Journal" },
-    -- mappings defined elsewhere
-    q = { name = "Prose" },
-    g = { name = "Git" },
-    w = {
-        name = "Workspace Management",
-        --      -- move/resize windows
-        --      -- open files newtab/vsplit/hsplit
-        --      -- add/rm tabs
-        --      -- mv/cp/rm buffers b/w tabs
-        a = { name = "Add Folder to LSP Workspace" },
-        r = { name = "Remove Folder from LSP Workspace" },
-        l = { name = "List LSP Workspace Folders" },
-    },
     s = {
         name = "Search",
         f = {
@@ -658,9 +663,6 @@ require("which-key").register({
         },
     },
 }, { prefix = "<leader>" })
-
--- Y yank until the end of line
-vim.api.nvim_set_keymap("n", "Y", "y$", { noremap = true })
 
 --  ██        ████████ ███████     ████████           ██     ██   ██
 -- ░██       ██░░░░░░ ░██░░░░██   ██░░░░░░           ░██    ░██  ░░            █████
@@ -723,41 +725,59 @@ vim.fn.sign_define("LspDiagnosticsSignHint",
                    { text = icons.get("comment"), texthl = "LspDiagnosticsSignHint" })
 
 local on_attach = function(client, bufnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    local opts = { noremap = true, silent = true }
-    buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-    buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-    buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    -- buf_set_keymap('v', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
-    buf_set_keymap("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-    buf_set_keymap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-    buf_set_keymap("n", "<leader>wl",
-                   "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-    buf_set_keymap("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-    buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    buf_set_keymap("n", "<leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-    buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-    buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-    buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-    buf_set_keymap("n", "<leader>so",
-                   [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
-    buf_set_keymap("n", "<Leader>p", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    buf_set_keymap("v", "<Leader>p", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-    buf_set_keymap("n", "<Leader>l", "<cmd>lua vim.lsp.codelens.run()<CR>", opts)
-    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+    -- buffer normal mappings
+    require("which-key").register({
+        K = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "LSP Hover Docs" },
+        ["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Show Function Signature" },
+        ["[l"] = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "Previous Diagnostic" },
+        ["]l"] = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Next Diagnostic" },
+        l = {
+            name = "LSP Tools",
+            q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", "Add to LocList" },
+            D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Go to Declaration" },
+            d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Go to Definition" },
+            t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "View Type Definition" },
+            i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to implementation" },
+            r = { "<cmd>lua vim.lsp.buf.references()<CR>", "See References" },
+            s = { "<cmd>lua require('telescope.builtin').lsp_document_symbols( TeleIvy({ winblend = 10}) )<CR>", "Telescope Symbols" },
+            o = { "<cmd>TroubleToggle lsp_document_diagnostics<CR>", "Trouble Diagnostics" },
 
-    -- vim already has builtin docs
-    if vim.bo.ft ~= "vim" then
-    	buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    end
+            a = {
+                name = "Actions",
+                P = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" },
+                c = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Do Code Action" },
+                r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename Under Cursor" },
+                l = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run Code Lens" },
+            },
+
+            w = {
+                name = "Workspace Controls",
+                d = { "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", "Workspace Trouble" },
+                c = { "<cmd>LspCapabilities<CR>", "Show Resolved Server Capabilities" },
+                a = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Add Folder to LSP Workspace" },
+                r = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove Folder from LSP Workplace" },
+                i = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "List LSP Workspace Folders" },
+            },
+        },
+    }, { buffer = bufnr })
+
+    -- buffer Visual Mappings
+    require("which-key").register({
+        l = {
+            name = "LSP Tools",
+            a = {
+                name = "Actions",
+                p = { "<cmd>lua vim.lsp.buf.range_formatting()<CR>", "Format Selection" },
+                c = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "Run Code Action on Selection" },
+            }
+        }
+    }, { buffer = bufnr, mode = "x" })
+
+    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
@@ -806,20 +826,16 @@ local lua_settings = {
     },
 }
 
--- config that activates keymaps and enables snippet support
 local function make_config()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities.textDocument.colorProvider = { dynamicRegistration = false }
     return {
-        -- enable snippet support
         capabilities = capabilities,
         -- map buffer local keybindings when the language server attaches
         on_attach = on_attach,
     }
 end
-
--- basic servers: lua css html typescript graphql bash vim json yaml
 
 local function setup_servers()
     require"lspinstall".setup()
