@@ -1022,7 +1022,9 @@ vim.api.nvim_set_keymap("i", "<c-space>", "compe#complete()", { expr = true })
 -- ░██    ░██  ░██  ░██ ░██ ░░░░░██
 -- ░░███████   ░░██ ░██ ███ ██████
 --  ░░░░░░░     ░░  ░░ ░░░ ░░░░░░
+--  # Utils
 
+-- TODO: update to a keybinding that displays a popup
 vim.cmd [[
 function! SyntaxBalloon()
     let synID   = synID(v:beval_lnum, v:beval_col, 0)
@@ -1031,6 +1033,54 @@ function! SyntaxBalloon()
     let group   = synIDattr(groupID, "name")
     echo name . "\n" . group
 endfunction
+]]
+
+-- Manually Trim Whitespace
+-- mapped to
+vim.cmd [[
+command! TrimWhitespace call TrimWhitespace()
+function! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfunction
+]]
+
+-- show/hide specialcharacters  ➤ ➫˱⟵⇠⇤⇤¬➧»¶⬃✧⇿˱⇿⇆⬋⤶↵⟂‹◡
+-- Quick controls over displaying special characters
+-- tab:»\, eol:¶\,nbsp:¬\,trail:-
+--
+-- they even were, and the problem I was trying to solve, ^^^^^ in the status
+-- bar was actually caused by having identical active and inactive styling on
+-- the StatusLine and StatusLineNC highlights, not gonna worry about them, I
+-- want to be able to turn on end of line whenever.
+vim.cmd [[
+set list listchars=tab:➢\ ,trail:˱,nbsp:⇿
+let g:toggle_special_characters = 0
+
+command! ToggleSpecialCharacters call ToggleSpecialCharacters()
+function ToggleSpecialCharacters ()
+    if g:toggle_special_characters
+        let g:toggle_special_characters = 0
+        set list listchars=tab:➫\ ,eol:↲,nbsp:⇋,trail:⟵
+    else
+        let g:toggle_special_characters = 1
+        set list listchars=tab:➢\ ,nbsp:⇿,trail:˱
+    end
+endfunction
+]]
+
+-- Misc
+vim.cmd [[
+" Make sure the file you're editing is has all the *unix trimmings like proper EOLs
+command! MakeUnixFileformat :edit ++ff=unix
+
+" Syncronize Cronofiles
+command! CronofilerSync !fish -c "cronofiler $HOME/cronofiles/ > /dev/null"<CR>
+command! WhatTheShell !fish -c "echo $SHELL"<CR>
+
+" Change Tab Directory to File Location
+command! TCDtoThisFileThenGitRoot :tcd %:p:h | cd `git rev-parse --show-toplevel`
 ]]
 
 --  ███████                                    ██████████                    ██
