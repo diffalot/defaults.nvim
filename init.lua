@@ -127,7 +127,8 @@ require("packer").startup(function()
 
     -- Syntax Highlighting
     use "inkch/vim-fish"
-    use "euclidianAce/BetterLua.vim" -- lua highlighting
+    use "euclidianAce/BetterLua.vim"
+    use "pantharshit00/vim-prisma"
 
     -- terminals
     use "Lenovsky/nuake"
@@ -223,7 +224,7 @@ require("which-key").setup {
     },
 }
 -- Breaking the Law
-require("which-key").register({ w = {"<cmd>WhichKey<CR>", "which_key_ignore"} })
+-- require("which-key").register({ w = {"<cmd>WhichKey<CR>", "which_key_ignore"} })
 
 --  ███████                   ████
 -- ░██░░░░██                 ░██░
