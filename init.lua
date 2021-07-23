@@ -80,7 +80,7 @@ vim.api.nvim_exec([[
         autocmd!
         autocmd BufWritePost init.lua PackerCompile
     augroup end
-    ]], false)
+]], false)
 
 local use = require("packer").use
 local use_rocks = require("packer").use_rocks
@@ -234,7 +234,7 @@ require("which-key").setup {
 -- ░███████ ░░██░░█ ██░░░██░░░██░  ██░░░██░░██░░█ ██░░░██░░██░░░██ ██░░░██ ██░░░██ ██░░░░
 -- ░██░░░░   ░██ ░ ░███████  ░██  ░███████ ░██ ░ ░███████ ░██  ░██░██  ░░ ░███████░░█████
 -- ░██       ░██   ░██░░░░   ░██  ░██░░░░  ░██   ░██░░░░  ░██  ░██░██   ██░██░░░░  ░░░░░██
--- ░██      ░███   ░░██████  ░██  ░░██████░███   ░░██████ ███  ░██░░█████ ░░██████ ██████
+-- ░██       ███   ░░██████  ░██  ░░██████░███   ░░██████ ███  ░██░░█████ ░░██████ ██████
 -- ░░       ░░░     ░░░░░░   ░░    ░░░░░░ ░░░     ░░░░░░ ░░░   ░░  ░░░░░   ░░░░░░ ░░░░░░
 
 -- mapped keybinding sequence timeout
@@ -916,6 +916,7 @@ require("nvim-treesitter.configs").setup {
                 ["ic"] = "@class.inner",
             },
         },
+        -- HELP: how do move motions work?
         move = {
             enable = true,
             set_jumps = true, -- whether to set jumps in the jumplist
