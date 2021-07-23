@@ -942,8 +942,12 @@ require("nvim-treesitter.configs").setup {
 --  ░░██████ ░░██████  ███ ░██ ░██ ░██░░░   ███░░██████  ░░██ ░██░░██████  ███  ░██
 --   ░░░░░░   ░░░░░░  ░░░  ░░  ░░  ░██     ░░░  ░░░░░░    ░░  ░░  ░░░░░░  ░░░   ░░
 --                                 ░░
+-- # Completion
+
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect,noinsert"
+-- noinsert is suggested by minivimrc
+
+vim.o.completeopt = "menuone,noselect"
 
 -- Compe setup
 require("compe").setup {
@@ -953,9 +957,11 @@ require("compe").setup {
         luasnip = true,
         buffer = false,
         calc = false,
-        nvim_lua = false,
+        nvim_lua = true,
         vsnip = false,
         ultisnips = false,
+        treesitter = true,
+        emoji = true,
     },
 }
 
