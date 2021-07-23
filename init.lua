@@ -399,7 +399,7 @@ require("todo-comments").setup {
             alt = { "WARNING", "WOW", "DRAGONS", "UH OH", "HWAT", "WHAT" },
         },
         TODO = {
-            icon = " ",
+            icon = "✚ ",
             color = "warning",
             alt = { "PLEASE", "UNFORTUNATELY", "WELL, ACTUALLY" },
         },
