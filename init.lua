@@ -332,7 +332,6 @@ vim.g["fern#renderer"] = "nerdfont"
 require("which-key").register({ e = { "<cmd>Fern . -reveal={%}<CR>", "Explore Directory Tree" } },
                               { prefix = "<leader>" })
 
--- TODO: also navigate tabs/buffers with hjkl
 -- TODO: resize windows and switch windows with arrows and hjkl
 -- TODO: match with tmux/nvim navigation with arrows and hjkl
 -- tab management
@@ -343,10 +342,14 @@ vim.g.taboo_tab_format = " %m%P%I⎠"
 vim.g.taboo_renamed_tab_format = " %l%I%m⎠"
 
 require("which-key").register({
-    ["<C-A-Right>"] = { "<cmd>tabnext<CR>", "Next Tab" },
-    ["<C-A-Left>"] = { "<cmd>tabprevious<CR>", "Previous Tab" },
-    ["<C-A-Up>"] = { "<cmd>bnext<CR>", "Next Buffer" },
-    ["<C-A-Down>"] = { "<cmd>bprevious<CR>", "Previous Buffer" },
+    ["<C-A-Right>"] = { "<cmd>tabnext<CR>", "which_key_ignore" },
+    ["<C-A-Left>"] = { "<cmd>tabprevious<CR>", "which_key_ignore" },
+    ["<C-A-Up>"] = { "<cmd>bnext<CR>", "which_key_ignore" },
+    ["<C-A-Down>"] = { "<cmd>bprevious<CR>", "which_key_ignore" },
+    ["<C-A-l>"] = { "<cmd>tabnext<CR>", "which_key_ignore" },
+    ["<C-A-h>"] = { "<cmd>tabprevious<CR>", "which_key_ignore" },
+    ["<C-A-k>"] = { "<cmd>bnext<CR>", "which_key_ignore" },
+    ["<C-A-j>"] = { "<cmd>bprevious<CR>", "which_key_ignore" },
 })
 
 -- nuake dropdown terminal
