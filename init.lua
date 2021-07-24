@@ -182,6 +182,9 @@ require("packer").startup(function()
     -- Statusline and Tabline
     use "itchyny/lightline.vim" -- Fancier statusline
 
+    -- Theme Development
+    use "rktjmp/lush.nvim"
+
     -- Themes
     use "marko-cerovac/material.nvim" -- Black/White LSP and TS Colorscheme
     use "folke/tokyonight.nvim" -- Ocean/Blue Theme with Treesitter Highlighting for neovim >= 0.5
