@@ -65,6 +65,8 @@ endif
 -- ░██       ░██░██  ░██ ░░░░░██░██ ░██  ░██ ░░░░░██
 -- ░██       ███░░██████  █████ ░██ ███  ░██ ██████
 -- ░░       ░░░  ░░░░░░  ░░░░░  ░░ ░░░   ░░ ░░░░░░
+--
+-- Plugins
 
 -- Install packer
 local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
@@ -236,6 +238,8 @@ require("which-key").setup {
 -- ░██       ░██   ░██░░░░   ░██  ░██░░░░  ░██   ░██░░░░  ░██  ░██░██   ██░██░░░░  ░░░░░██
 -- ░██       ███   ░░██████  ░██  ░░██████░███   ░░██████ ███  ░██░░█████ ░░██████ ██████
 -- ░░       ░░░     ░░░░░░   ░░    ░░░░░░ ░░░     ░░░░░░ ░░░   ░░  ░░░░░   ░░░░░░ ░░░░░░
+--
+-- Preferences
 
 -- mapped keybinding sequence timeout
 vim.o.timeoutlen = 750
@@ -317,6 +321,8 @@ require("material").set()
 -- ░██   ░    ░██ ██░░░░██  ░██  ░██ ██░░░░██  ░░░░░██░██░░░░  ░██ ░██ ░██░██░░░░  ░██  ░██  ░██
 -- ░██        ░██░░████████ ███  ░██░░████████  █████ ░░██████ ███ ░██ ░██░░██████ ███  ░██  ░░██
 -- ░░         ░░  ░░░░░░░░ ░░░   ░░  ░░░░░░░░  ░░░░░   ░░░░░░ ░░░  ░░  ░░  ░░░░░░ ░░░   ░░    ░░
+--
+-- Code Management
 
 -- Telescope
 local actions = require("telescope.actions")
@@ -479,6 +485,8 @@ require"luapad".config {
 -- ░██      ░██ ░░░░░██░██  ░██  ░██   ░██░██ ░██  ░██░██░░░░
 -- ░████████░██  █████ ░██  ░██  ░░██  ███░██ ███  ░██░░██████
 -- ░░░░░░░░ ░░  ░░░░░  ░░   ░░    ░░  ░░░ ░░ ░░░   ░░  ░░░░░░
+--
+-- Lightline
 
 -- lsp-status setup
 _G.lsp_statusline = require("lsp-status.statusline")
@@ -689,7 +697,8 @@ require("which-key").register({
 -- ░████████ ████████ ░██         ████████ ░░██████  ░░██   ░░██ ░██ ███  ░██  █████  ██████
 -- ░░░░░░░░ ░░░░░░░░  ░░         ░░░░░░░░   ░░░░░░    ░░     ░░  ░░ ░░░   ░░  ░░░░░  ░░░░░░
 --
--- # LSP settings
+-- LSP settings
+
 -- vim.lsp.set_log_level("debug")
 
 -- needs https://github.com/microsoft/vscode-codicons/blob/master/dist/codicon.ttf
@@ -901,7 +910,8 @@ vim.api.nvim_command("command! LspCapabilities lua require'lsp-capabilities'()")
 --     ░██     ░██   ░██░░░░ ░██░░░░          ░██░██  ░██    ░██  ░██░░░░  ░██
 --     ░██    ░███   ░░██████░░██████   ████████ ░██  ░░██   ░░██ ░░██████░███
 --     ░░     ░░░     ░░░░░░  ░░░░░░   ░░░░░░░░  ░░    ░░     ░░   ░░░░░░ ░░░
--- Treesitter configuration
+--
+-- Tree Sitter
 -- Parsers must be installed manually via :TSInstall
 
 require("nvim-treesitter.configs").setup {
@@ -956,7 +966,7 @@ require("nvim-treesitter.configs").setup {
 --  ░░██████ ░░██████  ███ ░██ ░██ ░██░░░   ███░░██████  ░░██ ░██░░██████  ███  ░██
 --   ░░░░░░   ░░░░░░  ░░░  ░░  ░░  ░██     ░░░  ░░░░░░    ░░  ░░  ░░░░░░  ░░░   ░░
 --                                 ░░
--- # Completion
+-- Completion
 
 -- Set completeopt to have a better completion experience
 -- noinsert is suggested by minivimrc
@@ -1036,7 +1046,8 @@ vim.api.nvim_set_keymap("i", "<c-space>", "compe#complete()", { expr = true })
 -- ░██    ░██  ░██  ░██ ░██ ░░░░░██
 -- ░░███████   ░░██ ░██ ███ ██████
 --  ░░░░░░░     ░░  ░░ ░░░ ░░░░░░
---  # Utils
+--
+-- Utils
 
 -- TODO: update to a keybinding that displays a popup
 vim.cmd [[
@@ -1105,7 +1116,8 @@ command! TCDtoThisFileThenGitRoot :tcd %:p:h | cd `git rev-parse --show-toplevel
 -- ░██       ░██   ░██   ░██ ░░░░░██░██░░░░       ░██    ░██   ░██░██   ░██ ░██ ░░░░░██
 -- ░██      ░███   ░░██████  ██████ ░░██████      ░██    ░░██████ ░░██████  ███ ██████
 -- ░░       ░░░     ░░░░░░  ░░░░░░   ░░░░░░       ░░      ░░░░░░   ░░░░░░  ░░░ ░░░░░░
--- prose tools
+--
+-- Prose Tools
 
 -- plasticboy/vim-markdown
 vim.g.vim_markdown_folding_disabled = true
@@ -1250,7 +1262,9 @@ command! Zen :call ZenMode()
 -- ░██    ██  ██░░░░██  ░░░░░██░██  ░██░██  ░██░██   ░██ ██░░░░██  ░██   ░██  ░██
 -- ░███████  ░░████████ ██████ ░██  ░██░██████ ░░██████ ░░████████░███   ░░██████
 -- ░░░░░░░    ░░░░░░░░ ░░░░░░  ░░   ░░ ░░░░░    ░░░░░░   ░░░░░░░░ ░░░     ░░░░░░
--- dashboard options
+-- 
+-- Dashboard
+
 vim.g.dashboard_default_executive = "telescope"
 vim.g.dashboard_session_directory = vim.env.HOME .. "/local/share/nvim/sessions"
 
