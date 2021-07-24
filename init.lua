@@ -199,35 +199,35 @@ end)
 -- Which Key Setup
 require("which-key").setup {
     plugins = {
-        marks = true, -- shows a list of your marks on ' and `
+        marks     = true, -- shows a list of your marks on ' and `
         registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
         -- the presets plugin, adds help for a bunch of default keybindings in Neovim
         -- No actual key bindings are created
         spelling = {
-            enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+            enabled     = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
             suggestions = 60, -- how many suggestions should be shown in the list?
         },
         presets = {
-            operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-            motions = true, -- adds help for motions
+            operators    = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+            motions      = true, -- adds help for motions
             text_objects = true, -- help for text objects triggered after entering an operator
-            windows = true, -- default bindings on <c-w>
-            nav = true, -- misc bindings to work with windows
-            z = true, -- bindings for folds, spelling and others prefixed with z
-            g = true, -- bindings for prefixed with g
+            windows      = true, -- default bindings on <c-w>
+            nav          = true, -- misc bindings to work with windows
+            z            = true, -- bindings for folds, spelling and others prefixed with z
+            g            = true, -- bindings for prefixed with g
         },
     },
     window = {
-        border = "none", -- none, single, double, shadow
+        border   = "none", -- none, single, double, shadow
         position = "bottom", -- bottom, top
-        margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-        padding = { 1, 1, 1, 1 }, -- extra window padding [top, right, bottom, left]
+        margin   = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
+        padding  = { 1, 1, 1, 1 }, -- extra window padding [top, right, bottom, left]
     },
     layout = {
-        height = { min = 4, max = 42 }, -- min and max height of the columns
-        width = { min = 20, max = 75 }, -- min and max width of the columns
+        height  = { min = 4, max = 42 }, -- min and max height of the columns
+        width   = { min = 20, max = 75 }, -- min and max width of the columns
         spacing = 2, -- spacing between columns
-        align = "center", -- align columns left, center or right
+        align   = "center", -- align columns left, center or right
     },
 }
 -- Breaking the Law
@@ -270,10 +270,10 @@ vim.cmd [[set undofile]]
 
 -- Case insensitive searching
 vim.o.ignorecase = true
-vim.o.smartcase = false
+vim.o.smartcase  = false
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime  = 250
 vim.wo.signcolumn = "yes"
 
 -- import prefs
@@ -281,18 +281,20 @@ require("alice.preferences")
 
 -- Set colorscheme (order is important here)
 vim.o.termguicolors = true
+
 -- 'darker', 'lighter', 'palenight', 'oceanic' and 'deep ocean'
-vim.g.material_style = "oceanic"
-vim.g.material_contrast = true
-vim.g.material_lighter_contrast = true
-vim.g.material_italic_comments = true
-vim.g.material_italic_keywords = false
-vim.g.material_italic_functions = false
-vim.g.material_italic_variables = false
-vim.g.material_borders = true
-vim.g.material_hide_eob = true
+vim.g.material_style              = "oceanic"
+vim.g.material_contrast           = true
+vim.g.material_lighter_contrast   = true
+vim.g.material_italic_comments    = true
+vim.g.material_italic_keywords    = false
+vim.g.material_italic_functions   = false
+vim.g.material_italic_variables   = false
+vim.g.material_borders            = true
+vim.g.material_hide_eob           = true
 vim.g.material_disable_background = true
-vim.g.tokyonight_style                     = "day" -- The theme comes in three styles, storm, a darker variant night and day.
+
+vim.g.tokyonight_style                     = "day"   -- The theme comes in three styles, storm, a darker variant night and day.
 vim.g.tokyonight_terminal_colors           = true    -- Configure the colors used when opening a :terminal in Neovim
 vim.g.tokyonight_italic_comments           = true    -- Make comments italic
 vim.g.tokyonight_italic_keywords           = true    -- Make keywords italic
@@ -306,6 +308,7 @@ vim.g.tokyonight_dark_float                = true    -- Float windows like the l
 vim.g.tokyonight_colors                    = {}      -- You can override specific color groups to use other groups or a hex color
 vim.g.tokyonight_day_brightness            = 0.6     -- Adjusts the brightness of the colors of the Day style. Number between 0 and 1, from dull to vibrant colors
 vim.g.tokyonight_lualine_bold              = true
+
 require("material").set()
 
 --    ██████                ██
@@ -339,11 +342,11 @@ require("telescope").setup {
     },
     extensions = {
         fzf = {
-            fuzzy = true,                   -- false will only do exact matching
-            override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true,    -- override the file sorter
-            case_mode = "ignore_case",      -- or "ignore_case" or "respect_case"
-                                            -- the default case_mode is "smart_case"
+            fuzzy                   = true,          -- false will only do exact matching
+            override_generic_sorter = true,          -- override the generic sorter
+            override_file_sorter    = true,          -- override the file sorter
+            case_mode               = "ignore_case", -- or "ignore_case" or "respect_case"
+                                                     -- the default case_mode is "smart_case"
         }
     }
 }
@@ -359,33 +362,33 @@ require("which-key").register({ e = { "<cmd>Fern . -reveal={%}<CR>", "Explore Di
 -- It looks like <alt + arrow> mappnigs in tmux should be set up the same as
 -- <alt + hjkl> currently are
 -- tab management
-vim.g.rooter_cd_cmd = "tcd"
-vim.g.rooter_targets = "/,*"
-vim.g.rooter_resolve_links = true
-vim.g.taboo_tab_format = " %m%P%I⎠"
+vim.g.rooter_cd_cmd            = "tcd"
+vim.g.rooter_targets           = "/,*"
+vim.g.rooter_resolve_links     = true
+vim.g.taboo_tab_format         = " %m%P%I⎠"
 vim.g.taboo_renamed_tab_format = " %l%I%m⎠"
 
 require("which-key").register({
     ["<C-A-Right>"] = { "<cmd>tabnext<CR>", "which_key_ignore" },
-    ["<C-A-Left>"] = { "<cmd>tabprevious<CR>", "which_key_ignore" },
-    ["<C-A-Up>"] = { "<cmd>bnext<CR>", "which_key_ignore" },
-    ["<C-A-Down>"] = { "<cmd>bprevious<CR>", "which_key_ignore" },
-    ["<C-A-l>"] = { "<cmd>tabnext<CR>", "which_key_ignore" },
-    ["<C-A-h>"] = { "<cmd>tabprevious<CR>", "which_key_ignore" },
-    ["<C-A-k>"] = { "<cmd>bnext<CR>", "which_key_ignore" },
-    ["<C-A-j>"] = { "<cmd>bprevious<CR>", "which_key_ignore" },
+    ["<C-A-Left>"]  = { "<cmd>tabprevious<CR>", "which_key_ignore" },
+    ["<C-A-Up>"]    = { "<cmd>bnext<CR>", "which_key_ignore" },
+    ["<C-A-Down>"]  = { "<cmd>bprevious<CR>", "which_key_ignore" },
+    ["<C-A-l>"]     = { "<cmd>tabnext<CR>", "which_key_ignore" },
+    ["<C-A-h>"]     = { "<cmd>tabprevious<CR>", "which_key_ignore" },
+    ["<C-A-k>"]     = { "<cmd>bnext<CR>", "which_key_ignore" },
+    ["<C-A-j>"]     = { "<cmd>bprevious<CR>", "which_key_ignore" },
 })
 
 -- nuake dropdown terminal
 vim.g.nuake_position = "top" -- (default 'bottom')	Set the Nuake position to 'bottom', 'right', 'top' or 'left'.
-vim.g.nuake_size = 0.27 -- (default 0.25)	    Set the Nuake size in percent.
-vim.g.nuake_per_tab = true -- (default 0)
+vim.g.nuake_size     = 0.27  -- (default 0.25)	    Set the Nuake size in percent.
+vim.g.nuake_per_tab  = true  -- (default 0)
 
 -- floating terminal
 require("FTerm").setup({
-    cmd = "cd ~;  tmux new-session -A -s $(tmux display-message -p '#S')-floating",
+    cmd        = "cd ~;  tmux new-session -A -s $(tmux display-message -p '#S')-floating",
     dimensions = { height = 0.4, width = 0.56, x = 1.3, y = 0.00 },
-    border = "single", -- or 'double'
+    border     = "single", -- or 'double'
 })
 
 -- vim-lightbulb (watch for lsp code actions)
@@ -393,92 +396,98 @@ vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_li
 
 -- trouble
 require("trouble").setup({
-    position = "bottom", -- position of the list can be: bottom, top, left, right
-    height = 15, -- height of the trouble list when position is top or bottom
-    auto_open = false, -- automatically open the list when you have diagnostics
-    auto_close = false, -- automatically close the list when you have no diagnostics
+    position     = "bottom", -- position of the list can be: bottom, top, left, right
+    height       = 15, -- height of the trouble list when position is top or bottom
+    auto_open    = false, -- automatically open the list when you have diagnostics
+    auto_close   = false, -- automatically close the list when you have no diagnostics
     auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
-    auto_fold = true, -- automatically fold a file trouble list at creation
+    auto_fold    = true, -- automatically fold a file trouble list at creation
 })
--- Trouble keybindings have been moved to main mapping section
 
 -- todo-comments
 require("todo-comments").setup {
     keywords = {
         FIX = {
-            icon = " ", -- icon used for the sign, and in search results
+            icon  = " ", -- icon used for the sign, and in search results
             color = "error", -- can be a hex color, or a named color (see below)
-            alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "OH SHIT" }, -- a set of other keywords that all map to this FIX keywords
+            alt   = { "FIXME", "BUG", "FIXIT", "ISSUE", "OH SHIT" }, -- a set of other keywords that all map to this FIX keywords
             -- signs = false, -- configure signs for some keywords individually
         },
         HACK = {
-            icon = " ",
+            icon  = " ",
             color = "error",
-            alt = { "XXX", "NO", "CURSED", "EXORCISM NEEDED", "OK, SO", "WTF" },
+            alt   = { "XXX", "NO", "CURSED", "EXORCISM NEEDED", "OK, SO", "WTF" },
         },
         WARN = {
-            icon = " ",
+            icon  = " ",
             color = "warning",
-            alt = { "WARNING", "WOW", "DRAGONS", "UH OH", "HWAT", "WHAT" },
+            alt   = { "WARNING", "WOW", "DRAGONS", "UH OH", "HWAT", "WHAT" },
         },
         TODO = {
-            icon = "✚ ",
+            icon  = "✚ ",
             color = "warning",
-            alt = { "PLEASE", "UNFORTUNATELY", "WELL, ACTUALLY" },
+            alt   = { "PLEASE", "UNFORTUNATELY", "WELL, ACTUALLY" },
         },
         HELP = {
-            icon = " ",
+            icon  = " ",
             color = "info",
-            alt = { "CHECK", "CHECKME", "HELP WANTED", "WELL", "MAYBE" },
+            alt   = { "CHECK", "CHECKME", "HELP WANTED", "WELL", "MAYBE" },
         },
         NOTE = {
-            icon = " ",
+            icon  = " ",
             color = "hint",
-            alt = { "NOTE", "LOOK", "IMPORTANT", "INFO", "YES", "YAY" },
+            alt   = { "NOTE", "LOOK", "IMPORTANT", "INFO", "YES", "YAY" },
         },
         PERF = { icon = " ", color = "default", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
     },
     highlight = {
-        before = "bg", -- "fg" or "bg" or empty
-        keyword = "wide", -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
-        after = "bg", -- "fg" or "bg" or empty
-        pattern = [[.*<(KEYWORDS)\s*:]], -- pattern used for highlightng (vim regex)
+        before        = "bg", -- "fg" or "bg" or empty
+        keyword       = "wide", -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
+        after         = "bg", -- "fg" or "bg" or empty
+        pattern       = [[.*<(KEYWORDS)\s*:]], -- pattern used for highlightng (vim regex)
         comments_only = true, -- uses treesitter to match keywords in comments only
-        max_line_len = 400, -- ignore lines longer than this
-        exclude = {}, -- list of file types to exclude highlighting
+        max_line_len  = 400, -- ignore lines longer than this
+        exclude       = {}, -- list of file types to exclude highlighting
     },
     colors = {
-        error = { "LspDiagnosticsDefaultError", "ErrorMsg", "#DC2626" },
+        error   = { "LspDiagnosticsDefaultError", "ErrorMsg", "#DC2626" },
         warning = { "LspDiagnosticsDefaultWarning", "WarningMsg", "#FBBF24" },
-        info = { "LspDiagnosticsDefaultInformation", "#2563EB" },
-        hint = { "LspDiagnosticsDefaultHint", "#10B981" },
+        info    = { "LspDiagnosticsDefaultInformation", "#2563EB" },
+        hint    = { "LspDiagnosticsDefaultHint", "#10B981" },
         default = { "Identifier", "#7C3AED" },
     },
 }
 
 -- Gutentags
-vim.g.gutentags_enabled = true
-vim.g.gutentags_plus_nomap = true
-vim.g.gutentags_modules = { "ctags", "gtags_cscope" }
-vim.g.gutentags_project_root = { ".root", "Makefile", ".git", ".diffalot" }
+vim.g.gutentags_enabled                   = true
+vim.g.gutentags_plus_nomap                = true
+vim.g.gutentags_modules                   = { "ctags", "gtags_cscope" }
+vim.g.gutentags_project_root              = { ".root", "Makefile", ".git", ".diffalot" }
 vim.g.gutentags_add_default_project_roots = true
-vim.g.gutentags_cache_dir = vim.fn.expand("~/.cache/tags")
-vim.g.gutentags_plus_switch = true
+vim.g.gutentags_cache_dir                 = vim.fn.expand("~/.cache/tags")
+vim.g.gutentags_plus_switch               = true
 
 -- Codi REPLs
-vim.g["codi#rightsplit"] = false
-vim.g["codi#rightalign"] = false
+vim.g["codi#rightsplit"]          = false
+vim.g["codi#rightalign"]          = false
 vim.g["codi#virtual_text_prefix"] = "✶ ❱ "
 
 -- luapad
 require"luapad".config {
-    count_limit = 150000,
+    count_limit     = 150000,
     error_indicator = true,
-    eval_on_move = true,
+    eval_on_move    = true,
     error_highlight = "WarningMsg",
-    on_init = function() print "Hello from Luapad!" end,
-    context = { the_answer = 42, shout = function(str) return (string.upper(str) .. "!") end },
+    on_init         = function() print "Hello from Luapad!" end,
+    context         = { the_answer = 42, shout = function(str) return (string.upper(str) .. "!") end },
 }
+
+-- setup blankline indent guides
+vim.g.indent_blankline_char                           = "┊"
+vim.g.indent_blankline_filetype_exclude               = { "help", "packer", "dashboard" }
+vim.g.indent_blankline_buftype_exclude                = { "terminal", "nofile" }
+vim.g.indent_blankline_char_highlight                 = "LineNr"
+vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 --  ██       ██         ██        ██    ██ ██
 -- ░██      ░░   █████ ░██       ░██   ░██░░
@@ -517,21 +526,14 @@ vim.g.lightline = {
     },
     component = { charvaluehex = "0x%B" },
     component_function = {
-        gitbranch = "gina#component#repo#branch",
-        pencilmode = "PencilMode",
-        lspstatus = "Lsp_status",
-        gutentags = "gutentags#statusline",
-        luapad_msg = "luapad#lightline_msg",
+        gitbranch     = "gina#component#repo#branch",
+        pencilmode    = "PencilMode",
+        lspstatus     = "Lsp_status",
+        gutentags     = "gutentags#statusline",
+        luapad_msg    = "luapad#lightline_msg",
         luapad_status = "luapad#lightline_status",
     },
 }
-
--- setup blankline indent guides
-vim.g.indent_blankline_char = "┊"
-vim.g.indent_blankline_filetype_exclude = { "help", "packer", "dashboard" }
-vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
-vim.g.indent_blankline_char_highlight = "LineNr"
-vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 --  ██   ██                    ████     ████                           ██
 -- ░██  ██           ██   ██  ░██░██   ██░██           ██████  ██████ ░░            █████
@@ -545,10 +547,10 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 --   - r = { name = "REPLs/Calculators" }
     -- w = {
         -- name = "Workspace Management",
-        --      -- move/resize windows
-        --      -- open files newtab/vsplit/hsplit
-        --      -- add/rm tabs
-        --      -- mv/cp/rm buffers b/w tabs
+            -- move/resize windows
+            -- open files newtab/vsplit/hsplit
+            -- add/rm tabs
+            -- mv/cp/rm buffers b/w tabs
 
 TeleIvy = require("telescope.themes").get_ivy
 
@@ -560,16 +562,16 @@ vim.g.maplocalleader = " "
 -- Gitsigns
 require("gitsigns").setup {
     signs = {
-        add = { hl = "GitGutterAdd", text = "" },
-        change = { hl = "GitGutterChange", text = "" },
-        delete = { hl = "GitGutterDelete", text = "" },
-        topdelete = { hl = "GitGutterDelete", text = "" },
+        add          = { hl = "GitGutterAdd", text = "" },
+        change       = { hl = "GitGutterChange", text = "" },
+        delete       = { hl = "GitGutterDelete", text = "" },
+        topdelete    = { hl = "GitGutterDelete", text = "" },
         changedelete = { hl = "GitGutterChange", text = "" },
     },
     keymaps = {
         -- Default keymap options
         noremap = true,
-        buffer = true,
+        buffer  = true,
 
         ["n ]g"] = {
             expr = true,
@@ -607,13 +609,14 @@ require("which-key").register({
     ["z"] = { name = "Utilities" },
     -- mappings defined elsewhere
     ["<leader>"] = { name = "<leader>" },
-    ["["] = { name = "previous..." },
-    ["]"] = { name = "next..." },
+    ["["]        = { name = "previous..." },
+    ["]"]        = { name = "next..." },
+    -- ["<F10>"] = { "<cmd>SyntaxHighlightUnderCursor<CR>", "Echo Syntax Highlight Group Under Cursor" },
     gR = { "<cmd>TroubleToggle lsp_references<CR>", "LSP Trouble" },
     ga = { "<plug>(EasyAlign)", "Easy Align" },
-    k = { "v:count == 0 ? 'gk' : 'k'", "k one line up when wrapped" },
-    j = { "v:count == 0 ? 'gj' : 'j'", "j one line up when wrapped" },
-    Y = { "y$", "Yank to Line End" },
+    k  = { "v:count == 0 ? 'gk' : 'k'", "k one line up when wrapped" },
+    j  = { "v:count == 0 ? 'gj' : 'j'", "j one line up when wrapped" },
+    Y  = { "y$", "Yank to Line End" },
 })
 
 -- normal mode <leader> mappings
@@ -632,22 +635,22 @@ require("which-key").register({
     },
     ["`"] = { "<cmd>Nuake<CR>", "Terminal for Tab" },
     ["~"] = { "<cmd>lua require('FTerm').toggle()<CR>", "Floating Terminal" },
-    c = { "<cmd>lua require('material.functions').toggle_style()<CR>", "Cycle Material Style" },
-    x = {
+    c     = { "<cmd>lua require('material.functions').toggle_style()<CR>", "Cycle Material Style" },
+    x     = {
         name = "Trouble Diagnostics",
-        x = { "<cmd>TroubleToggle<CR>", "Toggle Trouble" },
-        w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", "Workspace Trouble" },
-        d = { "<cmd>TroubleToggle lsp_document_diagnostics<CR>", "Document Trouble" },
-        q = { "<cmd>TroubleToggle quickfix<CR>", "Quickfix Trouble" },
-        l = { "<cmd>TroubleToggle loclist<CR>", "Loclist Trouble" },
-        t = { "<cmd>TodoTrouble<CR>", "Todo Trouble" },
-        o = { "<cmd>TodoTelescope<CR>", "Telescope Todos" },
+        x    = { "<cmd>TroubleToggle<CR>", "Toggle Trouble" },
+        w    = { "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", "Workspace Trouble" },
+        d    = { "<cmd>TroubleToggle lsp_document_diagnostics<CR>", "Document Trouble" },
+        q    = { "<cmd>TroubleToggle quickfix<CR>", "Quickfix Trouble" },
+        l    = { "<cmd>TroubleToggle loclist<CR>", "Loclist Trouble" },
+        t    = { "<cmd>TodoTrouble<CR>", "Todo Trouble" },
+        o    = { "<cmd>TodoTelescope<CR>", "Telescope Todos" },
     },
     f = {
         name = "Formatting",
-        t = { "<cmd>TrimWhitespace<CR>", "Trim Whitespace" },
-        c = { "<cmd>ToggleSpecialCharacters<CR>", "Toggle Special Characters" },
-        u = { "<cmd>MakeUnixFileformat<CR>", "Make Unix File Format" },
+        t    = { "<cmd>TrimWhitespace<CR>", "Trim Whitespace" },
+        c    = { "<cmd>ToggleSpecialCharacters<CR>", "Toggle Special Characters" },
+        u    = { "<cmd>MakeUnixFileformat<CR>", "Make Unix File Format" },
     },
     b = {
         "<cmd>lua require('telescope.builtin').buffers( TeleIvy({ winblend = 10}) )<CR>",
@@ -707,30 +710,30 @@ require("which-key").register({
 -- needs https://github.com/microsoft/vscode-codicons/blob/master/dist/codicon.ttf
 -- setup in the terminal (kitty.conf) with ``
 require("vim.lsp.protocol").CompletionItemKind = {
-    "  Text", -- = 1
-    "  Function", -- = 2;
-    "  Method", -- = 3;
-    "  Constructor", -- = 4;
-    "  Field", -- = 5;
-    "  Variable", -- = 6;
-    "  Class", -- = 7;
-    "  Interface", -- = 8;
-    "  Module", -- = 9;
-    "  Property", -- = 10;
-    "  Unit", -- = 11;
-    "  Value", -- = 12;
-    "  Enum", -- = 13;
-    "  Keyword", -- = 14;
-    "  Snippet", -- = 15;
-    "  Color", -- = 16;
-    "  File", -- = 17;
-    "  Reference", -- = 18;
-    "  Folder", -- = 19;
-    "  EnumMember", -- = 20;
-    "  Constant", -- = 21;
-    "  Struct", -- = 22;
-    "  Event", -- = 23;
-    "  Operator", -- = 24;
+    "  Text",          -- = 1
+    "  Function",      -- = 2;
+    "  Method",        -- = 3;
+    "  Constructor",   -- = 4;
+    "  Field",         -- = 5;
+    "  Variable",      -- = 6;
+    "  Class",         -- = 7;
+    "  Interface",     -- = 8;
+    "  Module",        -- = 9;
+    "  Property",      -- = 10;
+    "  Unit",          -- = 11;
+    "  Value",         -- = 12;
+    "  Enum",          -- = 13;
+    "  Keyword",       -- = 14;
+    "  Snippet",       -- = 15;
+    "  Color",         -- = 16;
+    "  File",          -- = 17;
+    "  Reference",     -- = 18;
+    "  Folder",        -- = 19;
+    "  EnumMember",    -- = 20;
+    "  Constant",      -- = 21;
+    "  Struct",        -- = 22;
+    "  Event",         -- = 23;
+    "  Operator",      -- = 24;
     "  TypeParameter", -- = 25;
 }
 
@@ -759,11 +762,11 @@ local on_attach = function(client, bufnr)
 
     -- buffer normal mappings
     require("which-key").register({
-        K = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "LSP Hover Docs" },
+        K         = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "LSP Hover Docs" },
         ["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Show Function Signature" },
-        ["[l"] = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "Previous Diagnostic" },
-        ["]l"] = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Next Diagnostic" },
-        l = {
+        ["[l"]    = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "Previous Diagnostic" },
+        ["]l"]    = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Next Diagnostic" },
+        l         = {
             name = "LSP Tools",
             q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", "Add to LocList" },
             D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Go to Declaration" },
@@ -922,20 +925,20 @@ require("nvim-treesitter.configs").setup {
         enable = true, -- false will disable the whole extension
     },
     incremental_selection = {
-        enable = true,
+        enable  = true,
         keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
+            init_selection    = "gnn",
+            node_incremental  = "grn",
             scope_incremental = "grc",
-            node_decremental = "grm",
+            node_decremental  = "grm",
         },
     },
     indent = { enable = true },
     textobjects = {
         select = {
-            enable = true,
+            enable    = true,
             lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-            keymaps = {
+            keymaps   = {
                 -- You can use the capture groups defined in textobjects.scm
                 ["af"] = "@function.outer",
                 ["if"] = "@function.inner",
@@ -945,16 +948,16 @@ require("nvim-treesitter.configs").setup {
         },
         -- HELP: how do move motions work?
         move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = { ["]m"] = "@function.outer", ["]]"] = "@class.outer" },
-            goto_next_end = { ["]M"] = "@function.outer", ["]["] = "@class.outer" },
+            enable              = true,
+            set_jumps           = true, -- whether to set jumps in the jumplist
+            goto_next_start     = { ["]m"] = "@function.outer", ["]]"] = "@class.outer" },
+            goto_next_end       = { ["]M"] = "@function.outer", ["]["] = "@class.outer" },
             goto_previous_start = { ["[m"] = "@function.outer", ["[["] = "@class.outer" },
-            goto_previous_end = { ["[M"] = "@function.outer", ["[]"] = "@class.outer" },
+            goto_previous_end   = { ["[M"] = "@function.outer", ["[]"] = "@class.outer" },
         },
         lsp_interop = {
-            enable = true,
-            border = "none",
+            enable               = true,
+            border               = "none",
             peek_definition_code = { ["df"] = "@function.outer", ["dF"] = "@class.outer" },
         },
     },
@@ -978,17 +981,18 @@ vim.o.completeopt = "menuone,noselect"
 
 -- Compe setup
 require("compe").setup {
+    definitions = true,
     source = {
-        path = true,
-        nvim_lsp = true,
-        luasnip = true,
-        buffer = false,
-        calc = false,
-        nvim_lua = true,
-        vsnip = false,
-        ultisnips = false,
+        path       = true,
+        nvim_lsp   = true,
+        luasnip    = true,
+        buffer     = false,
+        calc       = false,
+        nvim_lua   = true,
+        vsnip      = false,
+        ultisnips  = false,
         treesitter = true,
-        emoji = true,
+        emoji      = true,
     },
 }
 
@@ -1087,7 +1091,7 @@ set list listchars=tab:➢\ ,trail:˱,nbsp:⇿
 let g:toggle_special_characters = 0
 
 command! ToggleSpecialCharacters call ToggleSpecialCharacters()
-function ToggleSpecialCharacters ()
+function! ToggleSpecialCharacters ()
     if g:toggle_special_characters
         let g:toggle_special_characters = 0
         set list listchars=tab:➫\ ,eol:↲,nbsp:⇋,trail:⟵
@@ -1123,25 +1127,26 @@ command! TCDtoThisFileThenGitRoot :tcd %:p:h | cd `git rev-parse --show-toplevel
 -- Prose Tools
 
 -- plasticboy/vim-markdown
-vim.g.vim_markdown_folding_disabled = true
-vim.g.vim_markdown_no_default_key_mappings = false
-vim.g.vim_markdown_follow_anchor = true
-vim.g.vim_markdown_frontmatter = true
-vim.g.vim_markdown_strikethrough = true
-vim.g.vim_markdown_new_list_item_indent = 2
+vim.g.vim_markdown_folding_disabled          = true
+vim.g.vim_markdown_no_default_key_mappings   = false
+vim.g.vim_markdown_follow_anchor             = true
+vim.g.vim_markdown_frontmatter               = true
+vim.g.vim_markdown_strikethrough             = true
+vim.g.vim_markdown_new_list_item_indent      = 2
 vim.g.vim_markdown_no_extensions_in_markdown = true
-vim.g.vim_markdown_autowrite = true
+vim.g.vim_markdown_autowrite                 = true
 
 -- lexical
-vim.g["lexical#spell"] = true
-vim.g["lexical#spelllang"] = { "en_us", "en_ca", "en_gb" }
-vim.g["lexical#thesaurus"] = { "~/.config/nvim/spell/MobyThesaurus.txt" }
+vim.g["lexical#spell"]      = true
+vim.g["lexical#spelllang"]  = { "en_us", "en_ca", "en_gb" }
+vim.g["lexical#thesaurus"]  = { "~/.config/nvim/spell/MobyThesaurus.txt" }
 vim.g["lexical#dictionary"] = { "/usr/share/dict/words" }
 
 -- Ditto
-vim.g.ditto_mode = "paragraph"
+vim.g.ditto_mode           = "paragraph"
 vim.cmd [[ let g:ditto_dir = &l:runtimepath . "/spell" ]]
 
+-- TODO: lots of mappings to move to which-key
 -- Prose Mode
 vim.cmd [[
 function! Prose(...)
