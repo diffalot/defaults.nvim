@@ -116,7 +116,7 @@ require("packer").startup(function()
 
     -- Snippets
     use "L3MON4D3/LuaSnip" -- Snippets plugin
-    use 'rafamadriz/friendly-snippets' -- snippets gatered from all over
+    use "rafamadriz/friendly-snippets" -- snippets gatered from all over
 
     -- Code Diagnostics
     use "ludovicchabant/vim-gutentags" -- Gutentags - https://github.com/ludovicchabant/vim-gutentags
