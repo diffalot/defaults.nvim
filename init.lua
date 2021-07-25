@@ -809,6 +809,13 @@ local on_attach = function(client, bufnr)
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 
     -- Set autocommands conditional on server_capabilities
+    vim.cmd[[
+        highlight clear LspReferenceWrite
+        highlight clear LspReferenceText
+        highlight clear LspReferenceRead
+        highlight LspReferenceRead gui=underline
+        highlight LspReferenceWrite gui=underline
+    ]]
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec([[
             augroup lsp_document_highlight
