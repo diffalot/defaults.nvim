@@ -1061,17 +1061,6 @@ vim.api.nvim_set_keymap("i", "<c-space>", "compe#complete()", { expr = true })
 --
 -- Utils
 
--- TODO: update to a keybinding that displays a popup
-vim.cmd [[
-function! SyntaxBalloon()
-    let synID   = synID(v:beval_lnum, v:beval_col, 0)
-    let groupID = synIDtrans(synID)
-    let name    = synIDattr(synID, "name")
-    let group   = synIDattr(groupID, "name")
-    echo name . "\n" . group
-endfunction
-]]
-
 -- Manually Trim Whitespace
 -- mapped to
 vim.cmd [[
