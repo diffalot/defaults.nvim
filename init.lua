@@ -354,8 +354,6 @@ require("telescope").load_extension("fzf")
 
 -- fern config
 vim.g["fern#renderer"] = "nerdfont"
-require("which-key").register({ e = { "<cmd>Fern . -reveal={%}<CR>", "Explore Directory Tree" } },
-                              { prefix = "<leader>" })
 
 -- TODO: resize windows and switch windows with arrows and hjkl
 -- TODO: match with tmux/nvim navigation with arrows and hjkl
@@ -605,13 +603,12 @@ require("which-key").register({
 -- normal mode mappings
 require("which-key").register({
     -- vim defaults
-    ["g"] = { name = "Global" },
-    ["z"] = { name = "Utilities" },
+    g = { name = "Global" },
+    z = { name = "Utilities" },
     -- mappings defined elsewhere
     ["<leader>"] = { name = "<leader>" },
     ["["]        = { name = "previous..." },
     ["]"]        = { name = "next..." },
-    -- ["<F10>"] = { "<cmd>SyntaxHighlightUnderCursor<CR>", "Echo Syntax Highlight Group Under Cursor" },
     gR = { "<cmd>TroubleToggle lsp_references<CR>", "LSP Trouble" },
     ga = { "<plug>(EasyAlign)", "Easy Align" },
     k  = { "v:count == 0 ? 'gk' : 'k'", "k one line up when wrapped" },
@@ -636,6 +633,8 @@ require("which-key").register({
     ["`"] = { "<cmd>Nuake<CR>", "Terminal for Tab" },
     ["~"] = { "<cmd>lua require('FTerm').toggle()<CR>", "Floating Terminal" },
     c     = { "<cmd>lua require('material.functions').toggle_style()<CR>", "Cycle Material Style" },
+    j     = { "<cmd>tabnew ~/cronofiles/journal/index.md<CR>", "Journal" },
+    e     = { "<cmd>Fern . -reveal={%}<CR>", "Explore Directory Tree" },
     x     = {
         name = "Trouble Diagnostics",
         x    = { "<cmd>TroubleToggle<CR>", "Toggle Trouble" },
@@ -660,7 +659,6 @@ require("which-key").register({
         "<cmd>lua require('telescope.builtin').help_tags( TeleIvy({ winblend = 10}) )<CR>",
         "Search Help Tags",
     },
-    j = { "<cmd>tabnew ~/cronofiles/journal/index.md<CR>", "Journal" },
     s = {
         name = "Search",
         f = {
