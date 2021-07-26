@@ -111,6 +111,7 @@ require("packer").startup(function()
     use "kosayoda/nvim-lightbulb" -- display lightbulb in gutter when lsp code actions are available
     use "nvim-lua/lsp-status.nvim" -- statusline info for lsp client
     use "yamatsum/nvim-nonicons" -- more icons in a font
+    use "folke/lsp-colors.nvim"
 
     -- Snippets
     use "L3MON4D3/LuaSnip" -- Snippets plugin
@@ -184,6 +185,9 @@ require("packer").startup(function()
     use "marko-cerovac/material.nvim" -- Black/White LSP and TS Colorscheme
     use "folke/tokyonight.nvim" -- Ocean/Blue Theme with Treesitter Highlighting for neovim >= 0.5
     use "Shatur/neovim-ayu" -- Black/White LSP and TS colorscheme in lua
+    
+    -- ANSI Themes
+    use "jeffkreeftmeijer/vim-dim"
 
     -- LuaRocks
     use_rocks { "lua-cjson", "lua-resty-http" }
