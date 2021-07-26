@@ -439,7 +439,7 @@ require("todo-comments").setup {
 }
 
 -- Gutentags
-vim.g.gutentags_enabled = true
+vim.g.gutentags_enabled = false
 vim.g.gutentags_plus_nomap = true
 vim.g.gutentags_modules = { "ctags", "gtags_cscope" }
 vim.g.gutentags_project_root = { ".root", "Makefile", ".git", ".diffalot" }
