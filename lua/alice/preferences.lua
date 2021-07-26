@@ -84,8 +84,8 @@ vim.cmd('set laststatus=2')
 vim.o.clipboard = "unnamedplus"
 
 -- TODO: remove before release
-vim.cmd('source ~/.config/nvim/lua/alice/overdriver/viml/schemes.vim')
-vim.cmd('source ~/.config/nvim/lua/alice/viml/wildmenu.vim')
+vim.cmd('source ~/.config/nvim/lua/alice/schemes.vim')
+vim.cmd('source ~/.config/nvim/lua/alice/wildmenu.vim')
 
 -- Testing
 vim.cmd('set formatprg=par\\ -p3s0T4w79')
