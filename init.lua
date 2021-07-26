@@ -1064,7 +1064,7 @@ set list listchars=tab:➢\ ,trail:˱,nbsp:⇿
 let g:toggle_special_characters = 0
 
 command! ToggleSpecialCharacters call ToggleSpecialCharacters()
-function ToggleSpecialCharacters ()
+function! ToggleSpecialCharacters ()
     if g:toggle_special_characters
         let g:toggle_special_characters = 0
         set list listchars=tab:➫\ ,eol:↲,nbsp:⇋,trail:⟵
