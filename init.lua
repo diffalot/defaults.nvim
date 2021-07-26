@@ -55,6 +55,7 @@ if &shell =~# 'fish$'
     let $SHELL='/bin/zsh'
     set shell=/bin/zsh
 endif
+set t_Co=256
 ]]
 
 --  ███████   ██                 ██
