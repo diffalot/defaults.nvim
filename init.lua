@@ -1119,7 +1119,7 @@ vim.g.ditto_mode = "paragraph"
 vim.cmd [[ let g:ditto_dir = &l:runtimepath . "/spell" ]]
 
 -- Prose Mode
-vim.g["pencil#conceallevel"] = 2
+vim.g["pencil#conceallevel"] = 1
 vim.cmd [[
 function! Prose(...)
     if a:0 > 0
