@@ -1153,6 +1153,7 @@ vim.cmd [[ let g:ditto_dir = &l:runtimepath . "/spell" ]]
 
 -- TODO: lots of mappings to move to which-key
 -- Prose Mode
+vim.g["pencil#conceallevel"] = 1
 vim.cmd [[
 function! Prose(...)
     if a:0 > 0
