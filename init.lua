@@ -131,7 +131,8 @@ require("packer").startup(function()
     use "nvim-treesitter/nvim-treesitter-textobjects"
     use "nvim-treesitter/playground" -- treesitter debugging
 
-    -- Syntax Highlighting
+    -- Syntax Highlighting & Indenting
+    use "editorconfig/editorconfig-vim"
     use "inkch/vim-fish"
     use "euclidianAce/BetterLua.vim"
     use "pantharshit00/vim-prisma"
