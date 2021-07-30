@@ -18,6 +18,8 @@
 --                                    July 19, 2021, Tenderloin District, SF
 --
 -- ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+-- TODO: configure diagnostic server and emf for eslint/standard formatting and prettier formatting depending on config
+-- TODO: setup jsdoc commenting indentation
 -- TODO: figure out how to do treesitter selections and motions
 -- TODO: use a list of buffers associated with a tab rather than CWD buffers
 -- TODO: when selecting from "all buffers" switch to containing tab then open buffer
