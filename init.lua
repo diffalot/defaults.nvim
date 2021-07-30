@@ -557,13 +557,13 @@ TeleIvy = require("telescope.themes").get_ivy
 
 -- Remap space as leader key
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
-vim.g.mapleader = " "
+vim.g.mapleader      = " "
 vim.g.maplocalleader = " "
 
 -- Gitsigns
 require("gitsigns").setup {
     signs = {
-        add          = { hl = "GitGutterAdd", text = "" },
+        add          = { hl = "GitGutterAdd",    text = "" },
         change       = { hl = "GitGutterChange", text = "" },
         delete       = { hl = "GitGutterDelete", text = "" },
         topdelete    = { hl = "GitGutterDelete", text = "" },
