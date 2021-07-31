@@ -137,6 +137,10 @@ require("packer").startup(function()
     use "euclidianAce/BetterLua.vim"
     use "pantharshit00/vim-prisma"
 
+    -- Rust
+    use "rust-lang/rust.vim"
+    use "timonv/vim-cargo"
+
     -- terminals
     use "Lenovsky/nuake"
     use "numToStr/FTerm.nvim"
