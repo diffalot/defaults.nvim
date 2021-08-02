@@ -1114,6 +1114,7 @@ augroup END
 -- want to be able to turn on end of line whenever.
 vim.cmd [[
 set list listchars=tab:➢\ ,trail:˱,nbsp:⇿
+set list
 let g:toggle_special_characters = 0
 
 command! ToggleSpecialCharacters call ToggleSpecialCharacters()
