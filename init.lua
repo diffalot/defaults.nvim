@@ -197,7 +197,7 @@ require("packer").startup(function()
     use "marko-cerovac/material.nvim" -- Black/White LSP and TS Colorscheme
     use "folke/tokyonight.nvim" -- Ocean/Blue Theme with Treesitter Highlighting for neovim >= 0.5
     use "Shatur/neovim-ayu" -- Black/White LSP and TS colorscheme in lua
-    
+
     -- ANSI Themes
     use "jeffkreeftmeijer/vim-dim"
 
@@ -1298,7 +1298,7 @@ command! Zen :call ZenMode()
 -- ░██    ██  ██░░░░██  ░░░░░██░██  ░██░██  ░██░██   ░██ ██░░░░██  ░██   ░██  ░██
 -- ░███████  ░░████████ ██████ ░██  ░██░██████ ░░██████ ░░████████░███   ░░██████
 -- ░░░░░░░    ░░░░░░░░ ░░░░░░  ░░   ░░ ░░░░░    ░░░░░░   ░░░░░░░░ ░░░     ░░░░░░
--- 
+--
 -- Dashboard
 
 vim.g.dashboard_default_executive = "telescope"
