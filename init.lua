@@ -1170,7 +1170,7 @@ vim.g["lexical#dictionary"] = { "/usr/share/dict/words" }
 
 -- Ditto
 vim.g.ditto_mode           = "paragraph"
-vim.cmd [[ let g:ditto_dir = &l:runtimepath . "/spell" ]]
+vim.cmd [[ let g:ditto_dir = "~/.config/nvim/spell" ]]
 
 -- TODO: lots of mappings to move to which-key
 -- Prose Mode
