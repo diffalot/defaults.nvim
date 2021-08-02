@@ -121,6 +121,7 @@ require("packer").startup(function()
     use "nvim-lua/lsp-status.nvim" -- statusline info for lsp client
     use "yamatsum/nvim-nonicons" -- more icons in a font
     use "folke/lsp-colors.nvim"
+    use "ray-x/lsp_signature.nvim"
 
     -- Snippets
     use "L3MON4D3/LuaSnip" -- Snippets plugin
@@ -782,6 +783,8 @@ local on_attach = function(client, bufnr)
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+
+    require "lsp_signature".on_attach()
 
     -- buffer normal mappings
     require("which-key").register({
