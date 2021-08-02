@@ -377,17 +377,6 @@ vim.g.rooter_resolve_links     = true
 vim.g.taboo_tab_format         = " %m%P%I⎠"
 vim.g.taboo_renamed_tab_format = " %l%I%m⎠"
 
-require("which-key").register({
-    ["<C-A-Right>"] = { "<cmd>tabnext<CR>", "which_key_ignore" },
-    ["<C-A-Left>"]  = { "<cmd>tabprevious<CR>", "which_key_ignore" },
-    ["<C-A-Up>"]    = { "<cmd>bnext<CR>", "which_key_ignore" },
-    ["<C-A-Down>"]  = { "<cmd>bprevious<CR>", "which_key_ignore" },
-    ["<C-A-l>"]     = { "<cmd>tabnext<CR>", "which_key_ignore" },
-    ["<C-A-h>"]     = { "<cmd>tabprevious<CR>", "which_key_ignore" },
-    ["<C-A-k>"]     = { "<cmd>bnext<CR>", "which_key_ignore" },
-    ["<C-A-j>"]     = { "<cmd>bprevious<CR>", "which_key_ignore" },
-})
-
 -- nuake dropdown terminal
 vim.g.nuake_position = "top" -- (default 'bottom')	Set the Nuake position to 'bottom', 'right', 'top' or 'left'.
 vim.g.nuake_size     = 0.27  -- (default 0.25)	    Set the Nuake size in percent.
@@ -625,6 +614,18 @@ require("which-key").register({
     k  = { "v:count == 0 ? 'gk' : 'k'", "k one line up when wrapped" },
     j  = { "v:count == 0 ? 'gj' : 'j'", "j one line up when wrapped" },
     Y  = { "y$", "Yank to Line End" },
+})
+
+-- Tab and Buffer Management
+require("which-key").register({
+    ["<C-A-Right>"] = { "<cmd>tabnext<CR>", "which_key_ignore" },
+    ["<C-A-Left>"]  = { "<cmd>tabprevious<CR>", "which_key_ignore" },
+    ["<C-A-Up>"]    = { "<cmd>bnext<CR>", "which_key_ignore" },
+    ["<C-A-Down>"]  = { "<cmd>bprevious<CR>", "which_key_ignore" },
+    ["<C-A-l>"]     = { "<cmd>tabnext<CR>", "which_key_ignore" },
+    ["<C-A-h>"]     = { "<cmd>tabprevious<CR>", "which_key_ignore" },
+    ["<C-A-k>"]     = { "<cmd>bnext<CR>", "which_key_ignore" },
+    ["<C-A-j>"]     = { "<cmd>bprevious<CR>", "which_key_ignore" },
 })
 
 -- normal mode <leader> mappings
