@@ -241,8 +241,6 @@ require("which-key").setup {
         align   = "center", -- align columns left, center or right
     },
 }
--- Breaking the Law
--- require("which-key").register({ w = {"<cmd>WhichKey<CR>", "which_key_ignore"} })
 
 --  ███████                   ████
 -- ░██░░░░██                 ░██░
@@ -627,6 +625,9 @@ require("which-key").register({
     ["<C-A-k>"]     = { "<cmd>bnext<CR>", "which_key_ignore" },
     ["<C-A-j>"]     = { "<cmd>bprevious<CR>", "which_key_ignore" },
 })
+
+-- Breaking the Law
+require("which-key").register({ w = {"<cmd>WhichKey<CR>", "which_key_ignore"} })
 
 -- normal mode <leader> mappings
 require("which-key").register({
