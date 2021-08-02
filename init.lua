@@ -1083,6 +1083,22 @@ function! TrimWhitespace()
 endfunction
 ]]
 
+-- Automatically trim whitespace
+vim.cmd [[
+function! TrimWhitespaceExceptBlockedFiletypes()
+    let l:excluded_filetypes = []
+    let l:current_filetype = &filetype
+    if index(l:excluded_filetypes, l:current_filetype) == -1
+        call TrimWhitespace()
+    endif
+endfunction
+
+augroup TrimWhitespace
+    autocmd!
+    autocmd BufWritePre * call TrimWhitespaceExceptBlockedFiletypes()
+augroup END
+]]
+
 -- show/hide specialcharacters  ➤ ➫˱⟵⇠⇤⇤¬➧»¶⬃✧⇿˱⇿⇆⬋⤶↵⟂‹◡
 -- Quick controls over displaying special characters
 -- tab:»\, eol:¶\,nbsp:¬\,trail:-
