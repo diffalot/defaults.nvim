@@ -646,7 +646,11 @@ require("which-key").register({
     ["~"] = { "<cmd>lua require('FTerm').toggle()<CR>", "Floating Terminal" },
     c     = { "<cmd>lua require('material.functions').toggle_style()<CR>", "Cycle Material Style" },
     j     = { "<cmd>tabnew ~/cronofiles/journal/index.md<CR>", "Journal" },
-    e     = { "<cmd>Fern . -reveal={%}<CR>", "Explore Directory Tree" },
+    e     = {
+        name = "Explore",
+        f = { "<cmd>Fern . -reveal={%}<CR>", "Explore Directory" },
+        t = { "<cmd>Fern . -reveal={%} -drawer<CR>", "Explore Directory Drawer" },
+    },
     x     = {
         name = "Trouble Diagnostics",
         x    = { "<cmd>TroubleToggle<CR>", "Toggle Trouble" },
