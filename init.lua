@@ -654,7 +654,16 @@ require("which-key").register({
     },
     ["`"] = { "<cmd>Nuake<CR>", "Terminal for Tab" },
     ["~"] = { "<cmd>lua require('FTerm').toggle()<CR>", "Floating Terminal" },
-    c     = { "<cmd>lua require('material.functions').toggle_style()<CR>", "Cycle Material Style" },
+    c     = {
+        name = "Configuration Editing and Toggles",
+        c = { "<cmd>lua require('material.functions').toggle_style()<CR>", "Cycle Material Style" },
+        g = { "<cmd>tabnew ~/.gitconfig<CR>", "Edit ~/.gitconfig" },
+        r = { "<cmd>tabnew ~/.tigrc<CR>", "Edit ~/.tigrc" },
+        t = { "<cmd>tabnew ~/.tmux.conf<CR>", "Edit ~/.tmux.conf" },
+        n = { "<cmd>tabnew ~/.config/nvim/init.lua<CR>", "Edit ~/c/nvim/init.lua" },
+        f = { "<cmd>tabnew ~/.config/fish/config.fish<CR>", "Edit ~/c/fish/config.fish" },
+        s = { "<cmd>tabnew ~/.config/starship.toml<CR>", "Edit ~/c/starship.toml" },
+    },
     j     = { "<cmd>tabnew ~/cronofiles/journal/index.md<CR>", "Journal" },
     e     = {
         name = "Explore",
