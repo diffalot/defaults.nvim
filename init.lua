@@ -300,7 +300,7 @@ require("alice.preferences")
 vim.o.termguicolors = true
 
 -- 'darker', 'lighter', 'palenight', 'oceanic' and 'deep ocean'
-vim.g.material_style              = "oceanic"
+vim.g.material_style              = "palenight"
 vim.g.material_contrast           = true
 vim.g.material_lighter_contrast   = true
 vim.g.material_italic_comments    = true
