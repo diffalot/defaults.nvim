@@ -110,6 +110,7 @@ require("packer").startup(function()
             "dbmrq/vim-ditto",
         },
     }
+    use "panozzaj/vim-autocorrect"
 
     -- LSP
     use "neovim/nvim-lspconfig" -- Collection of configurations for built-in LSP client
@@ -1207,6 +1208,9 @@ function! Prose(...)
     call litecorrect#init()
     call textobj#quote#init({'educate': 1})
     call textobj#sentence#init()
+
+    " Autocorrect
+    call AutoCorrect()
 
     " Ditto Setup
     DittoOn
