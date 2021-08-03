@@ -70,9 +70,15 @@ local fixjson = {
   formatStdin = true
 }
 
+local fish_indent = {
+    formatCommand = "fish_indent",
+    formatStdin = true,
+}
+
 local languages = {
   lua = { luaformat },
   sh = { shellcheck, shfmt },
+  fish = { fish_indent },
   javascript = { prettier, eslint },
   typescript = { prettier, eslint },
   html = { prettier },
