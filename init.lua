@@ -49,7 +49,6 @@
 -- - see what setting is needed to turn of conceal of `markdown` syntax for git messages and emails
 -- - checkout vmux for single nvim per tmux session https://github.com/jceb/vmux
 -- - this is probably way better, but nvr seem to be due for a round of improvements according to the issues: https://github.com/carlocab/tmux-nvr
-
 vim.cmd [[
 if &shell =~# 'fish$'
     let $SHELL='/bin/zsh'
@@ -635,7 +634,7 @@ require("which-key").register({
 })
 
 -- Breaking the Law
-require("which-key").register({ w = {"<cmd>WhichKey<CR>", "which_key_ignore"} })
+require("which-key").register({ w = { "<cmd>WhichKey<CR>", "which_key_ignore" } })
 
 -- normal mode <leader> mappings
 require("which-key").register({
@@ -792,7 +791,7 @@ local on_attach = function(client, bufnr)
 
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    require "lsp_signature".on_attach()
+    require"lsp_signature".on_attach()
 
     -- buffer normal mappings
     require("which-key").register({
@@ -808,7 +807,10 @@ local on_attach = function(client, bufnr)
             t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "View Type Definition" },
             i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Go to implementation" },
             r = { "<cmd>lua vim.lsp.buf.references()<CR>", "See References" },
-            s = { "<cmd>lua require('telescope.builtin').lsp_document_symbols( TeleIvy({ winblend = 10}) )<CR>", "Telescope Symbols" },
+            s = {
+                "<cmd>lua require('telescope.builtin').lsp_document_symbols( TeleIvy({ winblend = 10}) )<CR>",
+                "Telescope Symbols",
+            },
             o = { "<cmd>TroubleToggle lsp_document_diagnostics<CR>", "Trouble Diagnostics" },
 
             a = {
@@ -837,15 +839,16 @@ local on_attach = function(client, bufnr)
             a = {
                 name = "Actions",
                 p = { "<cmd>lua vim.lsp.buf.range_formatting()<CR>", "Format Selection" },
-                c = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>", "Run Code Action on Selection" },
-            }
-        }
+                c = { "<cmd>lua vim.lsp.buf.range_code_action()<CR>",
+                      "Run Code Action on Selection" },
+            },
+        },
     }, { buffer = bufnr, mode = "x" })
 
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 
     -- Set autocommands conditional on server_capabilities
-    vim.cmd[[
+    vim.cmd [[
         highlight clear LspReferenceWrite
         highlight clear LspReferenceText
         highlight clear LspReferenceRead
