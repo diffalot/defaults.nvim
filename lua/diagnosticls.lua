@@ -106,15 +106,27 @@ return {
             message = 1
           }
         }
+      },
+      ["fish_no-execute"] = {
+          command = "fish",
+          args = { "--no-execute" },
       }
     },
-    formatters = {},
+    formatters = {
+        fish_indent = {
+            command = "fish_indent"
+        }
+    },
     filetypes = {
       sh = "shellcheck",
-      prose = "languagetool",
+      prose = { "languagetool", "write-good" },
       python = "flake8",
       vim = "vint",
+      markdown = "prose",
+      fish = "fish_no-execute"
     },
-    formatFiletypes = {}
+    formatFiletypes = {
+      fish = "fish_indent",
+    }
   }
 }
