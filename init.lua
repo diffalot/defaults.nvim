@@ -21,10 +21,8 @@
 -- TODO: configure diagnostic server and emf for eslint/standard formatting and prettier formatting depending on config
 -- TODO: setup jsdoc commenting indentation
 -- TODO: figure out how to do treesitter selections and motions
--- TODO: use a list of buffers associated with a tab rather than CWD buffers
--- TODO: when selecting from "all buffers" switch to containing tab then open buffer
--- - setup fish shell format and linting
 -- - add nvim-dap debugging
+-- - maybe https://github.com/gelguy/wilder.nvim
 -- - figure out how to have tilish use easy mode and HJKL too for vim navigation
 --   - keybindings are intercepted by tmux and window switching in vim is done with send keys
 --   - easy mode in tilish is complicating it, but I am not sure why I still
@@ -32,15 +30,15 @@
 --     tmux-navigator plugin set up hjkl?
 -- - set most plugins to be optionally loaded with triggers to start loading
 -- - check available compe sources
--- - figure out if current function signatures are helpful https://github.com/ray-x/lsp_signature.nvim
 -- - figure out if popup prompts/info from lsp is needed: lspsaga
 -- - fix lsp statusline
 -- - Verify ctags and gtags are in cache
 -- - add visualizers for tags and symbols
--- - set up stylua
 -- - vim plugin development
 --   - continue working through: https://www.2n.pl/blog/how-to-make-ui-for-neovim-plugins-in-lua
 --   - list tabpage buffers in telescope
+--   - use a list of buffers associated with a tab rather than CWD buffers
+--   - when selecting from "all buffers" switch to containing tab then open buffer
 --   - rename tabs
 --   - https://github.com/vim-jp/vital.vim
 -- - https://github.com/tpope/vim-abolish
