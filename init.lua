@@ -1317,6 +1317,10 @@ function! Prose(...)
     " Autocorrect
     call AutoCorrect()
 
+    " Navigation
+    nnoremap <buffer> <CR> @e
+    nnoremap <buffer> <silent> <BS> <C-o>
+
     " Ditto Setup
     DittoOn
     DittoUpdate
