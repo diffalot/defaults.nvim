@@ -684,7 +684,7 @@ require("which-key").register({
         f = { "<cmd>tabnew ~/.config/fish/config.fish<CR>", "Edit ~/c/fish/config.fish" },
         s = { "<cmd>tabnew ~/.config/starship.toml<CR>", "Edit ~/c/starship.toml" },
     },
-    j     = { "<cmd>tabnew ~/cronofiles/journal/index.md<CR>", "Journal" },
+    j     = { "<cmd>tabnew ~/cronofiles/index.md<CR>", "Journal" },
     e     = {
         name = "Explore",
         f = { "<cmd>Fern . -reveal={%}<CR>", "Explore Directory" },
