@@ -163,13 +163,13 @@ require("packer").startup(function()
         }
     }
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+    use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" } -- diagnostic quick list for whole workspace
+    use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
 
     -- Code UI Imporvements
     use "norcalli/nvim-colorizer.lua"
     use "lukas-reineke/indent-blankline.nvim"
     use "tpope/vim-commentary" -- "gc" to comment visual regions/lines
-    use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" } -- diagnostic quick list for whole workspace
-    use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
 
     -- Keybindings Navigation
     use "folke/which-key.nvim"
