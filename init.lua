@@ -209,7 +209,7 @@ require("packer").startup(function()
     use "jeffkreeftmeijer/vim-dim"
 
     -- LuaRocks
-    use_rocks { "stylua", "lua-cjson", "lua-resty-http" }
+    use_rocks { "luacheck", "lua-cjson", "lua-resty-http" }
     use_rocks { "luaformatter", server = "https://luarocks.org/dev" }
 
 end)
