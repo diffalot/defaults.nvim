@@ -167,6 +167,7 @@ require("packer").startup(function()
     use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
 
     -- Code UI Imporvements
+    use "windwp/nvim-autopairs"
     use "norcalli/nvim-colorizer.lua"
     use "lukas-reineke/indent-blankline.nvim"
     use "tpope/vim-commentary" -- "gc" to comment visual regions/lines
@@ -370,6 +371,24 @@ require("telescope").load_extension("fzf")
 
 -- fern config
 vim.g["fern#renderer"] = "nerdfont"
+
+-- nvim-autopairs
+require('nvim-autopairs').setup({
+    disable_filetype = { "TelescopePrompt" },
+    check_ts = true,
+    ts_config = {
+        lua = {'string'},-- it will not add pair on that treesitter node
+        javascript = {'template_string'},
+        java = false,-- don't check treesitter on java
+    },
+    enable_check_bracket_line = false,
+    ignored_next_char = "[%w%.]",
+})
+
+require("nvim-autopairs.completion.compe").setup({
+  map_cr = true, --  map <CR> on insert mode
+  map_complete = true -- it will auto insert `(` after select function or method item
+})
 
 -- TODO: resize windows and switch windows with arrows and hjkl
 -- TODO: match with tmux/nvim navigation with arrows and hjkl
@@ -978,6 +997,7 @@ require("nvim-treesitter.configs").setup {
         },
     },
     indent = { enable = true },
+    autopairs = { enable = true },
     textobjects = {
         select = {
             enable    = true,
