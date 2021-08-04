@@ -125,11 +125,9 @@ require("packer").startup(function()
     use "L3MON4D3/LuaSnip" -- Snippets plugin
     use "rafamadriz/friendly-snippets" -- snippets gatered from all over
 
-    -- Code Diagnostics
+    -- Code Analysis
     use "ludovicchabant/vim-gutentags" -- Gutentags - https://github.com/ludovicchabant/vim-gutentags
     use "skywind3000/gutentags_plus" -- gtags for Gutentags
-    use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" } -- diagnostic quick list for whole workspace
-    use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
 
     -- TreeSitter - Highlight, edit, and navigate code using a fast incremental parsing library
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
@@ -155,11 +153,6 @@ require("packer").startup(function()
     use "rafcamlet/nvim-luapad" -- lua REPL
     use "milisims/nvim-luaref" -- lua 5.1 docs
 
-    -- Code UI Imporvements
-    use "norcalli/nvim-colorizer.lua"
-    use "lukas-reineke/indent-blankline.nvim"
-    use "tpope/vim-commentary" -- "gc" to comment visual regions/lines
-
     -- Finders
     use "glepnir/dashboard-nvim"
     use {
@@ -170,6 +163,13 @@ require("packer").startup(function()
         }
     }
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+
+    -- Code UI Imporvements
+    use "norcalli/nvim-colorizer.lua"
+    use "lukas-reineke/indent-blankline.nvim"
+    use "tpope/vim-commentary" -- "gc" to comment visual regions/lines
+    use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" } -- diagnostic quick list for whole workspace
+    use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
 
     -- Keybindings Navigation
     use "folke/which-key.nvim"
